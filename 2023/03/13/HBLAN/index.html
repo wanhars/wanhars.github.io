@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>数据结构和算法 |  wanhar</title>
+      <title>汇编语言 |  wanhar</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon2.ico" />
@@ -53,7 +53,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-datastructure"
+  id="post-HBLAN"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -64,7 +64,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  数据结构和算法
+  汇编语言
 </h1>
  
 
@@ -72,8 +72,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2023/03/13/datastructure/" class="article-date">
-  <time datetime="2023-03-13T06:36:36.292Z" itemprop="datePublished">2023-03-13</time>
+      <a href="/2023/03/13/HBLAN/" class="article-date">
+  <time datetime="2023-03-13T07:27:32.612Z" itemprop="datePublished">2023-03-13</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/basic/">basic</a>
@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">2.4k</span>
+            <span class="post-count">1.6k</span>
         </span>
     </span>
 
@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">8 min</span>
+            <span class="post-count">5 min</span>
         </span>
     </span>
 </div>
@@ -108,211 +108,104 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="数据结构和算法"><a href="#数据结构和算法" class="headerlink" title="数据结构和算法"></a>数据结构和算法</h1><h2 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h2><p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20221223145205321.png" alt="image-20221223145205321"></p>
-<p>数据：信息的载体 描述客观事物属性的数或符号等。</p>
-<p>数据元素 ：数据的基本单位，作为一个整体进行处理。由若干数据项组成</p>
-<p>数据项 ：构成数据元素的最小的不可分割最小单位。</p>
-<p>数据结构：相互间有关系的元素集合</p>
-<p>数据对象：具有相同性质的数据元素的集合。是数据的子集。（可以没有关系）</p>
-<h3 id="数据结构三要素"><a href="#数据结构三要素" class="headerlink" title="数据结构三要素"></a>数据结构三要素</h3><p>逻辑结构，物理结构，数据的运算。</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20221223151103908.png" alt="image-20221223151103908"></p>
-<h4 id="逻辑结构"><a href="#逻辑结构" class="headerlink" title="逻辑结构"></a>逻辑结构</h4><p>集合 各个元素同属于一个集合 初次之外并无关系。</p>
-<p>线性结构 元素是一对一的关系 除了第一个&#x2F;最后一个元素，所有元素都有唯一前驱&#x2F;后继。</p>
-<p>树形结构 一对多的关系 </p>
-<p>图状结构 多对多的关系、</p>
-<h4 id="物理结构"><a href="#物理结构" class="headerlink" title="物理结构"></a>物理结构</h4><p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20221223151618865.png" alt="image-20221223151618865"></p>
-<p>线性结构中的物理结构</p>
-<p>顺序存储  把逻辑上相邻的元素存储在物理位置上也相邻的存储单元中</p>
-<p>链式存储 逻辑上相邻的元素可以不相邻 借助指针表示出下一元素地址</p>
-<p>索引存储 建立一个索引表 对内存中的数据进行对照索引</p>
-<p>散列存储 （哈希存储）根据关键字计算出元素的存储地址</p>
-<p>数据的存储结构会影响空间分配的方便程度 和数据的运算速度</p>
-<p>eg 顺序存储中元素顺序与空间挂钩 改变顺序则必须改变空间 非顺序存储则不必要。     顺序存储可以方便的找到数据 非顺序则需要运算。</p>
-<h4 id="数据的运算"><a href="#数据的运算" class="headerlink" title="数据的运算"></a>数据的运算</h4><p>包括运算的定义与运算的实现</p>
-<p>定义针对的是逻辑结构 实现针对存储结构 </p>
-<p>定义即运算的操作方法</p>
-<p>实现即实际操作</p>
-<p>数据类型和抽象数据类型</p>
-<p>数据类型 值的集合和定义在此集合的操作总称。eg： int bool</p>
-<ul>
-<li>原子类型 值不可以再分的数据类型 </li>
-<li>结构类型 值可以再分解为若凡成分的数据类型   eg： struct</li>
-</ul>
-<p>抽象数据类型 抽象数据组织和与之相关的操作</p>
-<p>数据结构的研究过程</p>
-<ul>
-<li>定义逻辑结构</li>
-<li>定义数据运算</li>
-<li>确定存储结构 实现此种数据结构 同时实现数据结构的运算</li>
-</ul>
-<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>程序&#x3D;数据结构+算法</p>
-<p>数据结构将数据信息化 算法将信息进行处理</p>
-<h4 id="算法的特点"><a href="#算法的特点" class="headerlink" title="算法的特点"></a>算法的特点</h4><ul>
-<li>有穷性   算法在有限的时间内运算完成</li>
-<li>确定性 输入相同则输出也相同</li>
-<li>可行性 通过执行有限次数的基本运算实现</li>
-<li>算法需要有输出 可以没有输入</li>
-</ul>
-<p>算法需要有正确性 可读性 健壮性（可处理bug输入）高效率和低存储量要求 </p>
-<h4 id="算法的效率"><a href="#算法的效率" class="headerlink" title="算法的效率"></a>算法的效率</h4><ul>
-<li><p>时间复杂度</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230103164414433.png" alt="image-20230103164414433"></p>
-<p>时间开销t和问题规模n的关系即为T（时间）关于n（运行次数）的一个函数</p>
-<p>时间复杂度的比较</p>
-<p>计算时只保留最高阶（极限思维）</p>
-<p>一阶复杂度即T（n）&#x3D;O（n）</p>
-<p>加法规则 多项相加保留最大</p>
-<p>乘法规则 多项相乘都保留</p>
-<p>法则</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230103162846357.png" alt="image-20230103162846357"></p>
-<p>原理可以由数学极限算得</p>
-<p>简记 ： 常对幂指阶  一大对  复杂度依次增大 </p>
-<p>顺序执行的代码只影响常数项</p>
-<p>对于大循环只需要分析其中一个语句与n的关系即可</p>
-<p>嵌套循环只需要注意最内侧循环 </p>
-<p>时间复杂度的计算  先计算出代码需要运行的次数（可以设置未知数等），得出T和n关系式 ，以O运算 进行法则运算 最后得到时间复杂度。</p>
-<p>判断标准 最好 O（1）</p>
-<p>​               最坏O（n）</p>
-<p>实际中应该考虑平均情况</p>
-<p>一般不考虑最好时间复杂度</p>
-</li>
-<li><p>空间复杂度</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230103170253105.png" alt="image-20230103170253105"></p>
-<p>首先 程序代码会固定占用一定空间，而代码产生的数据则会继续占用更多空间，空间复杂度研究的就是这个关系。</p>
-<p>若无论问题规模多大 占用空间均不变 则其空间复杂度为常数S（n）&#x3D;O（1）</p>
-<p>又称为算法可以 原地工作</p>
-<p>若问题规模会导致占用空间变化</p>
-<p>则计算其所占空间 得出S（n）。</p>
-<p>计算法则仍为O的运算法则</p>
-<p>函数递归会导致内存开销（栈的执行）。此时空间复杂度为各级递归调用的空间量之和（）。</p>
-<p>一般来说 递归的空间复杂度即为递归调用深度</p>
-</li>
-</ul>
-<h2 id="第二章-线性表"><a href="#第二章-线性表" class="headerlink" title="第二章 线性表"></a>第二章 线性表</h2><h3 id="逻辑结构-1"><a href="#逻辑结构-1" class="headerlink" title="逻辑结构"></a>逻辑结构</h3><ul>
-<li>定义</li>
-</ul>
-<p>具有相同数据类型的n个数据元素的有限序列 </p>
-<p>n为表长。线性表 用L命名 L&#x3D;（a1，a2，…..an）</p>
-<p>特例 n为0时线性表称为空表 </p>
-<p>ai是线性表中第i个元素线性表的位序 （以一开始）、</p>
-<ul>
-<li><p>基本操作</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230122093658869.png" alt="image-20230122093658869"></p>
-<p>数据结构操作的种类  创销 增删改查</p>
-<p>实际开发中 你可以根据实际需求进行定义其他操作 但命名需要有可读性 </p>
-<p>如果需要修改结果的反馈 传入参数应该使用引用型&amp; （指针）</p>
-</li>
-</ul>
-<h3 id="物理存储结构"><a href="#物理存储结构" class="headerlink" title="物理存储结构"></a>物理存储结构</h3><ul>
-<li><p>顺序表  顺序存储</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123182053837.png" alt="image-20230123182053837"></p>
-<p>顺序存储  逻辑上相邻的元素存储在物理上相邻的地方</p>
-<p>顺序储存使元素位置寻找较为方便 设首元素位置loc（L） 第i个元素的位置为loc（L）+（i-1）*单个元素大小</p>
-<p>单元素大小可以用sizeof获取</p>
-<p>实现方式</p>
-<ul>
-<li><p>静态分配</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123180544956.png" alt="image-20230123180544956"></p>
-<p>具体实现</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123180618881.png" alt="image-20230123180618881"></p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123180711007.png" alt="image-20230123180711007"></p>
-<p>对数据元素的访问应该使用基本操作get来进行访问</p>
-<p>为防止len区脏数据 必须手动赋值len为0</p>
-<p>静态分配容量无法改变 </p>
-</li>
-<li><p>动态分配</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123181008644.png" alt="image-20230123181008644"></p>
-<p>使用malloc或者relloc动态申请空间</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123181135569.png" alt="image-20230123181135569"></p>
-<p>实例</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123181215042.png" alt="image-20230123181215042"></p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123181321847.png" alt="image-20230123181321847"></p>
-<p>顺序表的特点</p>
-<p>随机访问 O（1）可访问到元素</p>
-<p>存储密度高 （链式存储需要多链指针）</p>
-<p>扩展容量较为不易</p>
-<p>插入与删除元素不方便</p>
-</li>
-</ul>
-<p>基本操作</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123194523676.png" alt="image-20230123194523676"></p>
-<ul>
-<li><p>插入</p>
-<p>listinsert（&amp;L，i，e）在L表第i个位置上插入指定元素e</p>
-<p>这里的位置指的是位序 数组下标等于位序减一</p>
-<p>实例</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123193519644.png" alt="image-20230123193519644"></p>
-<p>代码的健壮性：可以处理各种情况，合法值判断，拥有反馈 等 使得代码的完成度高</p>
-<p>时间复杂度 O（n）</p>
-<p>平均值为n&#x2F;2</p>
-</li>
-<li><p>删除</p>
-<p>listdelete(&amp;L，i，&amp;e)  删除表L第i个位置的元素，并用e返回删除元素的值</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123194049040.png" alt="image-20230123194049040"></p>
-<p>将所删除的值赋值到e中 再将之后的所有元素前移一单位</p>
-<p>时间复杂度 O（n）</p>
-<p>平均复杂度（n-1）&#x2F;2</p>
-</li>
-<li><p>查找</p>
-<p>按位查找与按值查找</p>
-<p>按位查找 静态</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123194806326.png" alt="image-20230123194806326"></p>
-<p>直接返回对应下表所存储值即可</p>
-<p>动态的方式和静态一致 动态中将指针视为数组进行取值</p>
-<p>时间复杂度为O（1 ）</p>
-<p>按值查找</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123195655655.png" alt="image-20230123195655655"></p>
-<p>循环判断是否值相等 返回位序时应为数组下标加一</p>
-<p>时间复杂度O（n）</p>
-<p>平均复杂度为n+1&#x2F;2</p>
-<p>平均：目标元素在各个元素的选取概率一致</p>
-<p>特点</p>
-</li>
-</ul>
-</li>
-<li><p>链表 链式存储</p>
-<p>单链表  以指针作为链连接隔各个数据节点的线性表。每个节点除数据外还存储下一节点的指针。</p>
-<p>特点</p>
-<p>不需要大片连续存储空间，改变容量较为方便 但不可以随机存取，且更加耗费空间。</p>
-<p>单链表定义</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230125100322180.png" alt="image-20230125100322180"></p>
-<p>由于链表特性 只需要声明一个头指针指向链表第一个节点 就可以表示出整个链表。</p>
-<p>头指针和链表的区分：</p>
-<p>LNode *L  强调头指针 指针性</p>
-<p>LinkList L 强调链表</p>
-<p>单链表的初始化  无头节点版</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230125101120817.png" alt="image-20230125101120817"></p>
-<p>无节点的头指针初始化可以直接将其设置为null</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230125101238888.png" alt="image-20230125101238888"></p>
-<p>有头节点版</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230125101304270.png" alt="image-20230125101304270"></p>
-<p>头节点中不设置任何数据 只是为了保持逻辑的一致性 使得后续操作简单   故一般和使用带有头节点的单链表。</p>
-<ul>
-<li><p>操作</p>
-<p>插入操作 有头节点版</p>
-<p>List Insert（&amp;L，i，e） 在表L的第i个位置上插入指定元素e</p>
-<p>实例</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230125102215008.png" alt="image-20230125102215008"></p>
-<p>先将位置指向移动到指定位置后创建新节点 复制前一节点到后一节点的指针 连接前一节点到新节点即可</p>
-<p>注意各个条件对于插入在首节点 末节点和溢出数据的处理的限制。</p>
-<p>无节点版 需要对头指针的指向进行修改 对于第一个元素的插入可其他元素的插入逻辑是不同的。</p>
-<p>插入操作中插入的具体实施步骤可以由指定节点后插操作封装。</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230125104100392.png" alt="image-20230125104100392"></p>
-<p>注意对内存分配失败情况的调节。</p>
-<p>指定节点之前插入操作的两种逻辑</p>
-<p>1 从头节点开始下排找到</p>
-<p>2 代换 在指定节点后复制插入指定节点 再将指定节点改为空的新插入的节点</p>
-<p>删除操作</p>
-<p>ListDelete（&amp;L，i，&amp;e）删除表L中第i个位置的元素，并用e将删除元素值带回</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230125104919519.png" alt="image-20230125104919519"></p>
-<p>具体逻辑与插入操作类似</p>
-<p>指定节点的删除</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230125105018240.png" alt="image-20230125105018240"></p>
-<p>但若删除的节点是最后一个节点，会最为复杂（单向链表的劣势）。</p>
-</li>
-</ul>
-</li>
-</ul>
+  <h1 id="汇编"><a href="#汇编" class="headerlink" title="汇编"></a>汇编</h1><p>编者按 本笔记按个人掌握知识对原书进行了一定程度的省略，部分章节会略过不讲</p>
+<h2 id="第一章-基本概念"><a href="#第一章-基本概念" class="headerlink" title="第一章 基本概念"></a>第一章 基本概念</h2><h3 id="1-2-虚拟机概念"><a href="#1-2-虚拟机概念" class="headerlink" title="1.2  虚拟机概念"></a>1.2  虚拟机概念</h3><p>计算机可以执行原生机器语言，为使得编写程序较为容易，构造教易于使用的新语言。实现方法分别为解释和翻译。可以将其理解为以下虚拟机概念。</p>
+<p>L1 微电子 执行基本数字逻辑</p>
+<p>L2 指令集架构 </p>
+<p>L3 汇编语言</p>
+<p>L4 高级语言</p>
+<p>操作指令在各个层次之间传递执行</p>
+<h3 id="1-3-数据表示"><a href="#1-3-数据表示" class="headerlink" title="1.3  数据表示"></a>1.3  数据表示</h3><p>常用进制为2.8.10.16，需熟练掌握。</p>
+<p>MSB与LSB ：最高与最低有效位 从左到右</p>
+<p>储存单位 字节byte 8位 以下均以字节作为基本单位</p>
+<p>字	word	2byte  </p>
+<p>双字 dword   4byte</p>
+<p>四字	qword   8byte</p>
+<h3 id="1-4-布尔表达式"><a href="#1-4-布尔表达式" class="headerlink" title="1.4 布尔表达式"></a>1.4 布尔表达式</h3><p>主要为三种  与或非  and  or  not</p>
+<h2 id="第二章-x86处理器架构"><a href="#第二章-x86处理器架构" class="headerlink" title="第二章 x86处理器架构"></a>第二章 x86处理器架构</h2><h3 id="2-1-一般概念"><a href="#2-1-一般概念" class="headerlink" title="2.1 一般概念"></a>2.1 一般概念</h3><p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230309190710939.png" alt="image-20230309190710939"></p>
+<p>clock 负责操作的同步</p>
+<p>控制单元CU 协调参与机器指令执行的步骤</p>
+<p>ALU 主要运算单元</p>
+<p>指令执行周期</p>
+<p>1)CPU从被称为指令队列（instruction queue)）的内存区域取得指令，之后立即增加指令指针的值。</p>
+<p>2)CPU对指令的二进制位模式进行译码。这种位模式可能会表示该指令有操作数（输入值)。</p>
+<p>3）如果有操作数，CPU就从寄存器和内存中取得操作数。有时，这步还包括了地址计算。</p>
+<p>4）使用步骤3得到的操作数，CPU执行该指令。同时更新部分状态标志位，如零标志(Zero)、进位标志（Carry）和溢出标志(Overflow)。</p>
+<p>5）如果输出操作数也是该指令的一部分，则CPU还需要存放其执行结果。</p>
+<p>简略说明即为取指 译码 执行</p>
+<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230309191254627.png" alt="image-20230309191254627"></p>
+<p>从内存读取值的步骤</p>
+<p>1)将想要读取的值的地址放到地址总线上。</p>
+<p>2）设置处理器RD（读取）引脚(改变RD的值)。</p>
+<p>3）等待一个时钟周期给存储器芯片进行响应。</p>
+<p>4）将数据从数据总线复制到目标操作数。</p>
+<p>一级cache位于cpu上</p>
+<p>加载程序时需要os的帮助</p>
+<h3 id="2-2-32位x86"><a href="#2-2-32位x86" class="headerlink" title="2.2  32位x86"></a>2.2  32位x86</h3><p>四种操作模式  </p>
+<p>保护 原生状态 </p>
+<p>虚拟8086 现代程序 </p>
+<p>实地址  直接访问</p>
+<p>系统管理   特定系统</p>
+<h4 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h4><p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230309192140134.png" alt="image-20230309192140134"></p>
+<p>通用寄存器</p>
+<p>ABCD均有高低位区分</p>
+<p>而其他（ESI EDI）只有32或16位名称访问</p>
+<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230309192103114.png" alt="image-20230309192103114"></p>
+<p>tips </p>
+<p>EAX 扩展累加器 乘除指令默认使用</p>
+<p>ECX 循环计数器</p>
+<p>ESP 扩展堆栈指针寄存器 寻址堆栈 </p>
+<p>ESI EDI 扩展源变址 高速存储器传输指令</p>
+<p>EBP 扩展栈指针寄存器</p>
+<p>段寄存器</p>
+<p>表示预先分配的内存区域的的基址</p>
+<p>指令指针 EIP 指向下一要执行指令的地址</p>
+<p>EFLAGS寄存器为标志位 控制或反映CPU的操作</p>
+<p>进位标志位（CF)，与目标位置相比，无符号算术运算结果太大时，设置该标志位。</p>
+<p>溢出标志位（OF)，与目标位置相比，有符号算术运算结果太大或太小时，设置该位置。</p>
+<p>符号标志位（SF)，算术或逻辑操作产生负结果时,设置该标志位。零标志位（ZF)，算术或逻辑操作产生的结果为零时，设置该标志位。</p>
+<p>辅助进位标志位（AC)，8位操作数中发生位三向位四的进位，设置该标志位。</p>
+<p>奇偶校验标志位(PF)，结果的最低有效字节包含偶数个1时，设置该标志位，否则,清除该标志位。一般情况下，如果数据有可能被修改或损坏时，该标志位用于进行错误检测。</p>
+<p>MMX寄存器与XMM寄存器用于运算。</p>
+<p>64位操作模式下，通用寄存器扩展8个，指令宽度扩展到64.</p>
+<p>eg RAX RBX</p>
+<h3 id="2-4-x86计算机组件"><a href="#2-4-x86计算机组件" class="headerlink" title="2.4  x86计算机组件"></a>2.4  x86计算机组件</h3><p>主板 内存 io 以总线连接</p>
+<h3 id="2-5-IO系统"><a href="#2-5-IO系统" class="headerlink" title="2.5  IO系统"></a>2.5  IO系统</h3><p>硬件  BIOS OS  程序</p>
+<h2 id="第三章-汇编语言基础"><a href="#第三章-汇编语言基础" class="headerlink" title="第三章 汇编语言基础"></a>第三章 汇编语言基础</h2><h3 id="3-1-汇编程序"><a href="#3-1-汇编程序" class="headerlink" title="3.1  汇编程序"></a>3.1  汇编程序</h3><p>.data 数据区 .code 代码区</p>
+<p>整数常量</p>
+<p>以字母开头的十六进制数需要加前置0</p>
+<p>优先级排序 括号 一元加减 乘除 取模 加减</p>
+<p>其余各类字符，表达式等表示与一般语言相同</p>
+<p>伪指令 不在运行中执行 可定义变量 宏与子程序</p>
+<p>指令的四大组成部分</p>
+<p>标号 指令和数据的位置标记 可以作为跳转标点</p>
+<p>助记符  指令的短单词</p>
+<p>操作数 操作的输入与输出点</p>
+<p>注释</p>
+<h3 id="3-2-程序的调试和执行"><a href="#3-2-程序的调试和执行" class="headerlink" title="3.2  程序的调试和执行"></a>3.2  程序的调试和执行</h3><p>略</p>
+<h3 id="3-3-汇编执行周期"><a href="#3-3-汇编执行周期" class="headerlink" title="3.3 汇编执行周期"></a>3.3 汇编执行周期</h3><p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230309204009521.png" alt="image-20230309204009521"></p>
+<p>列表文件包括程序的详细信息</p>
+<h3 id="3-4-定义数据"><a href="#3-4-定义数据" class="headerlink" title="3.4  定义数据"></a>3.4  定义数据</h3><p>count DWORD 3223 在数据区中执行</p>
+<p>数据定义必须要有一个初始值，或者使用？使得变量未初始化 在运行中分配</p>
+<p>定义BYTE和SBYTE数据</p>
+<p>value1 BYTE ‘a’</p>
+<p>可选名字是一个标号 标识从变量包含段的开始到该变量的偏移量，若同一数据使用多个初始值进行定义，其标号指向第一个初始值的偏移量，其多个初始值在内存中进行顺序排列</p>
+<p>定义字符串要用单引号或双引号将其括起来 以0作为结束标记</p>
+<p>0Dh和0A即为换行符</p>
+<p>\ 行连续字符把两个源代码行连成一条语句</p>
+<p>DUP操作符 使用整数表达式作为计数器，为多个数据项分配存储空间</p>
+<p>BYTE	20	DUP（0） 20个值为0</p>
+<p>BYTE	20	DUP（？） 20个值未定义</p>
+<p>其余word dword qword等全部相同，不同点为定义的数为 16 32 64</p>
+<p>BCD 压缩的二进制编码的十进制</p>
+<p>real4 4字节单精度浮点变量</p>
+<p>DD 短实数 DQ 长实数 DT 扩展精度实数</p>
+<p>x86指令集不允许变量之间直接相加，但允许变量和寄存器相加。</p>
+<p>x86处理器以小段存储</p>
+<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230310110417675.png" alt="image-20230310110417675"></p>
+<p>.data?伪指令声明未初始化数据 可节约大量的大小</p>
+<p>代码和数据可以混合表达 混合表达数据中的定义值出现局部变量的效果</p>
+<h3 id="3-5-符号常量"><a href="#3-5-符号常量" class="headerlink" title="3.5   符号常量"></a>3.5   符号常量</h3><p>类似于全局宏定义的操作</p>
  
       <!-- reward -->
       
@@ -377,12 +270,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/03/13/datastructure/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/03/13/HBLAN/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li></ul>
 
     </footer>
   </div>
@@ -390,19 +283,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2023/03/13/ccs/" class="article-nav-link">
+      <a href="/2023/03/13/py/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            计算机组成原理
+            python笔记
           
         </div>
       </a>
     
     
-      <a href="/2023/03/13/30sc%20c++/" class="article-nav-link">
+      <a href="/2023/03/13/ccs/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">30sc++</div>
+        <div class="article-nav-title">计算机组成原理</div>
       </a>
     
   </nav>
