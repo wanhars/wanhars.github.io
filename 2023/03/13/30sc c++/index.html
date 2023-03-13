@@ -54,381 +54,8 @@
         style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
       
     <main class="content on">
-      
-<section class="cover">
-    
-  <div class="cover-frame">
-    <div class="bg-box">
-      <img src="/images/cover8.jpg" alt="image frame" />
-    </div>
-    <div class="cover-inner text-center text-white">
-      <h1><a href="/">Hexo</a></h1>
-      <div id="subtitle-box">
-        
-        <span id="subtitle"></span>
-        
-      </div>
-      <div>
-        
-      </div>
-    </div>
-  </div>
-  <div class="cover-learn-more">
-    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
-  </div>
-</section>
-
-
-
-<script src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js"></script>
-
-
-<!-- Subtitle -->
-
-  <script>
-    try {
-      var typed = new Typed("#subtitle", {
-        strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
-        startDelay: 0,
-        typeSpeed: 200,
-        loop: true,
-        backSpeed: 100,
-        showCursor: false
-      });
-    } catch (err) {
-      console.log(err)
-    }
-  </script>
-  
-<div id="main">
-  <section class="outer">
-  
-  
-  
-
-<div class="notice" style="margin-top:50px">
-    <i class="ri-heart-fill"></i>
-    <div class="notice-content" id="broad"></div>
-</div>
-<script type="text/javascript">
-    fetch('https://v1.hitokoto.cn')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("broad").innerHTML = data.hitokoto;
-        })
-        .catch(console.error)
-</script>
-
-<style>
-    .notice {
-        padding: 20px;
-        border: 1px dashed #e6e6e6;
-        color: #969696;
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        background: #fbfbfb50;
-        border-radius: 10px;
-    }
-
-    .notice i {
-        float: left;
-        color: #999;
-        font-size: 16px;
-        padding-right: 10px;
-        vertical-align: middle;
-        margin-top: -2px;
-    }
-
-    .notice-content {
-        display: initial;
-        vertical-align: middle;
-    }
-</style>
-  
-  <article class="articles">
-    
-    
-    
-    
-    <article
-  id="post-datastructure"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-     
-    <div class="article-meta">
-      <a href="/2023/03/13/datastructure/" class="article-date">
-  <time datetime="2023-03-13T06:36:36.292Z" itemprop="datePublished">2023-03-13</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="数据结构和算法"><a href="#数据结构和算法" class="headerlink" title="数据结构和算法"></a>数据结构和算法</h1><h2 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h2><p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20221223145205321.png" alt="image-20221223145205321"></p>
-<p>数据：信息的载体 描述客观事物属性的数或符号等。</p>
-<p>数据元素 ：数据的基本单位，作为一个整体进行处理。由若干数据项组成</p>
-<p>数据项 ：构成数据元素的最小的不可分割最小单位。</p>
-<p>数据结构：相互间有关系的元素集合</p>
-<p>数据对象：具有相同性质的数据元素的集合。是数据的子集。（可以没有关系）</p>
-<h3 id="数据结构三要素"><a href="#数据结构三要素" class="headerlink" title="数据结构三要素"></a>数据结构三要素</h3><p>逻辑结构，物理结构，数据的运算。</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20221223151103908.png" alt="image-20221223151103908"></p>
-<h4 id="逻辑结构"><a href="#逻辑结构" class="headerlink" title="逻辑结构"></a>逻辑结构</h4><p>集合 各个元素同属于一个集合 初次之外并无关系。</p>
-<p>线性结构 元素是一对一的关系 除了第一个&#x2F;最后一个元素，所有元素都有唯一前驱&#x2F;后继。</p>
-<p>树形结构 一对多的关系 </p>
-<p>图状结构 多对多的关系、</p>
-<h4 id="物理结构"><a href="#物理结构" class="headerlink" title="物理结构"></a>物理结构</h4><p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20221223151618865.png" alt="image-20221223151618865"></p>
-<p>线性结构中的物理结构</p>
-<p>顺序存储  把逻辑上相邻的元素存储在物理位置上也相邻的存储单元中</p>
-<p>链式存储 逻辑上相邻的元素可以不相邻 借助指针表示出下一元素地址</p>
-<p>索引存储 建立一个索引表 对内存中的数据进行对照索引</p>
-<p>散列存储 （哈希存储）根据关键字计算出元素的存储地址</p>
-<p>数据的存储结构会影响空间分配的方便程度 和数据的运算速度</p>
-<p>eg 顺序存储中元素顺序与空间挂钩 改变顺序则必须改变空间 非顺序存储则不必要。     顺序存储可以方便的找到数据 非顺序则需要运算。</p>
-<h4 id="数据的运算"><a href="#数据的运算" class="headerlink" title="数据的运算"></a>数据的运算</h4><p>包括运算的定义与运算的实现</p>
-<p>定义针对的是逻辑结构 实现针对存储结构 </p>
-<p>定义即运算的操作方法</p>
-<p>实现即实际操作</p>
-<p>数据类型和抽象数据类型</p>
-<p>数据类型 值的集合和定义在此集合的操作总称。eg： int bool</p>
-<ul>
-<li>原子类型 值不可以再分的数据类型 </li>
-<li>结构类型 值可以再分解为若凡成分的数据类型   eg： struct</li>
-</ul>
-<p>抽象数据类型 抽象数据组织和与之相关的操作</p>
-<p>数据结构的研究过程</p>
-<ul>
-<li>定义逻辑结构</li>
-<li>定义数据运算</li>
-<li>确定存储结构 实现此种数据结构 同时实现数据结构的运算</li>
-</ul>
-<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>程序&#x3D;数据结构+算法</p>
-<p>数据结构将数据信息化 算法将信息进行处理</p>
-<h4 id="算法的特点"><a href="#算法的特点" class="headerlink" title="算法的特点"></a>算法的特点</h4><ul>
-<li>有穷性   算法在有限的时间内运算完成</li>
-<li>确定性 输入相同则输出也相同</li>
-<li>可行性 通过执行有限次数的基本运算实现</li>
-<li>算法需要有输出 可以没有输入</li>
-</ul>
-<p>算法需要有正确性 可读性 健壮性（可处理bug输入）高效率和低存储量要求 </p>
-<h4 id="算法的效率"><a href="#算法的效率" class="headerlink" title="算法的效率"></a>算法的效率</h4><ul>
-<li><p>时间复杂度</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230103164414433.png" alt="image-20230103164414433"></p>
-<p>时间开销t和问题规模n的关系即为T（时间）关于n（运行次数）的一个函数</p>
-<p>时间复杂度的比较</p>
-<p>计算时只保留最高阶（极限思维）</p>
-<p>一阶复杂度即T（n）&#x3D;O（n）</p>
-<p>加法规则 多项相加保留最大</p>
-<p>乘法规则 多项相乘都保留</p>
-<p>法则</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230103162846357.png" alt="image-20230103162846357"></p>
-<p>原理可以由数学极限算得</p>
-<p>简记 ： 常对幂指阶  一大对  复杂度依次增大 </p>
-<p>顺序执行的代码只影响常数项</p>
-<p>对于大循环只需要分析其中一个语句与n的关系即可</p>
-<p>嵌套循环只需要注意最内侧循环 </p>
-<p>时间复杂度的计算  先计算出代码需要运行的次数（可以设置未知数等），得出T和n关系式 ，以O运算 进行法则运算 最后得到时间复杂度。</p>
-<p>判断标准 最好 O（1）</p>
-<p>​               最坏O（n）</p>
-<p>实际中应该考虑平均情况</p>
-<p>一般不考虑最好时间复杂度</p>
-</li>
-<li><p>空间复杂度</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230103170253105.png" alt="image-20230103170253105"></p>
-<p>首先 程序代码会固定占用一定空间，而代码产生的数据则会继续占用更多空间，空间复杂度研究的就是这个关系。</p>
-<p>若无论问题规模多大 占用空间均不变 则其空间复杂度为常数S（n）&#x3D;O（1）</p>
-<p>又称为算法可以 原地工作</p>
-<p>若问题规模会导致占用空间变化</p>
-<p>则计算其所占空间 得出S（n）。</p>
-<p>计算法则仍为O的运算法则</p>
-<p>函数递归会导致内存开销（栈的执行）。此时空间复杂度为各级递归调用的空间量之和（）。</p>
-<p>一般来说 递归的空间复杂度即为递归调用深度</p>
-</li>
-</ul>
-<h2 id="第二章-线性表"><a href="#第二章-线性表" class="headerlink" title="第二章 线性表"></a>第二章 线性表</h2><h3 id="逻辑结构-1"><a href="#逻辑结构-1" class="headerlink" title="逻辑结构"></a>逻辑结构</h3><ul>
-<li>定义</li>
-</ul>
-<p>具有相同数据类型的n个数据元素的有限序列 </p>
-<p>n为表长。线性表 用L命名 L&#x3D;（a1，a2，…..an）</p>
-<p>特例 n为0时线性表称为空表 </p>
-<p>ai是线性表中第i个元素线性表的位序 （以一开始）、</p>
-<ul>
-<li><p>基本操作</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230122093658869.png" alt="image-20230122093658869"></p>
-<p>数据结构操作的种类  创销 增删改查</p>
-<p>实际开发中 你可以根据实际需求进行定义其他操作 但命名需要有可读性 </p>
-<p>如果需要修改结果的反馈 传入参数应该使用引用型&amp; （指针）</p>
-</li>
-</ul>
-<h3 id="物理存储结构"><a href="#物理存储结构" class="headerlink" title="物理存储结构"></a>物理存储结构</h3><ul>
-<li><p>顺序表  顺序存储</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123182053837.png" alt="image-20230123182053837"></p>
-<p>顺序存储  逻辑上相邻的元素存储在物理上相邻的地方</p>
-<p>顺序储存使元素位置寻找较为方便 设首元素位置loc（L） 第i个元素的位置为loc（L）+（i-1）*单个元素大小</p>
-<p>单元素大小可以用sizeof获取</p>
-<p>实现方式</p>
-<ul>
-<li><p>静态分配</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123180544956.png" alt="image-20230123180544956"></p>
-<p>具体实现</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123180618881.png" alt="image-20230123180618881"></p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123180711007.png" alt="image-20230123180711007"></p>
-<p>对数据元素的访问应该使用基本操作get来进行访问</p>
-<p>为防止len区脏数据 必须手动赋值len为0</p>
-<p>静态分配容量无法改变 </p>
-</li>
-<li><p>动态分配</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123181008644.png" alt="image-20230123181008644"></p>
-<p>使用malloc或者relloc动态申请空间</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123181135569.png" alt="image-20230123181135569"></p>
-<p>实例</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123181215042.png" alt="image-20230123181215042"></p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123181321847.png" alt="image-20230123181321847"></p>
-<p>顺序表的特点</p>
-<p>随机访问 O（1）可访问到元素</p>
-<p>存储密度高 （链式存储需要多链指针）</p>
-<p>扩展容量较为不易</p>
-<p>插入与删除元素不方便</p>
-</li>
-</ul>
-<p>基本操作</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123194523676.png" alt="image-20230123194523676"></p>
-<ul>
-<li><p>插入</p>
-<p>listinsert（&amp;L，i，e）在L表第i个位置上插入指定元素e</p>
-<p>这里的位置指的是位序 数组下标等于位序减一</p>
-<p>实例</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123193519644.png" alt="image-20230123193519644"></p>
-<p>代码的健壮性：可以处理各种情况，合法值判断，拥有反馈 等 使得代码的完成度高</p>
-<p>时间复杂度 O（n）</p>
-<p>平均值为n&#x2F;2</p>
-</li>
-<li><p>删除</p>
-<p>listdelete(&amp;L，i，&amp;e)  删除表L第i个位置的元素，并用e返回删除元素的值</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123194049040.png" alt="image-20230123194049040"></p>
-<p>将所删除的值赋值到e中 再将之后的所有元素前移一单位</p>
-<p>时间复杂度 O（n）</p>
-<p>平均复杂度（n-1）&#x2F;2</p>
-</li>
-<li><p>查找</p>
-<p>按位查找与按值查找</p>
-<p>按位查找 静态</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123194806326.png" alt="image-20230123194806326"></p>
-<p>直接返回对应下表所存储值即可</p>
-<p>动态的方式和静态一致 动态中将指针视为数组进行取值</p>
-<p>时间复杂度为O（1 ）</p>
-<p>按值查找</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230123195655655.png" alt="image-20230123195655655"></p>
-<p>循环判断是否值相等 返回位序时应为数组下标加一</p>
-<p>时间复杂度O（n）</p>
-<p>平均复杂度为n+1&#x2F;2</p>
-<p>平均：目标元素在各个元素的选取概率一致</p>
-<p>特点</p>
-</li>
-</ul>
-</li>
-<li><p>链表 链式存储</p>
-<p>单链表  以指针作为链连接隔各个数据节点的线性表。每个节点除数据外还存储下一节点的指针。</p>
-<p>特点</p>
-<p>不需要大片连续存储空间，改变容量较为方便 但不可以随机存取，且更加耗费空间。</p>
-<p>单链表定义</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230125100322180.png" alt="image-20230125100322180"></p>
-<p>由于链表特性 只需要声明一个头指针指向链表第一个节点 就可以表示出整个链表。</p>
-<p>头指针和链表的区分：</p>
-<p>LNode *L  强调头指针 指针性</p>
-<p>LinkList L 强调链表</p>
-<p>单链表的初始化  无头节点版</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230125101120817.png" alt="image-20230125101120817"></p>
-<p>无节点的头指针初始化可以直接将其设置为null</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230125101238888.png" alt="image-20230125101238888"></p>
-<p>有头节点版</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230125101304270.png" alt="image-20230125101304270"></p>
-<p>头节点中不设置任何数据 只是为了保持逻辑的一致性 使得后续操作简单   故一般和使用带有头节点的单链表。</p>
-<ul>
-<li><p>操作</p>
-<p>插入操作 有头节点版</p>
-<p>List Insert（&amp;L，i，e） 在表L的第i个位置上插入指定元素e</p>
-<p>实例</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230125102215008.png" alt="image-20230125102215008"></p>
-<p>先将位置指向移动到指定位置后创建新节点 复制前一节点到后一节点的指针 连接前一节点到新节点即可</p>
-<p>注意各个条件对于插入在首节点 末节点和溢出数据的处理的限制。</p>
-<p>无节点版 需要对头指针的指向进行修改 对于第一个元素的插入可其他元素的插入逻辑是不同的。</p>
-<p>插入操作中插入的具体实施步骤可以由指定节点后插操作封装。</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230125104100392.png" alt="image-20230125104100392"></p>
-<p>注意对内存分配失败情况的调节。</p>
-<p>指定节点之前插入操作的两种逻辑</p>
-<p>1 从头节点开始下排找到</p>
-<p>2 代换 在指定节点后复制插入指定节点 再将指定节点改为空的新插入的节点</p>
-<p>删除操作</p>
-<p>ListDelete（&amp;L，i，&amp;e）删除表L中第i个位置的元素，并用e将删除元素值带回</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230125104919519.png" alt="image-20230125104919519"></p>
-<p>具体逻辑与插入操作类似</p>
-<p>指定节点的删除</p>
-<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230125105018240.png" alt="image-20230125105018240"></p>
-<p>但若删除的节点是最后一个节点，会最为复杂（单向链表的劣势）。</p>
-</li>
-</ul>
-</li>
-</ul>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-ass"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-     
-    <div class="article-meta">
-      <a href="/2023/03/13/ass/" class="article-date">
-  <time datetime="2023-03-13T06:36:31.253Z" itemprop="datePublished">2023-03-13</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-   
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
+      <section class="outer">
+  <article
   id="post-30sc c++"
   class="article article-type-post"
   itemscope
@@ -440,9 +67,34 @@
     <div class="article-meta">
       <a href="/2023/03/13/30sc%20c++/" class="article-date">
   <time datetime="2023-03-13T06:36:27.163Z" itemprop="datePublished">2023-03-13</time>
-</a>    
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">7.8k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">27 min</span>
+        </span>
+    </span>
+</div>
+ 
     </div>
       
+    <div class="tocbot"></div>
+
+
+
+
+  
     <div class="article-entry" itemprop="articleBody">
        
   <h1 id="30sc-c"><a href="#30sc-c" class="headerlink" title="30sc c++"></a>30sc c++</h1><h2 id="1-环境搭建"><a href="#1-环境搭建" class="headerlink" title="1 环境搭建"></a>1 环境搭建</h2><h2 id="2-cin-cout"><a href="#2-cin-cout" class="headerlink" title="2 cin cout"></a>2 cin cout</h2><p>位运算 gatchar（） 双级应用</p>
@@ -815,489 +467,105 @@
 
     <!-- copyright -->
     
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-webnote"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-     
-    <div class="article-meta">
-      <a href="/2023/03/13/webnote/" class="article-date">
-  <time datetime="2023-03-13T06:31:31.426Z" itemprop="datePublished">2023-03-13</time>
-</a>    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
     </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="小迪安全-web"><a href="#小迪安全-web" class="headerlink" title="小迪安全 web"></a>小迪安全 web</h1><h2 id="基础入门"><a href="#基础入门" class="headerlink" title="基础入门"></a>基础入门</h2><h3 id="概念名词"><a href="#概念名词" class="headerlink" title="概念名词"></a>概念名词</h3><h4 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h4><ul>
-<li>网站的地址 需要在第三方平台（运营商注册），例如阿里云。</li>
-<li>多级域名  分站 eg baidu.com 为二级域名</li>
-<li>ttl 生效时间 </li>
-<li>域名 多级域名的存在可以使得突破的入口又多了一个</li>
-</ul>
-<h4 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h4><ul>
-<li>域名系统服务协议 用以实现域名和ip的相互转换</li>
-<li>host是存储本地解析地址的一个文件，在连接网站时会首先从本地host文件中寻找对应的地址。（host劫持）（加速器）</li>
-<li>cdn 内容分布网络 缓存节点技术 用以加快网站访问的速度。根据地址分配最近的网络节点。</li>
-</ul>
-<h4 id="网站脚本"><a href="#网站脚本" class="headerlink" title="网站脚本"></a>网站脚本</h4><ul>
-<li>常见的脚本语言  Java web PHP</li>
-<li>脚本语言的不同会使得漏洞的产生不同。</li>
-</ul>
-<h4 id="后门"><a href="#后门" class="headerlink" title="后门"></a>后门</h4><ul>
-<li>入侵之后留下的漏洞以便于进行攻击的通道。</li>
-<li>不同的目的的后门不同。</li>
-</ul>
-<h4 id="web"><a href="#web" class="headerlink" title="web"></a>web</h4><ul>
-<li>web的组成</li>
-</ul>
-<p>  网站的原码  脚本类型 应用方向</p>
-<p>  操作系统  win linux</p>
-<p>  搭建平台 apache tomcat</p>
-<p>  数据库 MySQL db2</p>
-<ul>
-<li><p>相关漏洞 </p>
-<p>源码漏洞</p>
-<p>SQL注入上传 xss</p>
-<p>数据库 系统 第三方漏洞</p>
-<p>app与web结合类</p>
-</li>
-<li><p>app封装 将web网站封装在app中，实质上和web网站是一样的。</p>
-</li>
-</ul>
-<h4 id="HTTP-x2F-S数据包"><a href="#HTTP-x2F-S数据包" class="headerlink" title="HTTP&#x2F;S数据包"></a>HTTP&#x2F;S数据包</h4><ul>
-<li>request  请求数据包</li>
-<li>response 返回数据包</li>
-</ul>
-<p>浏览器向服务器发出请求数据包 服务器收到后发送返回数据包。</p>
-<ul>
-<li>请求数据包的格式</li>
-</ul>
-<p>​	请求头 主机 域名地址</p>
-<p>​	accept 可接受的文件格式</p>
-<p>​	useragnt 浏览器名称</p>
-<p>​	host 对应网址url中web名称和端口号</p>
-<p>​	acclanguage 接受语言类型</p>
-<p>​	connection 是否维持http连接</p>
-<p>​	cookie 历史数据包</p>
-<p>​	refrer  产生请求的网页url</p>
-<p>​	acchar 接受的编码</p>
-<p>​	ac encoding 接受编码方式</p>
-<ul>
-<li><p>返回数据包的格式</p>
-<p>状态行 协议版本等状态描述</p>
-<p>响应头标 服务器相关信息</p>
-<p>空行  间隔作用</p>
-<p>响应数据  网页主体数据</p>
-</li>
-</ul>
-<p>响应码开头含义</p>
-<p>1 收到</p>
-<p>2成功</p>
-<p>3 需要进一步操作</p>
-<p>4 客户端错误</p>
-<p>5服务器错误</p>
-<p>200 存在文件</p>
-<p>403 存在文件夹</p>
-<p>3xx 均可能存在</p>
-<p>404 不存在文件&#x2F;夹</p>
-<p>500 均可能存在</p>
-<p>可以通过对数据包的修改来欺骗网站以实现各种目的。</p>
-<h3 id="搭建安全扩展"><a href="#搭建安全扩展" class="headerlink" title="搭建安全扩展"></a>搭建安全扩展</h3><ul>
-<li><p>常见搭建平台脚本</p>
-</li>
-<li><p>域名ip目录解析</p>
-<p>is 信息服务管理器 控制域名和IP</p>
-<p>域名访问时会进入单一目录</p>
-<p>IP访问时可能会是上一级目录&#x2F;根目录</p>
-<p>（ip扫描更好）</p>
-</li>
-<li><p>文件后缀解析</p>
-<p>自定义后缀也可连接 </p>
-</li>
-<li><p>安全防护</p>
-<p>身份验证和访问控制（密码）</p>
-<p>IP地址限制</p>
-</li>
-<li><p>web后门与用户及文件权限</p>
-<p>通过设置权限限制后门</p>
-</li>
-</ul>
-<h3 id="web源码扩展"><a href="#web源码扩展" class="headerlink" title="web源码扩展"></a>web源码扩展</h3><ul>
-<li><p>目录结构</p>
-<p>熟悉网站的后台目录 找到自己所需要的关键信息。</p>
-</li>
-<li><p>脚本类型</p>
-<p>根据源码类型判断程序容易出现的漏洞。</p>
-</li>
-<li><p>源码应用</p>
-<p>不同功能会产生不同的漏洞。   </p>
-</li>
-<li><p>演示案例</p>
-<ul>
-<li><p>asp PHP源码安全测试</p>
-<p>指纹识别 得到网站框架源码后  分析结构 获取后台权限</p>
-</li>
-<li><p>应用类源码分析</p>
-<p>测试业务逻辑 发现漏洞 </p>
-</li>
-<li><p>目标从识别到源码</p>
-<p>手工查找cms –检查数据包关键词 寻找  下载分析</p>
-<p>提交错误信息 获取信息</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="系统与数据库"><a href="#系统与数据库" class="headerlink" title="系统与数据库"></a>系统与数据库</h3><ul>
-<li><p>操作系统类型判断方法</p>
-<p>利用Windows大小写不敏感</p>
-<p>TTL值判断法</p>
-<p>工具扫描</p>
-</li>
-<li><p>区别</p>
-<p>兼容性 目录结构等</p>
-</li>
-<li><p>数据库判断方法</p>
-<ul>
-<li><p>类型组合判断</p>
-<p>asp + access</p>
-<p>php+ mysql</p>
-</li>
-<li><p>端口扫描</p>
-<p>不同数据库开放的端口不同</p>
-</li>
-</ul>
-</li>
-<li><p>第三方软件判断</p>
-<p>端口扫描法</p>
-</li>
-</ul>
-<h3 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h3><p>常见加密：base64，MD5，sha等</p>
-<p>不可逆向的加密通过枚举解密</p>
-<p>时间以时间戳的形式获取</p>
-<p>url具有百分号特征</p>
-<p>关于url:浏览器用来打包表单输入的格式。浏览器从表单中获取所有的name和其中的值 ，将它们以name&#x2F;value参数编码（移去那些不能传送的字符，将数据排行等等）作为URL的一部分或者分离地发给服务器。</p>
-<p>base64 区分大小写的随机组合 由于补位会出现末端等号</p>
-<p>unescape 以%u +0000 开始 </p>
-<p>AES 具有密码 偏移量等特征值  输出格式可能于base64相似  </p>
-<p>加密算法种类</p>
-<p>直接加密 密码 偏移 位数 模式 干扰等</p>
-<p>解密方式 </p>
-<p>枚举 自定义 逆向脚本</p>
-<p>案例</p>
-<ul>
-<li><p>逆向 </p>
-<p>通过编写逆向脚本解密 </p>
-</li>
-<li><p>cms 组合加密 </p>
-<p> 以：加组合码解密 </p>
-</li>
-<li><p>URL SQL防注入</p>
-</li>
-</ul>
-<p>​	扫描网站 获取信息文件</p>
-<p>​	解密相关数据</p>
-<p>​	加入注入信息后集体加密注入</p>
-<ul>
-<li>URL地址参数加密</li>
-</ul>
-<p>  搜索引擎 inurl：id&#x3D;&#x3D;MQ&#x3D;&#x3D;</p>
-<p>  确认加密方式</p>
-<h2 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h2><h3 id="CDN绕过"><a href="#CDN绕过" class="headerlink" title="CDN绕过"></a>CDN绕过</h3><p>cdn 提高响应速度的内容分发网络技术。</p>
-<ul>
-<li><p>判断CDN存在</p>
-<p>超级ping 多终端ping检测ip地址否一致</p>
-</li>
-</ul>
-<p>cdn绕过技术</p>
-<ul>
-<li><p>子域名查询</p>
-<p>扫描查询子域名 判断是否在同一服务器 从子站入侵</p>
-</li>
-<li><p>邮件服务查询</p>
-<p>被动接收以得到发送者真实地址</p>
-</li>
-<li><p>国外地址查询</p>
-<p>用国外服务器访问</p>
-</li>
-<li><p>遗留文件&#x2F;扫描全网</p>
-<p>访问网站属性查询 &#x2F;多节点访问获取 响应ip 整合筛选</p>
-</li>
-<li><p>黑暗引擎搜索特定文件</p>
-<p>利用引擎搜索多节点&#x2F;文件哈希</p>
-</li>
-<li><p>DNS记录</p>
-<p>查询dns记录获取ip地址</p>
-</li>
-<li><p>ddos攻击</p>
-<p>耗尽其流量以获得真实ip</p>
-</li>
-</ul>
-<p>案例</p>
-<ul>
-<li><p>子域名</p>
-<p>cdn设置时可能只对www域名设置 而对无www域名未设置 可通过对其攻击获取IP</p>
-<p>m&#x2F;wap 手机访问域名</p>
-<p>通过手机站点识别 </p>
-<p>网站备案号查询</p>
-</li>
-<li><p>国外</p>
-<p>生僻国家接口查询</p>
-</li>
-<li><p>第三方接口&#x2F;采集子域名查询</p>
-<p> 第三方网站查询历史解析记录</p>
-<p>x.threatbook.cn</p>
-<p>asm.ca.com</p>
-</li>
-<li><p>邮件服务器</p>
-<p>注册获取邮件 查询源码中获取其ip地址 </p>
-</li>
-<li><p>黑暗引擎</p>
-<p>钟馗等网站查询</p>
-</li>
-<li><p>修改host文件 查询是否打开</p>
-</li>
-<li><p>python 脚本查询 换算文件哈希值</p>
-</li>
-</ul>
-<p>全网扫描工具</p>
-<p>zmap fuckcdn w8fuckcdn 等</p>
-<h3 id="架构-搭建-WAF等"><a href="#架构-搭建-WAF等" class="headerlink" title="架构 搭建 WAF等"></a>架构 搭建 WAF等</h3><ul>
-<li><p>web</p>
-<p>cdn绕过</p>
-<p>程序源码</p>
-<p>搭建平台</p>
-<p>站点结构</p>
-<p>防护措施</p>
-</li>
-<li><p>app</p>
-<p>判断web协议</p>
-<p>逆向</p>
-</li>
-<li><p>其他</p>
-<p>资产备案</p>
-<p>第三方应用</p>
-<p>服务接口</p>
-<p>微信业务</p>
-</li>
-</ul>
-<h4 id="站点类型"><a href="#站点类型" class="headerlink" title="站点类型"></a>站点类型</h4><ul>
-<li><p>目录型站点</p>
-<p>不同网站设置在同一目录下 会使得渗透目标加多</p>
-</li>
-<li><p>端口类站点</p>
-<p>以端口区分网站地址</p>
-</li>
-<li><p>子域名两套CMS</p>
-<p>子域名网站可能不在同一IP 而在同一网段下 应用内网渗透解决</p>
-</li>
-<li><p>类似域名</p>
-<p>com cn xyz 等各种域名 之间可能互通的</p>
-</li>
-<li><p>c段和旁注</p>
-<p>同一服务器不同站点</p>
-<p>不同服务器同一站点</p>
-<p>旁注查询即可</p>
-</li>
-<li><p>搭建软件特征</p>
-<p>搭建软件通常会有默认管理密码</p>
-<p>特征 server信息较为全面</p>
-<p>具体种类需查询</p>
-</li>
-</ul>
-<h4 id="WAF应用"><a href="#WAF应用" class="headerlink" title="WAF应用"></a>WAF应用</h4><p>网站防护产品 有硬件和软件的区别</p>
-<p>识别 wafw00f</p>
-<p>返回数据包中也可能识别到应用类型</p>
-<h4 id="app与其他资产"><a href="#app与其他资产" class="headerlink" title="app与其他资产"></a>app与其他资产</h4><p>案例</p>
-<ul>
-<li><h5 id="apk"><a href="#apk" class="headerlink" title="apk"></a>apk</h5><p>工具提取URL  逆向</p>
-<p>抓包获取</p>
-</li>
-<li><h5 id="第三方测试"><a href="#第三方测试" class="headerlink" title="第三方测试"></a>第三方测试</h5><p>端口扫描</p>
-<p>引擎搜索 扩展测试面 访问端口寻找漏洞 弱口令破解</p>
-</li>
-<li><p>网站实战</p>
-<p>引擎域名搜索 查找端口信息 ip</p>
-<p>&#x2F;&#x2F;服务器防攻击可能导致无法访问 vpn解决</p>
-<p>子域名查询 ip查询  弱口令攻击</p>
-<p>备案查询  查找更多攻击点</p>
-<p>返回包查找信息</p>
-</li>
-</ul>
-<h4 id="资产监控扩展"><a href="#资产监控扩展" class="headerlink" title="资产监控扩展"></a>资产监控扩展</h4><ul>
-<li><p>GitHub脚本监控</p>
-<p>收集漏洞</p>
-<p>收集资产信息</p>
-<p>ps  自动推送 爬取数据</p>
-</li>
-<li><p>子域名收集途径</p>
-<p>https证书日志收集</p>
-<p>cloudfare</p>
-<p>解析记录查找</p>
-<p>黑白搜索引擎</p>
-<p>枚举 暴力破解</p>
-<p>主站目录爬取</p>
-<p>IP和域名嵌套查询</p>
-<p>备案  whois信息查询</p>
-</li>
-<li><p>src平台漏洞收集</p>
-</li>
-</ul>
-<h4 id="WEB-漏洞-知识点"><a href="#WEB-漏洞-知识点" class="headerlink" title="WEB 漏洞  知识点"></a>WEB 漏洞  知识点</h4><ul>
-<li>漏洞等级区分</li>
-</ul>
-<p>  影响区分</p>
-<p>  数据安全与权限 高危</p>
-<p>  逻辑安全  源码丢失</p>
-<ul>
-<li>注重信息收集</li>
-</ul>
-<p>案例</p>
-<ul>
-<li><p>sql数字注入</p>
-<p>与数据库信息产生交互 </p>
-<p>修改包体执行相关语句 获取数据</p>
-</li>
-<li><p>路径穿越</p>
-<p>执行当前文件一级一级返回上级语句 以拿到其他文件</p>
-<p>目录结构的获取 通过工具扫描</p>
-<p>webpathbrute</p>
-</li>
-<li><p>文件读取</p>
-<p>与路径穿越相互配合 读取到网站文件</p>
-</li>
-<li><p>文件上传</p>
-<p>上传脚本文件执行获得权限</p>
-<p>突破上传限制需要脚本  使得文件将其识别为正确的上传格式 </p>
-</li>
-<li><p>文件下载漏洞</p>
-<p>通过下载窗口进行目录穿梭 下载到其他文件</p>
-<p>案例  下载站</p>
-</li>
-</ul>
-<h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h3><p> 注入原理</p>
-<p>利用代码的执行漏洞注入相应的sql语句    传入参数  进行信息的获取   </p>
-<p>注入条件</p>
-<p>可以控制的变量 带入数据库中查询 变量过滤不严谨</p>
-<p>and 1&#x3D;1 使得判断为真 同时判断是否存在注入点  通过拼接将语句注入sql数据库中</p>
-<h4 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h4><ul>
-<li><p>信息收集</p>
-<p>操作系统 数据库类型 版本等信息</p>
-</li>
-<li><p>数据注入</p>
-<p>高低版本区别(5为界限)</p>
-<p>理由 高版本数据库中有一默认数据库information_schema. tables&#x2F;columns其中记录所有数据名表名和列名 获取数据</p>
-</li>
-<li><p>权限注入</p>
-<p>查询数据 跨库 文件读写</p>
-</li>
-</ul>
-<p>（需要学习一下sql语句）</p>
-<p>简单注入流程</p>
-<p>判断是否存在注入点：输入的数据对网站页面是否有影响、</p>
-<p>找到正确和错误的注入临界点</p>
-<p>通过注入点进行信息收集 数据库类型 版本 表单等 </p>
-<p>404错误 或跳转：对输入的数据存在检测</p>
-<p>数据库中 .  表示下一级</p>
-<h3 id="mysql注入"><a href="#mysql注入" class="headerlink" title="mysql注入"></a>mysql注入</h3><p>root用户高权限可以跨数据库读取,导致一个网站的root泄露会导致其他网站泄露。</p>
-<p>MySQL数据库的结构框架为 数据库 表名 列名 数据          数据库又连接着网站  数据库用户  </p>
-<p>数据库名和网站之间一般会有联系,在跨库读取时可以借鉴。</p>
-<p>数据库路径的获取方式</p>
-<p>报错显示 故意输入错误信息以获得提示 </p>
-<p>遗留文件  通过网站升级时遗留文件判断</p>
-<p> 漏洞报错 通过相关漏洞  配置文件</p>
-<p>爆破 通过固定网站结构路径爆破</p>
-<p>注入时的一些要点</p>
-<p>斜杠时要使用两个斜杠来防止意</p>
-<p>–+为注释符</p>
-<p>魔术引号  用编码或宽字节代替字符绕过</p>
-<p>其他防注入操作</p>
-<p>自定义函数限制类型  自定关键字替换语句  waf软件等 总体思路都是绕过即可</p>
-<h4 id="sql注入之类型及提交注入"><a href="#sql注入之类型及提交注入" class="headerlink" title="sql注入之类型及提交注入"></a>sql注入之类型及提交注入</h4><p>明确参数类型</p>
-<p>实际中可能会设置 各种符号进行限定</p>
-<p>参数为数字 不一定有单引号</p>
-<p>参数为字符  定有符号</p>
-<p>明确请求方法再进行注入</p>
-<p>get post  cookie等数据包信息</p>
-<p> get方法对于post方法也可识别到</p>
-<p>request 全部接受</p>
-<p>黑盒测试 使用对应方法测试 参数去除 放置于post类型 若无变化 则post可接受 。</p>
-<p>server  获取操作系统等各种设备 信息 </p>
-<p>通过网站的对信息的获取代码从而植入sql语句  </p>
-<ul>
-<li><p>实例</p>
-<p>参数字符型</p>
-<p> 通过符号的添加注释 配对绕过限制  具体情况具体分析 </p>
-<p>post数据注入</p>
-<p> 常见于登录页面 数据抓包 信息携带处进行sql注入即可</p>
-<p>cookie 数据注入</p>
-<p>在cookie栏进行提交操作</p>
-<p>不同类型的注入点不同 寻找到合点位是关键所在 </p>
-<p>HTTP头部参数注入</p>
-<p>注入为user agent 点</p>
-<p>json注入</p>
-<p>app常用 注入格式不同 常规为a&#x3D;1and 1 &#x3D; 1</p>
-<p>json则为 “a”:”1 and 1&#x3D;1”</p>
-<p>直接在json数据中进行测试</p>
-<p>闭合体哦见是在sql语句中的</p>
-</li>
-</ul>
-<h3 id="sql注入之OracleMongoDB注入"><a href="#sql注入之OracleMongoDB注入" class="headerlink" title="sql注入之OracleMongoDB注入"></a>sql注入之OracleMongoDB注入</h3><p>各类数据库注入特点</p>
-<p>access  表名 列名 数据</p>
-<p>MySQL 数据库名 表名 列名 数据</p>
-<p>数据库配置文件决定了注入权限的大小</p>
-<p>sql serve  高权限可以直接测试</p>
-<p>mongodb 分布式文件存储库</p>
-<p>无回显    sql语句查询方法问题导致  可以用dnslog解决</p>
-<p>主要的注入语句有 insert  delete  update ordrerby </p>
-<p>二次注入的原理  利用#修改原来密码达到注入目的</p>
-<p>可以用堆叠注入绕过waf的检测</p>
-<p>1&#x2F;**-1 union select 1,2,3#*&#x2F;</p>
-<p>符号中起到注释作用，真实数据是-1 union select 1,2,3#*&#x2F;</p>
-<p> 出现多个参数时不同网站会有差别 令原来参数失效</p>
-<p>绕过方法  查询各类白名单 或者用静态资源后缀请求</p>
-<p>waf日志可以检查其是否拦截了注入工具</p>
-<p>文件上传漏洞 可以借此上传漏洞后门 实现其他操作</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
     
     <footer class="article-footer">
        
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-  </article>
-  
-
-  
-</section>
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
 </div>
 
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/03/13/30sc%20c++/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/03/13/ass/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            (no title)
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/03/13/webnote/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title"></div>
+      </a>
+    
+  </nav>
+
+  
+   
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
       <footer class="footer">
   <div class="outer">
     <ul>
@@ -1445,6 +713,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link
