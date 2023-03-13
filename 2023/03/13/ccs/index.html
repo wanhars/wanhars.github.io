@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>计算机组成原理 |  wanhar</title>
+      <title> wanhar</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon2.ico" />
@@ -60,31 +60,17 @@
   data-scroll-reveal
 >
   <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  计算机组成原理
-</h1>
- 
-
-      
-    </header>
      
     <div class="article-meta">
       <a href="/2023/03/13/ccs/" class="article-date">
   <time datetime="2023-03-13T07:26:42.994Z" itemprop="datePublished">2023-03-13</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/basic/">basic</a>
-  </div>
-  
+</a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">951</span>
+            <span class="post-count">1.6k</span>
         </span>
     </span>
 
@@ -93,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">3 min</span>
+            <span class="post-count">5 min</span>
         </span>
     </span>
 </div>
@@ -108,13 +94,17 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h3 id="计算机组成原理"><a href="#计算机组成原理" class="headerlink" title="计算机组成原理"></a>计算机组成原理</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><h5 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h5><p>MAR 地址寄存器 位数反映存储单元数量</p>
+  <p>title: 计算机组成原理</p>
+<p>tags: 计算机组成</p>
+<p>categories: basic</p>
+<p>comments: false</p>
+<h1 id="计算机组成原理"><a href="#计算机组成原理" class="headerlink" title="计算机组成原理"></a>计算机组成原理</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h3><p>MAR 地址寄存器 位数反映存储单元数量</p>
 <p>MDR 数据寄存器 位数等于字长</p>
-<h5 id="运算器"><a href="#运算器" class="headerlink" title="运算器"></a>运算器</h5><p>ACC 累加计数器</p>
+<h3 id="运算器"><a href="#运算器" class="headerlink" title="运算器"></a>运算器</h3><p>ACC 累加计数器</p>
 <p>MQ 乘商寄存器</p>
 <p>X 通用寄存器</p>
 <p>ALU 算数逻辑单元 实现运算步骤</p>
-<h5 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h5><p>PC 程序计数器  存放下一指令地址</p>
+<h3 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h3><p>PC 程序计数器  存放下一指令地址</p>
 <p>IR 指令寄存器 存放当前执行的指令</p>
 <p>CU 控制单元，分析指令，给出控制信号</p>
 <p>一般工作过程    指令存入 pc指向第一条指令 IR读取指令 PC加一 CU分析，指挥部件运行</p>
@@ -124,7 +114,7 @@
 <p>FLOPS 每秒浮点运算数</p>
 <p>进制转换 依据实际数据进行组匹配，不足则补位</p>
 <p>二转八 为3位  转十六则为4位</p>
-<h4 id="BCD码"><a href="#BCD码" class="headerlink" title="BCD码"></a>BCD码</h4><p>用于二进制和十进制的快速转化</p>
+<h3 id="BCD码"><a href="#BCD码" class="headerlink" title="BCD码"></a>BCD码</h3><p>用于二进制和十进制的快速转化</p>
 <p>4bit—&gt;16状态  足以表示0-9十个状态</p>
 <p>8421码  4个比特的权重分别为8421</p>
 <p>985  1001 1000 0101</p>
@@ -132,12 +122,11 @@
 <p>修正算法 若超过十，则加六将个位数字置换出来 同时进一将十位数字表述出来</p>
 <p>余三码 在8421的基础上加上0011 位次与权值并不固定 </p>
 <p>2421码 同8421码权值定义 为避免歧义发生  5之后的数字首位必为1</p>
-<p>字符与字符串</p>
-<p>英文  ascll码</p>
+<h3 id="字符与字符串"><a href="#字符与字符串" class="headerlink" title="字符与字符串"></a>字符与字符串</h3><p>英文  ascll码</p>
 <p>中文 GB2312-80 使用区位码与坐标融合 区位码加20h 即国标码 国标码加80H转化为汉字内码 使其与ASCLL码可以兼容</p>
 <p>原理 加入80H后 最高位即为1 ascll中不存在 即为汉字码</p>
 <p>字符串  即为字符连续存储 末尾添加00H （&#x2F;0）</p>
-<h4 id="校验码"><a href="#校验码" class="headerlink" title="校验码"></a>校验码</h4><p>码字 若干位代码组成的字叫码字</p>
+<h3 id="校验码"><a href="#校验码" class="headerlink" title="校验码"></a>校验码</h3><p>码字 若干位代码组成的字叫码字</p>
 <p>将码字进行对比，不同的位数为两个码字间的距离</p>
 <p>各个合法码字之间的最小距离为码距</p>
 <p>奇偶校验位 在信息位首部或者尾部添加一个校验位 表达全部1的个数</p>
@@ -157,7 +146,33 @@
 <p>校验时其与生成多项式进行模二除即可 其可以检测出所有的奇数个错误，双比特错误与小于等于校验位长度的错误，若生成多项式合适且长度足够，可以检测出单比特错误</p>
 <p>ps 快速计算二进制数据的值</p>
 <p>若1多，则可以尝试加上小值使其仅位，最后再减去该值，使得计算简便。</p>
-<p>定点数的表示</p>
+<h2 id="定点数的表示"><a href="#定点数的表示" class="headerlink" title="定点数的表示"></a>定点数的表示</h2><p>定点数 小数点位置固定的数 常规计数</p>
+<p>浮点数 小数位不固定 科学计数法</p>
+<h3 id="有符号数"><a href="#有符号数" class="headerlink" title="有符号数"></a>有符号数</h3><p>储存分为符号位和数值位，对于有小数的值，将小数和整数分开存储，可以使用原码，反码，补码进行存储，移码表示定点整数</p>
+<p>原码  </p>
+<p>尾数表示绝对值 各部分权值2n方 符号位表示正负 可能会使用逗号和小数点来分割符号与数值位 （0有+0和-0两种模式）</p>
+<p>符号位的表示 0&#x2F;1  正&#x2F;负</p>
+<p>反码</p>
+<p>符号位0&#x2F;1  反码相同&#x2F;数值位取反</p>
+<p>是原码转变为补码的一种中间状态</p>
+<p>补码</p>
+<p>符号位0&#x2F;1  原码&#x2F;反码末尾+1</p>
+<p>补码中0只有一种状态</p>
+<p>移码</p>
+<p>在补码的基础上将符号位取反 只能用于表示整数   便于比较大小</p>
+<p>x补码快速求出-x补码：符号位与数值位全部取反，末尾加一</p>
+<p>计算机擅长加法运算，使减法运算变为加法，可以有效加快运算速度 由于计算机只会保留八位结果，相当于模除2^8，可以利用这一点，设计减法运算。减去一个数相当于加上它的补码。</p>
+<p>在模运算中，只要其模除余数结果相同，即可认为其为等价数。模减去a的绝对值，即为a的补数。</p>
+<h3 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h3><h4 id="算数移位"><a href="#算数移位" class="headerlink" title="算数移位"></a>算数移位</h4><p> 改变小数点的位置改变位权</p>
+<p>原码： 符号位不变 数值位移位</p>
+<p>若右移&#x2F;左移 则高位&#x2F;低位补0 低位&#x2F;高位舍弃 舍弃位若不为0 则会丢失精度</p>
+<p>反码：正数与原码相同，附属于原码相反</p>
+<p>补码：正数与原码相同 负数最右边的1及其右侧为原码，其左侧为反码。</p>
+<p>右移同反码 高位补一低位舍弃</p>
+<p>左移同原码 低位补0高位舍弃</p>
+<h4 id="逻辑移位"><a href="#逻辑移位" class="headerlink" title="逻辑移位"></a>逻辑移位</h4><p>直接左移或者右移 舍弃补零即可</p>
+<h4 id="循环移位"><a href="#循环移位" class="headerlink" title="循环移位"></a>循环移位</h4><p>cf将超过8bit的进位保留下来，放在最低位  可以用来实现大小端的变化。</p>
+<p>由于原码，补码，反码的位数有限，某些时候算数移位不可以精确的等效于乘法和除法运算。</p>
  
       <!-- reward -->
       
@@ -227,8 +242,6 @@
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" rel="tag">计算机组成</a></li></ul>
-
     </footer>
   </div>
 
@@ -359,7 +372,7 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/2019/about">关于我</a>
+      <a class="nav-item-link" href="/2023/about">关于我</a>
     </li>
     
   </ul>
