@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title> wanhar</title>
+      <title>计算机组成原理 |  wanhar</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon2.ico" />
@@ -60,17 +60,31 @@
   data-scroll-reveal
 >
   <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  计算机组成原理
+</h1>
+ 
+
+      
+    </header>
      
     <div class="article-meta">
       <a href="/2023/03/14/ccs/" class="article-date">
   <time datetime="2023-03-14T12:09:11.254Z" itemprop="datePublished">2023-03-14</time>
-</a>   
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/basic/">basic</a>
+  </div>
+  
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">2.8k</span>
+            <span class="post-count">4.5k</span>
         </span>
     </span>
 
@@ -79,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">9 min</span>
+            <span class="post-count">15 min</span>
         </span>
     </span>
 </div>
@@ -94,11 +108,7 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>title: 计算机组成原理</p>
-<p>tags: 计算机组成</p>
-<p>categories: basic</p>
-<p>comments: false</p>
-<h1 id="计算机组成原理"><a href="#计算机组成原理" class="headerlink" title="计算机组成原理"></a>计算机组成原理</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h3><p>MAR 地址寄存器 位数反映存储单元数量</p>
+  <h1 id="计算机组成原理"><a href="#计算机组成原理" class="headerlink" title="计算机组成原理"></a>计算机组成原理</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h3><p>MAR 地址寄存器 位数反映存储单元数量</p>
 <p>MDR 数据寄存器 位数等于字长</p>
 <h3 id="运算器"><a href="#运算器" class="headerlink" title="运算器"></a>运算器</h3><p>ACC 累加计数器</p>
 <p>MQ 乘商寄存器</p>
@@ -238,7 +248,80 @@
 <p>PROM 一次课编程</p>
 <p>EPROM 有限次数电&#x2F;紫外线修改</p>
 <h4 id="主存容量扩展"><a href="#主存容量扩展" class="headerlink" title="主存容量扩展"></a>主存容量扩展</h4><p>位扩展 每条数据总线扩展连接内存模块即扩展</p>
-<p>字扩展  创建选片线，直接更换片 n线—&gt; 2^n选片信号</p>
+<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230315083951943.png" alt="image-20230315083951943"></p>
+<p>字扩展  </p>
+<p>线选法：创建选片线，直接更换片 n线—&gt; n选片信号，地址空间不连续</p>
+<p>译码片选法： n线—&gt; 2^n选片信号，空间连续1，可以设置逻辑电路。</p>
+<p>译码器通过高低电平实现01识别 再发出控制信号实现选片</p>
+<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230315083923500.png" alt="image-20230315083923500"></p>
+<p>此外，还有更为复杂的字位同时扩展</p>
+<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230315084047832.png" alt="image-20230315084047832"></p>
+<h4 id="主存与CPU的连接"><a href="#主存与CPU的连接" class="headerlink" title="主存与CPU的连接"></a>主存与CPU的连接</h4><p>CPU的数据线数决定存储器位数，地址线用于选择片区。其中系统程序使用ROM，用户程序使用RAM。</p>
+<p>目前MDR和MAR位于CPU上</p>
+<p>双端口RAM：与CPU不同核心同时连接，支持两个端口不同时对同一地址单元存取&#x2F;同时对同一地址单元读出</p>
+<h4 id="多模块存储器"><a href="#多模块存储器" class="headerlink" title="多模块存储器"></a>多模块存储器</h4><p>单体多字：中每个存储单元存储m字，总线宽度也为m字，可以一次并行读出m字（指令和数据在内存中必须连续存放）</p>
+<p>多体并行存储器 每个模块都有相同的容量和存储速度，可以并行和交叉工作，分为高位交叉编址和低位交叉编址（耗时更小）</p>
+<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230315103645493.png" alt="image-20230315103645493"></p>
+<p>流水线 AHB设计思想</p>
+<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230315103838619.png" alt="image-20230315103838619"></p>
+<h4 id="程序访问的局部性原理"><a href="#程序访问的局部性原理" class="headerlink" title="程序访问的局部性原理"></a>程序访问的局部性原理</h4><p>分为时间局部性和空间局部性，将时间与空间上的局部数据提前存放在cache中，以提高处理器的响应速度，其中访问信息已经在cache中的比率为命中率，1-命中&#x3D;缺失率。</p>
+<p>设H为命中率，m为缺失率，tc为命中，tm为未命中，则主存系统平均访问时间为 T&#x3D;Htc+（1-H）Tm</p>
+<h4 id="cache的工作原理"><a href="#cache的工作原理" class="headerlink" title="cache的工作原理"></a>cache的工作原理</h4><p>主存块放置位置</p>
+<p>全相联映射  主存字块标记|字块内地址随意存放</p>
+<p>直接映射 主存字块标记|cache字块地址|字块内地址对号入座</p>
+<p>组相联映射 主存字块标记|组地址|字块内地址组内随机存放 按号分组</p>
+<p>cache存满的算法：</p>
+<p> 随机算法rand  随机地确定替换的 Cache块</p>
+<p> 先进先出fifo算法 选择最早调入的行进行替换，可能会把一些需要经常使用的程序块（如循环程序）也作为最早进入 Cache的块替换掉</p>
+<p>近期最少使用lru 选择近期内长久未访问过的存储行作为替换的行，平均命中率要比FFO要高，是堆栈类算法。</p>
+<p>最不经常使用lfu 将一段时间内被访问次数最少的存储行换出。每行也设置一个计数器，新行建立后从0开始计数，每访问一次，被访问的行计数器加1,需要替换时比较各特定行的计数值，将计数值最小的行换出。</p>
+<p>保持cache和主存内容的一致性</p>
+<p>命中后  </p>
+<p>全写 把数据同时写入cache和主存，使用写缓冲</p>
+<p>写回 cache将数据写回到主存中</p>
+<p>未命中 </p>
+<p>写分配 把主存中的块调入cache，在cache中进行修改 搭配写回法</p>
+<p>非写分配 只写入主存中，不调入cache 搭配全写法使用</p>
+<h4 id="cache工作原理"><a href="#cache工作原理" class="headerlink" title="cache工作原理"></a>cache工作原理</h4><p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230315121912808.png" alt="image-20230315121912808"></p>
+<p>cache替换算法 略</p>
+<h4 id="虚拟存储器"><a href="#虚拟存储器" class="headerlink" title="虚拟存储器"></a>虚拟存储器</h4><p>一种逻辑模型 由辅助硬件将虚地址映射到实际地址&#x2F;单元 用户给出一个虚拟地址或者逻辑地址，虚拟存储器给出该地址的数据</p>
+<p>页式虚拟内存中虚拟空间和主存空间都被划分为页，即实页和虚页</p>
+<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230315162843604.png" alt="image-20230315162843604"></p>
+<p>段式虚拟内存中按照程序逻辑划分为段号和段内地址，每段再划分为固定大小的页。</p>
+<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230315162902779.png" alt="image-20230315162902779"></p>
+<p>程序对主存的调配以页为基本单位</p>
+<p>虚拟地址中的信息为 段号+段内页号+页内地址</p>
+<p>页表、段表存放在主存中，收到虚拟地址后要先访问主存，査询页表、段表，进行虚实地址转换。<br>放在主存中的页表称为慢表(Page)<br>提高变换速度→用高速绥沖存储器存放常用的页表项 → 快表(TLB)</p>
+<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230315163316426.png" alt="image-20230315163316426"></p>
+<h2 id="第四章-指令系统"><a href="#第四章-指令系统" class="headerlink" title="第四章 指令系统"></a>第四章 指令系统</h2><h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><p>指令 计算机运行的最小功能单位</p>
+<p>指令包括操作码字段和地址码字段</p>
+<p>eg  四地址指令OP A1 A2  A3  A4    取A1 A2两个操作数 A3存储结果 A4为下址</p>
+<p>指令字长为32位 操作码占8位 4个地址码各6位</p>
+<p>执行次数 取指令一次 取两个操作数2次 存储结果一次 共四次   此时程序计数器加一</p>
+<p>地址个数可以为0-4 0指令不需要操作数 1指令需要3&#x2F;2次访问 三四指令需要4次操作数 详情参见汇编语言</p>
+<h4 id="扩展操作码"><a href="#扩展操作码" class="headerlink" title="扩展操作码"></a>扩展操作码</h4><p>一种指令优化技术，即让操作码的长度随地址数的减少而增加（即扩展）。根据不同的地址指令格式，如三地址、二地址、单地址指令等，操作码的位数可以有不同的选择，从而在满足需要的前提下，有效地缩短了指令长度。</p>
+<p>至少需留下1111作为扩展操作码的用途</p>
+<p>对于使用频率较高的指令应分配较短的操作码</p>
+<h4 id="操作码种类"><a href="#操作码种类" class="headerlink" title="操作码种类"></a>操作码种类</h4><p>1.数据传送</p>
+<p>LOAD作用:把存储器中的数据放到寄存器中</p>
+<p>STORE作用:把寄存器中的数据放到存储器中</p>
+<p>2.算术逻辑操作</p>
+<p>算术:加、减、乘、除、增1、减1、求补、浮点运算、十进制运算逻辑:与、或、非、异或、位操作、位测试、位清除、位求反</p>
+<p>3.移位操作</p>
+<p>算术移位、逻辑移位、循环移位(带进位和不带进位)</p>
+<p>4.转移操作</p>
+<p>无条件转移JMP</p>
+<p>条件转移Jz:结果为0;JO:结果溢出;JC:结果有进位调用和返回CALL和RETURN</p>
+<p>陷阱(Trap)与陷阱指令</p>
+<p>5.输入输出操作</p>
+<p>CPU寄存器与IO端口之间的数据传送(端口即lo接口中的寄存器)</p>
+<h4 id="指令寻址方式"><a href="#指令寻址方式" class="headerlink" title="指令寻址方式"></a>指令寻址方式</h4><p>数据的存储按字节存放 每个字节存储单元都有一个地址编号 寻址时则有两种方式</p>
+<p>按字节地址寻址 给出一个字节地址 取出一个字节的数据</p>
+<p>按字地址寻址 给出一个字地址，取出长度为一个字的数据，每个字中最小的字节地址为字地址</p>
+<p>若数据长度为4b 字地址需要1个 字节地址需要四个</p>
+<p>边界对齐存储 起始地址是字长的整数倍</p>
+<p>指令寻址方式包括指令寻址（下一条执行指令的指令地址）和数据寻址（确定本条指令的操作数地址）</p>
+<p>寻址方式：顺序寻址 跳跃寻址（转移指令指出）</p>
  
       <!-- reward -->
       
@@ -308,6 +391,8 @@
 </div>
 
 <div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" rel="tag">计算机组成</a></li></ul>
+
     </footer>
   </div>
 
