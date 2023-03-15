@@ -70,7 +70,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">2.2k</span>
+            <span class="post-count">2.8k</span>
         </span>
     </span>
 
@@ -79,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">7 min</span>
+            <span class="post-count">9 min</span>
         </span>
     </span>
 </div>
@@ -205,6 +205,40 @@
 <p>补码的乘法运算</p>
 <p>进行n轮加法和移位，最后再来一次加法。 新设立一个辅助位位于MQ右侧，初始值为0，当辅助位减去MQ最低位为1&#x2F;0&#x2F;-1时 ACC+&#x3D;x补&#x2F;0&#x2F;-x补 然后进行算数右移 同时其符号位也会参与运算</p>
 <p>由于寄存器位数统一，MQ辅助位使得所有寄存器长度变为n+2,可以使用双符号位补码运算。</p>
+<h3 id="除法运算"><a href="#除法运算" class="headerlink" title="除法运算"></a>除法运算</h3><h2 id="第三章-存储系统"><a href="#第三章-存储系统" class="headerlink" title="第三章 存储系统"></a>第三章 存储系统</h2><p><img src="https://img-blog.csdnimg.cn/20210118103433182.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhb2ppZV9kdWFu,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h3 id="3-1-存储器"><a href="#3-1-存储器" class="headerlink" title="3.1 存储器"></a>3.1 存储器</h3><h4 id="基础定义"><a href="#基础定义" class="headerlink" title="基础定义"></a>基础定义</h4><p>RAM 随机存储器 任何一个存储单元的内容都可以随机存取，而且存取时间与存取单元的物理位置无关。</p>
+<p>ROM 存储器的内容只能随机读出而不能写入，断电内容不丢失</p>
+<p>串行访问存储器 对存储单元进行读写操作时需要按照其物理位置的先后顺序寻址 顺序 磁带 直接 磁盘</p>
+<p>DRAM为破坏性读出</p>
+<p>性能指标：容量 成本 速度</p>
+<p>存取周期 连续两次杜力访问存储器操作之间的最小时间间隔</p>
+<p>主存带宽 数据传输率 每秒从主存进出信息的最大数量</p>
+<h4 id="层次结构"><a href="#层次结构" class="headerlink" title="层次结构"></a>层次结构</h4><p>CPU——cache——主存———辅存</p>
+<p>主存储器包括存储体 MAR MDR</p>
+<p>n位地址—&gt; 2^n个存储单元</p>
+<p>存储器容量&#x3D;存储单元个数x存储字长</p>
+<p>2^3x8bit&#x3D;2^3x1Byte&#x3D;8B</p>
+<p>存储器芯片结构</p>
+<p>   <img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230314223532869.png" alt="image-20230314223532869"></p>
+<p>存储器在工作时需要寻址</p>
+<h4 id="半导体存储器（SRAM-x2F-DRAM）"><a href="#半导体存储器（SRAM-x2F-DRAM）" class="headerlink" title="半导体存储器（SRAM&#x2F;DRAM）"></a>半导体存储器（SRAM&#x2F;DRAM）</h4><p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230314223912177.png" alt="image-20230314223912177"></p>
+<p>译码驱动将地址线的地址信号翻译为对应存储单元的选通信号，在读写电路的配合下完成存储单元的读写</p>
+<p>读写电路包括读出放大和写入电路</p>
+<p>片选线 选择存储芯片</p>
+<p>芯片容量&#x3D;2^地址线x数据线</p>
+<p>SRAM以触发器存储，不需要刷新，集成度低，常用于cache</p>
+<p>DRAM以电容存储，读出后需重新充电，集成度高，以行列地址标点，用于主存</p>
+<p>DRAM刷新：2ms刷新一行存储单元</p>
+<p>三种刷新方式</p>
+<p>分散刷新  每次读写完即刻刷新</p>
+<p>集中刷新   2ms内建立死区集中刷新</p>
+<p>异步刷新  满足刷新需要即可 满值则刷新</p>
+<p>ROM 只读存储器分类如下</p>
+<p>MROM 由厂家写入 无法修改</p>
+<p>PROM 一次课编程</p>
+<p>EPROM 有限次数电&#x2F;紫外线修改</p>
+<h4 id="主存容量扩展"><a href="#主存容量扩展" class="headerlink" title="主存容量扩展"></a>主存容量扩展</h4><p>位扩展 每条数据总线扩展连接内存模块即扩展</p>
+<p>字扩展  创建选片线，直接更换片 n线—&gt; 2^n选片信号</p>
  
       <!-- reward -->
       
