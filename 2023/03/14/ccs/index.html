@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">4.5k</span>
+            <span class="post-count">6.3k</span>
         </span>
     </span>
 
@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">15 min</span>
+            <span class="post-count">22 min</span>
         </span>
     </span>
 </div>
@@ -320,8 +320,97 @@
 <p>按字地址寻址 给出一个字地址，取出长度为一个字的数据，每个字中最小的字节地址为字地址</p>
 <p>若数据长度为4b 字地址需要1个 字节地址需要四个</p>
 <p>边界对齐存储 起始地址是字长的整数倍</p>
-<p>指令寻址方式包括指令寻址（下一条执行指令的指令地址）和数据寻址（确定本条指令的操作数地址）</p>
-<p>寻址方式：顺序寻址 跳跃寻址（转移指令指出）</p>
+<p>指令寻址方式</p>
+<p>指令寻址 下一条执行指令的指令地址</p>
+<p>包括 顺序寻址 跳跃寻址</p>
+<p>指令寻址始终有程序计数器pc给出</p>
+<p>数据寻址 通过地址码确定本条指令的操作数地址，包括直接，间接，隐含等</p>
+<p>一地址数据寻址的格式： 操作码（OP）+寻址特征码（数据寻址的具体方式）+形式地址</p>
+<p>多地址数据寻址的格式参考一地址重复多A即可</p>
+<p>隐含寻址：在指令中隐含操作数 有利于缩短指令字长，但需要增加存储操作数或隐含地址的硬件</p>
+<p>立即寻址：形式地址A即为操作数 寻址特征为#号 加快执行速度 但限制了操作数的大小范围</p>
+<p>直接寻址 形式地址A即为操作数的真实地址 仅访问一次主存，不需要解析器，但限制了寻址的范围</p>
+<p>间接寻址：形式地址为操作数地址的地址（指针） 可扩大寻址范围，但需要多次访存</p>
+<p>寄存器寻址： 在指令字中给出操作数所在的寄存器地址 操作数存放在寄存器内 执行速度块且支持向量&#x2F;矩阵运算 但寄存器的数量是有限的</p>
+<p>寄存器间接寻址：寄存器中存放操作数的地址，比一般间接寻址速度更快</p>
+<p>基址寻址：将CPU中基址寄存器（BR）内容加上形式地址A构成操作数有效地址，可扩大寻址范围，利于多道程序设计与浮动程序</p>
+<p>基址寄存器的内容由操作系统或者管理程序确定，在程序执行过程中基址不变，通用寄存器可以作为基址寄存器使用，但其内容由操作系统决定</p>
+<p>变址寻址：有效地址为形式地址和变址寄存器（IX）的内容相加。类似于基址寄存器，但变址寄存器的内容可以由用户改变。利于循环程序的编制</p>
+<p>相对寻址：程序计数器PC加上指令格式中的形式地址A形成操作数的有效地址，由于PC的浮动性，相对寻址运用于转移指令</p>
+<p>堆栈寻址：操作数存放在堆栈中，使用堆栈指针（SP）为操作数地址</p>
+<h4 id="CISC和RISC概念"><a href="#CISC和RISC概念" class="headerlink" title="CISC和RISC概念"></a>CISC和RISC概念</h4><p>CISC 单一指令完成复杂功能  如x86</p>
+<p>RISC 多条指令复合完成复杂操作 如ARM</p>
+<h2 id="第五章-中央处理器"><a href="#第五章-中央处理器" class="headerlink" title="第五章 中央处理器"></a>第五章 中央处理器</h2><h3 id="CPU的基本功能"><a href="#CPU的基本功能" class="headerlink" title="CPU的基本功能"></a>CPU的基本功能</h3><p>指令控制。完成取指令、分析指令和执行指令的操作，即程序的顺序控制</p>
+<p>操作控制 一条指令的功能往往是由若干操作信号的组合来实现的。CPU管理并产生由内存取出的每条指令的操作信号，把各种操作信号送往相应的部件，从而控制这些部件按指令的要求进行动作</p>
+<p>时间控制  周期控制</p>
+<p>数据加工  算数和逻辑运算</p>
+<p>中断处理 对异常情况和特殊请求进行处理</p>
+<h4 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h4><h5 id="运算器-1"><a href="#运算器-1" class="headerlink" title="运算器"></a>运算器</h5><ul>
+<li>算术逻辑单元ALU</li>
+<li>累加寄存器ACC  存放ALU运算结果 实现加法运算</li>
+<li>标志寄存器PSW 各种状态信息的存放 如ZF SF等</li>
+<li>计数器CT 控制乘除运算的操作步数</li>
+<li>暂存寄存器 暂时存放主存中的数据</li>
+<li>通用寄存器组 存放操作数 地址信息等</li>
+<li>移位器 移位操作</li>
+</ul>
+<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230315211833231.png" alt="image-20230315211833231"></p>
+<h5 id="控制器-1"><a href="#控制器-1" class="headerlink" title="控制器"></a>控制器</h5><ul>
+<li>程序计数器PC:存放下一条指令在主存中的地址，具有自增功能。</li>
+<li>指令寄存器IR：存放当前正在执行的指令。</li>
+<li>指令译码器 对操作码翻译 发送信号给控制器</li>
+<li>存储器地址寄存器MAR</li>
+<li>存储器数据寄存器MDR</li>
+<li>时序系统  时钟控制</li>
+<li>微操作信号发生器</li>
+</ul>
+<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230315211901495.png" alt="image-20230315211901495"></p>
+<h4 id="指令执行过程"><a href="#指令执行过程" class="headerlink" title="指令执行过程"></a>指令执行过程</h4><p>指令周期 CPU取出指令并执行的一个完整周期 用若干机器周期表示 机器周期又称为CPU周期 一个机器周期又包括若干时钟周期</p>
+<p>指令周期&#x3D;n *机器周期&#x3D;n *时钟周期</p>
+<h4 id="指令周期的数据流"><a href="#指令周期的数据流" class="headerlink" title="指令周期的数据流"></a>指令周期的数据流</h4><h5 id="取值周期"><a href="#取值周期" class="headerlink" title="取值周期"></a>取值周期</h5><p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230315213247791.png" alt="image-20230315213247791"></p>
+<p>1.当前指令地址送至存储器地址寄存器,记做:(PC)→ MAR</p>
+<p>2.cU发出控制信号，经控制总线传到主存，这里是读信号，记做:1 →&gt;R</p>
+<p>3.将MAR所指主存中的内容经数据总线送入MDR，记做: M(MAR)→&gt; MDR</p>
+<p>4.将MDR中的内容(此时是指令)送入IR,记做:(MDR)→→ IR</p>
+<p>5.cU发出控制信号，形成下一条指令地址，记做:(PC)+1 →PC</p>
+<h5 id="间址周期"><a href="#间址周期" class="headerlink" title="间址周期"></a>间址周期</h5><p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230315213423779.png" alt="image-20230315213423779"></p>
+<p>1.将指令的地址码送入MAR,记做:Ad(IR) → MAR  或Ad(MDR)→&gt;MAR</p>
+<p>2.cU发出控制信号，启动主存做读操作记做:1→R</p>
+<p>3.将MAR所指主存中的内容经数据总线送入MDR，记做:M(MAR) &gt; MDR</p>
+<p>4.将有效地址送至指令的地址码字段,记做:MDR→ Ad(IR)</p>
+<p>间址周期的作用是取操作数的有效地址</p>
+<p>下一周期为执行周期  无统一的数据流向</p>
+<h4 id="中断周期"><a href="#中断周期" class="headerlink" title="中断周期"></a>中断周期</h4><p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230316185036731.png" alt="image-20230316185036731"></p>
+<p>暂停当前任务，使用堆栈保存断点</p>
+<p>1.cU控制将sP减1，修改后的地址送入MAR记做:(SP)-1 → SP，(SP)&gt; MAR本质上是将断点存入某个存储单元，假设其地址为a，故可记做: a &gt; MAR</p>
+<p>2.cU发出控制信号，启动主存做写操作,记做:1→w</p>
+<p>3.将断点(PC内容)送入MDR,记做:(PC)→&gt;MDR</p>
+<p>4.cU控制将中断服务程序的入口地址(由向量地址形成部件产生)送入PC,记做:向量地址→PC</p>
+<p>指令的执行方案</p>
+<p>1 单指令周期 用相同时间完成指令</p>
+<p>2 多指令周期 指令之间串行执行，需要复杂的硬件设计</p>
+<p>流水线周期 尽量让多条指令同时运行，各自处在不同执行步骤中</p>
+<h3 id="数据通路"><a href="#数据通路" class="headerlink" title="数据通路"></a>数据通路</h3><p>定义 在功能之间传输数据的路径，分为cpu内部单&#x2F;多总线方式和专用数据通路方式。</p>
+<p>单总线方式传输 ALU需要配合暂存器使用</p>
+<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230316190529382.png" alt="image-20230316190529382"></p>
+<p>专用数据通路方式</p>
+<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230316190628161.png" alt="image-20230316190628161"></p>
+<h3 id="控制器的功能和工作原理"><a href="#控制器的功能和工作原理" class="headerlink" title="控制器的功能和工作原理"></a>控制器的功能和工作原理</h3><h4 id="结构和功能"><a href="#结构和功能" class="headerlink" title="结构和功能"></a>结构和功能</h4><ul>
+<li>从主存中取出一条指令，并指出下一条指令在主存中的位置。</li>
+<li>对指令进行译码或测试，产生相应的操作控制信号，以便启动规定的动作。</li>
+<li>指挥并控制CPU、主存、输入和输出设备之间的数据流动方向。</li>
+</ul>
+<p><img src="C:\Users\Akrains\AppData\Roaming\Typora\typora-user-images\image-20230316190754513.png" alt="image-20230316190754513"></p>
+<p>控制单元输入的内容</p>
+<p>指令寄存器OP(IR)-&gt;cu控制信号的产生与操作码有关</p>
+<p>时钟  一个时钟脉冲发一个操作命令或一组需要同时执行的操作命令</p>
+<p>标志  如条件转移指令，根据相应的标志位决定下一步操作</p>
+<p>外来信号如:中断请求信号INTR 总线请求信号HRQ</p>
+<p>输出内容</p>
+<p> CPU控制信号 寄存器数据传输 PC修改 ALU运算</p>
+<p>控制总线的控制信号 存储器 访存控制信号 io访问 中断信号等</p>
+<h4 id="硬布线控制器"><a href="#硬布线控制器" class="headerlink" title="硬布线控制器"></a>硬布线控制器</h4><p>IR——&gt;译码器 ——&gt;控制器</p>
+<p>同时节拍发生器直接连接到控制器上</p>
  
       <!-- reward -->
       
