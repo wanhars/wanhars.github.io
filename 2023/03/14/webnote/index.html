@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>小迪安全笔记 |  wanhar</title>
+      <title> wanhar</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon2.ico" />
@@ -60,31 +60,17 @@
   data-scroll-reveal
 >
   <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  小迪安全笔记
-</h1>
- 
-
-      
-    </header>
      
     <div class="article-meta">
       <a href="/2023/03/14/webnote/" class="article-date">
   <time datetime="2023-03-14T12:09:11.263Z" itemprop="datePublished">2023-03-14</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/basic/">basic</a>
-  </div>
-  
+</a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">3.4k</span>
+            <span class="post-count">4.9k</span>
         </span>
     </span>
 
@@ -93,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">11 min</span>
+            <span class="post-count">17 min</span>
         </span>
     </span>
 </div>
@@ -537,6 +523,70 @@
 <p>绕过方法  查询各类白名单 或者用静态资源后缀请求</p>
 <p>waf日志可以检查其是否拦截了注入工具</p>
 <p>文件上传漏洞 可以借此上传漏洞后门 实现其他操作</p>
+<h2 id="XSS跨站"><a href="#XSS跨站" class="headerlink" title="XSS跨站"></a>XSS跨站</h2><h3 id="原理与攻击方法"><a href="#原理与攻击方法" class="headerlink" title="原理与攻击方法"></a>原理与攻击方法</h3><p>代码在对数据进行执行中出现了漏洞 常为前端js代码执行 常见的为输出型函数 其与浏览器版本等有较大的关系 攻击的主要板块为留言板 评论区等有信息传输的点位</p>
+<p>分类有反射性 存储型 DOM</p>
+<p>反射型只会特定情况出现，存储型会进行持续性的攻击，与网站服务器进行交互，危害性更大。</p>
+<p>DOM型通过操作本地浏览器html中的代码来实现相应的操作 如查看更多等 </p>
+<p>对于输入限制等可以通过前端代码修改或寻找其他入口来获得，关键点为控制页面的内容</p>
+<p>eg 单页面订单信息</p>
+<p>通过订单页面发送脚本信息，对方打开后窃取其cookie等后台信息并以此来黑入对方的后台</p>
+<p>漏洞判定 故意输入错误信息后 其错误显示会有对应的反馈</p>
+<p>#‘ onclick&#x3D;”alert(2)”&gt;</p>
+<p>cookie 储存本地 存活时间较长 小中型<br>session 会话 存储服务器 存活时间较短且更加安全</p>
+<p>工具 postman 模拟自定义 数据包的发送 </p>
+<p>webshell 可以获取他人后门</p>
+<p>判断方法  运行中是否有数据包发送到某一ip </p>
+<p>phpseeid 会话验证码 也可以通过代码获取当前see</p>
+<h5 id="HTTP-only绕过"><a href="#HTTP-only绕过" class="headerlink" title="HTTP only绕过"></a>HTTP only绕过</h5><p>防止通过js脚本获取cookie信息 防止xss攻击  无法防止js脚本的执行，只能防止cookie的泄露</p>
+<p>绕过思路为盗取其账号密码直接登录，包括保存读取与非保存读取</p>
+<p>非保存：表单劫持 劫持其数据包直接发送，单需要其消息填入登录框中</p>
+<p> 保存：获取其浏览器存储的账号密码</p>
+<p>当有其他绕过是查看元素以判断</p>
+<p>eg 改变编码 改变组合 元素分割 条件组合</p>
+<p>此外还可以通过来源来检测跨站 不符合逻辑的访问将会被屏蔽</p>
+<h5 id="waf绕过与安全修复"><a href="#waf绕过与安全修复" class="headerlink" title="waf绕过与安全修复"></a>waf绕过与安全修复</h5><p>常用思路有标签语法替换 特殊符号干扰 更改提交方式 post 垃圾数据溢出或加解密算法等 在明文层面改变语言以绕过检测</p>
+<p>安全修复方面网上资料寻找</p>
+<p>包括但不限于环素如输出过滤等操作</p>
+<h4 id="csrf-跨站请求伪造"><a href="#csrf-跨站请求伪造" class="headerlink" title="csrf 跨站请求伪造"></a>csrf 跨站请求伪造</h4><p>通过伪造正常用户请求向服务器发送导致出现恶意操作</p>
+<p>漏洞判定</p>
+<p>抓取一个正常请求的数据包，如果没有Referer字段和token，那么极有可能存在CSRF漏洞</p>
+<p>如果有Referer字段，但是去掉Referer字段后再重新提交，如果该提交还有效，那么基本上可以确定存在CSRF漏洞。</p>
+<p>可以通过burp suite快速生成攻击代码，受害者点击时即执行我方代码</p>
+<p>防范 </p>
+<p> 识别referer字段查看请求来源网站或在请求地址中加入token来验证，此外还可以在http头中自定义属性验证，但开发的代价比较大。</p>
+<h4 id="ssrf漏洞"><a href="#ssrf漏洞" class="headerlink" title="ssrf漏洞"></a>ssrf漏洞</h4><p>由我方发起的伪造服务器请求的漏洞，可以攻击到外网无法访问的内部系统</p>
+<p>原理</p>
+<p>服务器提供从其他服务器中获取数据的能力，可以实现读取到本地文件，对端口进行扫描等操作</p>
+<p>验证</p>
+<p>查看源代码看是否是在本地进行了请求或者dnslog等工具进行测试，看是否被访问</p>
+<p>也可以抓包分析发送的请求是不是通过服务器发送的，如果不是客户端发出的请求，则有可能是存在漏洞。接着找存在HTTP服务的内网地址</p>
+<p>一般的注入点</p>
+<p>子啊先翻译 转码服务 社交分享点</p>
+<h3 id="RCE代码执行"><a href="#RCE代码执行" class="headerlink" title="RCE代码执行"></a>RCE代码执行</h3><p>为了使得程序更加简洁，会调用代码或者函 数来进行处理，造成代码执行漏洞</p>
+<p>rce分为命令执行ping和代码执行evel，漏洞原因为没有在输入处进行相关的过滤，常见于路由器等设备的web管理界面上。</p>
+<p>ping执行 提供一个ping窗口并返回测试结果，使得我方可以向后台注入操作系统的命令，相当于操控服务器</p>
+<p>evel执行 与ping不同的点是执行php代码</p>
+<p>为防止此类事件发生，需要禁用一些函数，少用cms，执行符号过滤，安全配置php参数等。</p>
+<h4 id="逻辑越权漏洞"><a href="#逻辑越权漏洞" class="headerlink" title="逻辑越权漏洞"></a>逻辑越权漏洞</h4><p>由于没有对权限进行严格判断导致低权限的账号可以完成高权操作的漏洞。</p>
+<p>越权分为水平与垂直越权，区别为操作同一级别或不同级别</p>
+<p>水平越权</p>
+<p>先登录普通账号，查看其操作中提交给服务器的内容并尝试修改</p>
+<p>垂直越权</p>
+<p>登录管理员账户获取有关操作的数据包，使用普通用户的cookie进行替换 若操作成功，则其存在越权漏洞。</p>
+<p>操作类型</p>
+<p>隐藏url并以url进行访问控制 对象应用 多阶段查验用户身份的缺失或静态文件的查验</p>
+<p>案例</p>
+<p>爆破测试短信验证码</p>
+<p>使用正确验证码与修改过的手机号实现其他账号密码修改</p>
+<p>静态文件密码在客户端处回显</p>
+<p>修改响应状态码</p>
+<p>抓取短信接口实现短信轰炸</p>
+<p>防范措施</p>
+<p>前后端同时对用户输入信息进行校验，双重验证机制.</p>
+<p>调用功能前验证用户是否有权限调用相关功能.</p>
+<p>执行关键操作前必须验证用户身份，验证用户是否具备操作数据的权限.</p>
+<p>直接对象引用的加密资源 ID，防止攻击者枚举 ID，敏感数据特殊化处理.</p>
+<p>永远不要相信来自用户的输入，对于可控参数进行严格的检查与过滤.</p>
  
       <!-- reward -->
       
@@ -606,8 +656,6 @@
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
-
     </footer>
   </div>
 
