@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>逆向核心 |  wanhar</title>
+      <title>Tag: 逆向 |  wanhar</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon2.ico" />
@@ -52,218 +52,56 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="post-nixianghex"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
+  
+  
+  <article class="articles">
     
-    <header class="article-header">
+    
+    <h1 class="page-type-title">#&nbsp逆向</h1>
+    
+    
+  
+  
+  
+  
+  
+  
+  <div class="archives-wrap">
+    <div class="archive-year-wrap">
+      <a href="/archives/2023" class="archive-year">2023</a>
+    </div>
+    <div class="archives">
+      
+      <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2023/03/29/nixianghex/" class="archive-article-date">
+  <time datetime="2023-03-29T02:03:05.065Z" itemprop="datePublished">03/29</time>
+</a>
        
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  逆向核心
-</h1>
+<h2 itemprop="name">
+  <a class="archive-article-title" href="/2023/03/29/nixianghex/"
+    >逆向核心</a> 
+</h2>
  
 
-      
     </header>
-     
-    <div class="article-meta">
-      <a href="/2023/03/29/nixianghex/" class="article-date">
-  <time datetime="2023-03-29T02:03:05.065Z" itemprop="datePublished">2023-03-29</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/basic/">basic</a>
-  </div>
-  
-<div class="word_count">
-    <span class="post-time">
-        <span class="post-meta-item-icon">
-            <i class="ri-quill-pen-line"></i>
-            <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.3k</span>
-        </span>
-    </span>
-
-    <span class="post-time">
-        &nbsp; | &nbsp;
-        <span class="post-meta-item-icon">
-            <i class="ri-book-open-line"></i>
-            <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">4 min</span>
-        </span>
-    </span>
-</div>
- 
-    </div>
+    
+    
       
-    <div class="tocbot"></div>
-
-
-
-
-  
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="逆向工程核心原理"><a href="#逆向工程核心原理" class="headerlink" title="逆向工程核心原理"></a>逆向工程核心原理</h1><h2 id="第一章-逆向工程"><a href="#第一章-逆向工程" class="headerlink" title="第一章 逆向工程"></a>第一章 逆向工程</h2><h4 id="逆向分析法"><a href="#逆向分析法" class="headerlink" title="逆向分析法"></a>逆向分析法</h4><p>分为静态分析和动态分析，一般先采用静态收集代码信息，推测程序结构与机制，为动态调试提供参考与想象基础。</p>
-<h4 id="OllyDbg-使用教程"><a href="#OllyDbg-使用教程" class="headerlink" title="OllyDbg 使用教程"></a>OllyDbg 使用教程</h4><p>CTRL+F2 重新调试</p>
-<p>F7 进入函数内部的执行</p>
-<p>F8 不进入函数内部执行</p>
-<p>F9 跳出当前函数后停止</p>
-<p>CTRL+G 移动到指定地址</p>
-<p>F4 执行到光标位置</p>
-<p>F2 断点</p>
-<p>*显示当前EIP位置</p>
-<p>-显示上一光标位置</p>
-<p>alt+B  列出代码断点位置</p>
-<p>alt+M 内存映射窗口</p>
-<p>CTRL+E 编辑文件</p>
-<p>空格 打开</p>
-<h4 id="快速查找指定代码"><a href="#快速查找指定代码" class="headerlink" title="快速查找指定代码"></a>快速查找指定代码</h4><p>代码执行 步步逼近 执行相关代码</p>
-<p>字符串检索 all referenced text string</p>
-<p>api检索 all inter modular call 若文件经过保护后文件结构改变 直接向Dll代码库中添加断点</p>
-<h4 id="补丁修改"><a href="#补丁修改" class="headerlink" title="补丁修改"></a>补丁修改</h4><p>字符串修改 直接修改缓冲区buffer&#x2F;新建字符串并修改字符串读取路径</p>
-<p>修改缓存区可能导致越界修改 新建的字符串应该位于null空内存填充区域</p>
-<p>x86架构中采用小端序方法标记</p>
-<h2 id="第二章-寄存器基本讲解"><a href="#第二章-寄存器基本讲解" class="headerlink" title="第二章 寄存器基本讲解"></a>第二章 寄存器基本讲解</h2><p>分类 </p>
-<p>通用 段 状态 指令指针</p>
-<p>ECX在循环中用于循环计数 每次减一</p>
-<p>EAX在函数返回值中使用 api函数会先将返回保存在eax中</p>
-<p>ESP 栈顶地址指示器</p>
-<p>EBP 栈底地址指示器</p>
-<h2 id="第五章-栈"><a href="#第五章-栈" class="headerlink" title="第五章 栈"></a>第五章 栈</h2><p>栈内存在进程中的作用</p>
-<p>1 暂时保存函数内的局部变量</p>
-<p>2 调用函数时传递参数</p>
-<p>3 保存函数返回后的地址</p>
-<p>向栈中压入数据 栈顶指针减小 向低地址移动</p>
-<h2 id="第六章-分析crack"><a href="#第六章-分析crack" class="headerlink" title="第六章 分析crack"></a>第六章 分析crack</h2><p>EP 程序当前入口点</p>
-<p>OEP 如果程序加密之后会出现，即原始入口点</p>
-<p>将函数压入栈需要把函数所需要的参数逆序压入栈中后再call</p>
-<p>ps api被调用后某些特定寄存器的值将会改变</p>
-<h2 id="第七章-栈帧"><a href="#第七章-栈帧" class="headerlink" title="第七章 栈帧"></a>第七章 栈帧</h2><p>栈帧：利用EBP访问栈内局部变量 参数 函数返回地址的手段</p>
-<p>由于ESP的值随时变化无法作为基准，调用函数时先将ESP保存到EBP并维持在函数内部，便于访问栈中的各个参数。</p>
-<p>tips 编译器的优化选项会使得简单的函数不会生成栈帧 在栈中保存函数的返回地址会导致缓冲区溢出技术使栈内存的返回地址更改为其他地址</p>
-<p>SUB ESP 8</p>
-<p>此条命令为函数的局部变量开辟空间 具体大小由变量类型来决定</p>
-<p>MOV DWORD PTR SS:[EBP-4]</p>
-<p>表示地址EBP-4处有4字节大小的内存空间 SS表示栈段 由于window使用段内存模型，故需要使用时指出内存中属于哪一个区段 </p>
-<p>在实际中不存在变量名 此句即为定义了一个局部变量</p>
-<p>tips 32位的Windows OS 中，SS、DS、ES的值皆为0，所以采用这种方式附上区段并没有什么意义。因EBP与ESP是指向栈的寄存器，所以添加上了SS寄存器。</p>
-<p>灵活使用栈帧 可以使得函数嵌套中栈可以得到较好的维护而不会崩溃。</p>
-<p>退出函数嵌套需要从栈中删除参数，将ESP的值增加，形式上从栈中清理掉 只是临时存储在栈中的变量会被下一次值覆盖，无需归零</p>
-<p>tips cdecl 函数调用者负责清理存储在栈中的参数&#x2F;stdcall 被调用者负责清理保存在栈中的参数</p>
-<p>EAX等寄存器的值在函数传递的过程中保持不变 是函数嵌套传递的桥梁</p>
-<p>return 0的汇编设置为：XOR EAX EAX 原理为两个相同的值异或结果为0 响应速度更快 常用于寄存器的初始化操作 这个特征也大量被用于编码和解码</p>
-<p> 最终主函数在返回前需要先从栈中删除其对应的栈帧，最后retn结束主函数</p>
-<h2 id="第八章-分析crack-2"><a href="#第八章-分析crack-2" class="headerlink" title="第八章 分析crack 2"></a>第八章 分析crack 2</h2><p>VB文件的特征</p>
-<p>使用msvbvm60dll的VB专用引擎，其调用的函数全部来自于此dll中，而此dll再调用user32中的函数来实现操作</p>
-<p>VB可以分别编译本地代码与伪代码，主要用于编写GUI程序，采用事件驱动方式进行工作，同时其使用的信息以结构体形式保存</p>
-<p>tips VB通过间接调用JMP等指令来调用dll中的函数，而4010A0为导入地址表区，存储函数实际地址。</p>
-<p>更改dump窗口为LAA模式 可以分辨出清晰的字符串</p>
-<p>lea指令 获取数据的偏移量或直接得到计算结果</p>
-<h2 id="第九章-process-Explorer-进程管理工具"><a href="#第九章-process-Explorer-进程管理工具" class="headerlink" title="第九章 process Explorer 进程管理工具"></a>第九章 process Explorer 进程管理工具</h2><p>函数执行完毕后ESP要恢复到函数调用之前，确保可以引用的栈的大小不会缩减</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <div class="declare">
-      <ul class="post-copyright">
-        <li>
-          <i class="ri-copyright-line"></i>
-          <strong>Copyright： </strong>
-          
-          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
-          
-        </li>
-      </ul>
-    </div>
-    
-    <footer class="article-footer">
-       
-<div class="share-btn">
-      <span class="share-sns share-outer">
-        <i class="ri-share-forward-line"></i>
-        share
-      </span>
-      <div class="share-wrap">
-        <i class="arrow"></i>
-        <div class="share-icons">
-          
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="ri-weibo-fill"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="ri-wechat-fill"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="ri-qq-fill"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="ri-douban-line"></i>
-          </a>
-          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a> -->
-          
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="ri-facebook-circle-fill"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="ri-twitter-fill"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="ri-google-fill"></i>
-          </a>
-        </div>
-      </div>
-</div>
-
-<div class="wx-share-modal">
-    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/03/29/nixianghex/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div id="share-mask"></div>  
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%86%E5%90%91/" rel="tag">逆向</a></li></ul>
 
-    </footer>
+    
   </div>
-
-   
-  <nav class="article-nav">
-    
-    
-      <a href="/2023/03/14/dosystem/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title"></div>
-      </a>
-    
-  </nav>
-
-  
-   
-  
-   
-    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
-    <div id="twikoo" class="twikoo"></div>
-    <script>
-        twikoo.init({
-            envId: ""
-        })
-    </script>
- 
 </article>
+      
+      
+    </div>
+  </div>
+  
+  
 
+  
 </section>
       <footer class="footer">
   <div class="outer">
@@ -404,22 +242,6 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
- 
-<script src="/js/tocbot.min.js"></script>
-
-<script>
-  tocbot.init({
-    tocSelector: ".tocbot",
-    contentSelector: ".article-entry",
-    headingSelector: "h1, h2, h3, h4, h5, h6",
-    hasInnerContainers: true,
-    scrollSmooth: true,
-    scrollContainer: "main",
-    positionFixedSelector: ".tocbot",
-    positionFixedClass: "is-position-fixed",
-    fixedSidebarOffset: "auto",
-  });
-</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link
