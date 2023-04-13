@@ -182,7 +182,7 @@
 <p>404 不存在文件&#x2F;夹</p>
 <p>500 均可能存在</p>
 <p>可以通过对数据包的修改来欺骗网站以实现各种目的。</p>
-<h3 id="搭建安全扩展"><a href="#搭建安全扩展" class="headerlink" title="搭建安全扩展"></a>搭建安全扩展</h3><ul>
+<h4 id="搭建安全扩展"><a href="#搭建安全扩展" class="headerlink" title="搭建安全扩展"></a>搭建安全扩展</h4><ul>
 <li><p>常见搭建平台脚本</p>
 </li>
 <li><p>域名ip目录解析</p>
@@ -202,7 +202,7 @@
 <p>通过设置权限限制后门</p>
 </li>
 </ul>
-<h3 id="web源码扩展"><a href="#web源码扩展" class="headerlink" title="web源码扩展"></a>web源码扩展</h3><ul>
+<h4 id="web源码"><a href="#web源码" class="headerlink" title="web源码"></a>web源码</h4><ul>
 <li><p>目录结构</p>
 <p>熟悉网站的后台目录 找到自己所需要的关键信息。</p>
 </li>
@@ -227,7 +227,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="系统与数据库"><a href="#系统与数据库" class="headerlink" title="系统与数据库"></a>系统与数据库</h3><ul>
+<h4 id="系统与数据库"><a href="#系统与数据库" class="headerlink" title="系统与数据库"></a>系统与数据库</h4><ul>
 <li><p>操作系统类型判断方法</p>
 <p>利用Windows大小写不敏感</p>
 <p>TTL值判断法</p>
@@ -251,7 +251,7 @@
 <p>端口扫描法</p>
 </li>
 </ul>
-<h3 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h3><p>常见加密：base64，MD5，sha等</p>
+<h2 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h2><p>常见加密：base64，MD5，sha等</p>
 <p>不可逆向的加密通过枚举解密</p>
 <p>时间以时间戳的形式获取</p>
 <p>url具有百分号特征</p>
@@ -360,7 +360,7 @@
 <p>微信业务</p>
 </li>
 </ul>
-<h4 id="站点类型"><a href="#站点类型" class="headerlink" title="站点类型"></a>站点类型</h4><ul>
+<h3 id="站点类型"><a href="#站点类型" class="headerlink" title="站点类型"></a>站点类型</h3><ul>
 <li><p>目录型站点</p>
 <p>不同网站设置在同一目录下 会使得渗透目标加多</p>
 </li>
@@ -384,10 +384,10 @@
 <p>具体种类需查询</p>
 </li>
 </ul>
-<h4 id="WAF应用"><a href="#WAF应用" class="headerlink" title="WAF应用"></a>WAF应用</h4><p>网站防护产品 有硬件和软件的区别</p>
+<h3 id="WAF应用"><a href="#WAF应用" class="headerlink" title="WAF应用"></a>WAF应用</h3><p>网站防护产品 有硬件和软件的区别</p>
 <p>识别 wafw00f</p>
 <p>返回数据包中也可能识别到应用类型</p>
-<h4 id="app与其他资产"><a href="#app与其他资产" class="headerlink" title="app与其他资产"></a>app与其他资产</h4><p>案例</p>
+<h3 id="app与其他资产"><a href="#app与其他资产" class="headerlink" title="app与其他资产"></a>app与其他资产</h3><p>案例</p>
 <ul>
 <li><h5 id="apk"><a href="#apk" class="headerlink" title="apk"></a>apk</h5><p>工具提取URL  逆向</p>
 <p>抓包获取</p>
@@ -422,7 +422,7 @@
 <li><p>src平台漏洞收集</p>
 </li>
 </ul>
-<h4 id="WEB-漏洞-知识点"><a href="#WEB-漏洞-知识点" class="headerlink" title="WEB 漏洞  知识点"></a>WEB 漏洞  知识点</h4><ul>
+<h2 id="WEB-漏洞-知识点"><a href="#WEB-漏洞-知识点" class="headerlink" title="WEB 漏洞  知识点"></a>WEB 漏洞  知识点</h2><ul>
 <li>漏洞等级区分</li>
 </ul>
 <p>  影响区分</p>
@@ -454,12 +454,12 @@
 <p>案例  下载站</p>
 </li>
 </ul>
-<h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h3><p> 注入原理</p>
+<h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><p> 注入原理</p>
 <p>利用代码的执行漏洞注入相应的sql语句    传入参数  进行信息的获取   </p>
 <p>注入条件</p>
 <p>可以控制的变量 带入数据库中查询 变量过滤不严谨</p>
 <p>and 1&#x3D;1 使得判断为真 同时判断是否存在注入点  通过拼接将语句注入sql数据库中</p>
-<h4 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h4><ul>
+<h3 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h3><ul>
 <li><p>信息收集</p>
 <p>操作系统 数据库类型 版本等信息</p>
 </li>
@@ -521,7 +521,7 @@
 <p>闭合体哦见是在sql语句中的</p>
 </li>
 </ul>
-<h3 id="sql注入之OracleMongoDB注入"><a href="#sql注入之OracleMongoDB注入" class="headerlink" title="sql注入之OracleMongoDB注入"></a>sql注入之OracleMongoDB注入</h3><p>各类数据库注入特点</p>
+<h4 id="sql注入之OracleMongoDB注入"><a href="#sql注入之OracleMongoDB注入" class="headerlink" title="sql注入之OracleMongoDB注入"></a>sql注入之OracleMongoDB注入</h4><p>各类数据库注入特点</p>
 <p>access  表名 列名 数据</p>
 <p>MySQL 数据库名 表名 列名 数据</p>
 <p>数据库配置文件决定了注入权限的大小</p>
@@ -551,14 +551,14 @@
 <p>webshell 可以获取他人后门</p>
 <p>判断方法  运行中是否有数据包发送到某一ip </p>
 <p>phpseeid 会话验证码 也可以通过代码获取当前see</p>
-<h5 id="HTTP-only绕过"><a href="#HTTP-only绕过" class="headerlink" title="HTTP only绕过"></a>HTTP only绕过</h5><p>防止通过js脚本获取cookie信息 防止xss攻击  无法防止js脚本的执行，只能防止cookie的泄露</p>
+<h4 id="HTTP-only绕过"><a href="#HTTP-only绕过" class="headerlink" title="HTTP only绕过"></a>HTTP only绕过</h4><p>防止通过js脚本获取cookie信息 防止xss攻击  无法防止js脚本的执行，只能防止cookie的泄露</p>
 <p>绕过思路为盗取其账号密码直接登录，包括保存读取与非保存读取</p>
 <p>非保存：表单劫持 劫持其数据包直接发送，单需要其消息填入登录框中</p>
 <p> 保存：获取其浏览器存储的账号密码</p>
 <p>当有其他绕过是查看元素以判断</p>
 <p>eg 改变编码 改变组合 元素分割 条件组合</p>
 <p>此外还可以通过来源来检测跨站 不符合逻辑的访问将会被屏蔽</p>
-<h5 id="waf绕过与安全修复"><a href="#waf绕过与安全修复" class="headerlink" title="waf绕过与安全修复"></a>waf绕过与安全修复</h5><p>常用思路有标签语法替换 特殊符号干扰 更改提交方式 post 垃圾数据溢出或加解密算法等 在明文层面改变语言以绕过检测</p>
+<h4 id="waf绕过与安全修复"><a href="#waf绕过与安全修复" class="headerlink" title="waf绕过与安全修复"></a>waf绕过与安全修复</h4><p>常用思路有标签语法替换 特殊符号干扰 更改提交方式 post 垃圾数据溢出或加解密算法等 在明文层面改变语言以绕过检测</p>
 <p>安全修复方面网上资料寻找</p>
 <p>包括但不限于环素如输出过滤等操作</p>
 <h4 id="csrf-跨站请求伪造"><a href="#csrf-跨站请求伪造" class="headerlink" title="csrf 跨站请求伪造"></a>csrf 跨站请求伪造</h4><p>通过伪造正常用户请求向服务器发送导致出现恶意操作</p>
@@ -576,12 +576,12 @@
 <p>也可以抓包分析发送的请求是不是通过服务器发送的，如果不是客户端发出的请求，则有可能是存在漏洞。接着找存在HTTP服务的内网地址</p>
 <p>一般的注入点</p>
 <p>子啊先翻译 转码服务 社交分享点</p>
-<h3 id="RCE代码执行"><a href="#RCE代码执行" class="headerlink" title="RCE代码执行"></a>RCE代码执行</h3><p>为了使得程序更加简洁，会调用代码或者函 数来进行处理，造成代码执行漏洞</p>
+<h2 id="RCE代码执行"><a href="#RCE代码执行" class="headerlink" title="RCE代码执行"></a>RCE代码执行</h2><p>为了使得程序更加简洁，会调用代码或者函 数来进行处理，造成代码执行漏洞</p>
 <p>rce分为命令执行ping和代码执行evel，漏洞原因为没有在输入处进行相关的过滤，常见于路由器等设备的web管理界面上。</p>
 <p>ping执行 提供一个ping窗口并返回测试结果，使得我方可以向后台注入操作系统的命令，相当于操控服务器</p>
 <p>evel执行 与ping不同的点是执行php代码</p>
 <p>为防止此类事件发生，需要禁用一些函数，少用cms，执行符号过滤，安全配置php参数等。</p>
-<h4 id="逻辑越权漏洞"><a href="#逻辑越权漏洞" class="headerlink" title="逻辑越权漏洞"></a>逻辑越权漏洞</h4><p>由于没有对权限进行严格判断导致低权限的账号可以完成高权操作的漏洞。</p>
+<h2 id="逻辑越权漏洞"><a href="#逻辑越权漏洞" class="headerlink" title="逻辑越权漏洞"></a>逻辑越权漏洞</h2><p>由于没有对权限进行严格判断导致低权限的账号可以完成高权操作的漏洞。</p>
 <p>越权分为水平与垂直越权，区别为操作同一级别或不同级别</p>
 <p>水平越权</p>
 <p>先登录普通账号，查看其操作中提交给服务器的内容并尝试修改</p>
