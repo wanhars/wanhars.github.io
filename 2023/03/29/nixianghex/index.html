@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.7k</span>
+            <span class="post-count">2.1k</span>
         </span>
     </span>
 
@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">6 min</span>
+            <span class="post-count">7 min</span>
         </span>
     </span>
 </div>
@@ -190,6 +190,26 @@
 <p>eg：call的大小为5个字节，add命令使用3个而剩余2个。</p>
 <p>但由于没有处理原函数的返回值（EAX），后续返回值检测无法通过而出错。但同时更改函数返回值会导致指令长度变长导致函数混乱。</p>
 <p>​    （2）在函数入口处直接返回 将栈帧预设改为RETN直接返回。返回值由传递给函数的参数大小调整。</p>
+<p>查看函数的参数个数方法：</p>
+<p>确认函数的起始代码存储在栈中的返回地址，找到函数返回的栈地址，再由栈清理操作值即可得知函数参数的个数。</p>
+<h2 id="第十二章-如何学逆向"><a href="#第十二章-如何学逆向" class="headerlink" title="第十二章 如何学逆向"></a>第十二章 如何学逆向</h2><p>略</p>
+<h2 id="第十三章-PE文件格式"><a href="#第十三章-PE文件格式" class="headerlink" title="第十三章 PE文件格式"></a>第十三章 PE文件格式</h2><p>PE文件是Windows系统的可执行文件格式。PE为32位，PE+或PE32+为64位</p>
+<p>分类有：</p>
+<ul>
+<li>可执行：EXE SCR</li>
+<li>驱动程序：SYS VXD</li>
+<li>对象文件：OBJ</li>
+<li>库：DLL OCX CPL DRV</li>
+</ul>
+<p>接下来以记事本程序为例来研究PE文件。</p>
+<p>PE头：pe文件的头部分，存储大量文件信息，是pe学习的重点，包括DOS头和节区头，文件中使用偏移，内存中使用VA来表示位置。各个节区的尾部存在一个NULL填充区域以便于格式的整齐划分。</p>
+<p>VA指的是内存中的绝对地址，而RVA指从某个基准位置开始的相对地址，换算公式为：</p>
+<p>RVA+基准地址&#x3D;绝对地址</p>
+<p>在实际情况中，为避免内存混乱，PE文件中的信息大多以RVA进行存储。</p>
+<h3 id="PE头"><a href="#PE头" class="headerlink" title="PE头"></a>PE头</h3><h4 id="DOS头"><a href="#DOS头" class="headerlink" title="DOS头"></a>DOS头</h4><p>pe文件为兼容dos的举措，表现为PE头的最前面有一个IMAGE_DOS_HEADER结构体，用于扩展DOS EXE头。</p>
+<p>此结构体大小为40字节，两个重要成员：</p>
+<p>e_magic: DOS签名 （MZ）</p>
+<p>e_lfanew 指示NT头偏移</p>
  
       <!-- reward -->
       
