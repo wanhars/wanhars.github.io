@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.3k</span>
+            <span class="post-count">1.7k</span>
         </span>
     </span>
 
@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">4 min</span>
+            <span class="post-count">6 min</span>
         </span>
     </span>
 </div>
@@ -164,7 +164,32 @@
 <p>tips VB通过间接调用JMP等指令来调用dll中的函数，而4010A0为导入地址表区，存储函数实际地址。</p>
 <p>更改dump窗口为LAA模式 可以分辨出清晰的字符串</p>
 <p>lea指令 获取数据的偏移量或直接得到计算结果</p>
-<h2 id="第九章-process-Explorer-进程管理工具"><a href="#第九章-process-Explorer-进程管理工具" class="headerlink" title="第九章 process Explorer 进程管理工具"></a>第九章 process Explorer 进程管理工具</h2><p>函数执行完毕后ESP要恢复到函数调用之前，确保可以引用的栈的大小不会缩减</p>
+<p>函数执行完毕后ESP要恢复到函数调用之前，确保可以引用的栈的大小不会缩减</p>
+<h2 id="第九章-process-Explorer-进程管理工具"><a href="#第九章-process-Explorer-进程管理工具" class="headerlink" title="第九章 process Explorer 进程管理工具"></a>第九章 process Explorer 进程管理工具</h2><p>可以提供优秀的进程管理。检索加载到进程中的dll或进程占有的句柄。</p>
+<h2 id="第十章-函数调用约定"><a href="#第十章-函数调用约定" class="headerlink" title="第十章 函数调用约定"></a>第十章 函数调用约定</h2><p>函数调用约定主要指对传递参数的约定，主要的函数调用约定如下</p>
+<ul>
+<li><p>cdecl</p>
+<p>主要在c中使用，调用者负责处理栈。</p>
+<p>eg：ADD ESP 8</p>
+<p>其优点在于可以向被调用函数传递长度可变的参数。</p>
+</li>
+<li><p>stdcall</p>
+<p>常见于win32API，被调用者负责清理栈。</p>
+<p>eg: RETN 8  返回后使ESP增加到指定大小。</p>
+<p>将清理栈一起打包，缩小了代码尺寸，同时还提升了兼容性。</p>
+</li>
+<li><p>fastcall</p>
+<p>使用寄存器而非栈来传递部分参数。</p>
+<p>优势为可以实现对函数的快速调用，但有时需要额外得到系统开销来管理ECX和EDX。</p>
+</li>
+</ul>
+<h2 id="第十一章-一个例子"><a href="#第十一章-一个例子" class="headerlink" title="第十一章 一个例子"></a>第十一章 一个例子</h2><p>Q：如何去掉消息框？</p>
+<p>A：操作调用消息框的函数部分即可。首先使用SfA列出程序使用的API，确定函数弹出消息框的运行点。</p>
+<p>Q：打补丁的方法都有哪些？</p>
+<p>A：（1）尝试取消call命令，按照原来传递参数的大小清理栈，并使用nop来填充命令保证代码不会混乱。</p>
+<p>eg：call的大小为5个字节，add命令使用3个而剩余2个。</p>
+<p>但由于没有处理原函数的返回值（EAX），后续返回值检测无法通过而出错。但同时更改函数返回值会导致指令长度变长导致函数混乱。</p>
+<p>​    （2）在函数入口处直接返回 将栈帧预设改为RETN直接返回。返回值由传递给函数的参数大小调整。</p>
  
       <!-- reward -->
       
