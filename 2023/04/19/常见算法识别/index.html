@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>逆向核心 |  wanhar</title>
+      <title>常见算法识别 |  wanhar</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon2.ico" />
@@ -53,7 +53,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-nixianghex"
+  id="post-常见算法识别"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -64,7 +64,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  逆向核心
+  常见算法识别
 </h1>
  
 
@@ -72,8 +72,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2023/03/29/nixianghex/" class="article-date">
-  <time datetime="2023-03-29T02:03:05.065Z" itemprop="datePublished">2023-03-29</time>
+      <a href="/2023/04/19/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E8%AF%86%E5%88%AB/" class="article-date">
+  <time datetime="2023-04-19T10:49:01.377Z" itemprop="datePublished">2023-04-19</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/basic/">basic</a>
@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">2.3k</span>
+            <span class="post-count">639</span>
         </span>
     </span>
 
@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">8 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -108,124 +108,26 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="逆向工程核心原理"><a href="#逆向工程核心原理" class="headerlink" title="逆向工程核心原理"></a>逆向工程核心原理</h1><h2 id="第一章-逆向工程"><a href="#第一章-逆向工程" class="headerlink" title="第一章 逆向工程"></a>第一章 逆向工程</h2><h4 id="逆向分析法"><a href="#逆向分析法" class="headerlink" title="逆向分析法"></a>逆向分析法</h4><p>分为静态分析和动态分析，一般先采用静态收集代码信息，推测程序结构与机制，为动态调试提供参考与想象基础。</p>
-<h4 id="OllyDbg-使用教程"><a href="#OllyDbg-使用教程" class="headerlink" title="OllyDbg 使用教程"></a>OllyDbg 使用教程</h4><p>CTRL+F2 重新调试</p>
-<p>F7 进入函数内部的执行</p>
-<p>F8 不进入函数内部执行</p>
-<p>F9 跳出当前函数后停止</p>
-<p>CTRL+G 移动到指定地址</p>
-<p>F4 执行到光标位置</p>
-<p>F2 断点</p>
-<p>*显示当前EIP位置</p>
-<p>-显示上一光标位置</p>
-<p>alt+B  列出代码断点位置</p>
-<p>alt+M 内存映射窗口</p>
-<p>CTRL+E 编辑文件</p>
-<p>空格 打开</p>
-<h4 id="快速查找指定代码"><a href="#快速查找指定代码" class="headerlink" title="快速查找指定代码"></a>快速查找指定代码</h4><p>代码执行 步步逼近 执行相关代码</p>
-<p>字符串检索 all referenced text string</p>
-<p>api检索 all inter modular call 若文件经过保护后文件结构改变 直接向Dll代码库中添加断点</p>
-<h4 id="补丁修改"><a href="#补丁修改" class="headerlink" title="补丁修改"></a>补丁修改</h4><p>字符串修改 直接修改缓冲区buffer&#x2F;新建字符串并修改字符串读取路径</p>
-<p>修改缓存区可能导致越界修改 新建的字符串应该位于null空内存填充区域</p>
-<p>x86架构中采用小端序方法标记</p>
-<h2 id="第二章-寄存器基本讲解"><a href="#第二章-寄存器基本讲解" class="headerlink" title="第二章 寄存器基本讲解"></a>第二章 寄存器基本讲解</h2><p>分类 </p>
-<p>通用 段 状态 指令指针</p>
-<p>ECX在循环中用于循环计数 每次减一</p>
-<p>EAX在函数返回值中使用 api函数会先将返回保存在eax中</p>
-<p>ESP 栈顶地址指示器</p>
-<p>EBP 栈底地址指示器</p>
-<h2 id="第五章-栈"><a href="#第五章-栈" class="headerlink" title="第五章 栈"></a>第五章 栈</h2><p>栈内存在进程中的作用</p>
-<p>1 暂时保存函数内的局部变量</p>
-<p>2 调用函数时传递参数</p>
-<p>3 保存函数返回后的地址</p>
-<p>向栈中压入数据 栈顶指针减小 向低地址移动</p>
-<h2 id="第六章-分析crack"><a href="#第六章-分析crack" class="headerlink" title="第六章 分析crack"></a>第六章 分析crack</h2><p>EP 程序当前入口点</p>
-<p>OEP 如果程序加密之后会出现，即原始入口点</p>
-<p>将函数压入栈需要把函数所需要的参数逆序压入栈中后再call</p>
-<p>ps api被调用后某些特定寄存器的值将会改变</p>
-<h2 id="第七章-栈帧"><a href="#第七章-栈帧" class="headerlink" title="第七章 栈帧"></a>第七章 栈帧</h2><p>栈帧：利用EBP访问栈内局部变量 参数 函数返回地址的手段</p>
-<p>由于ESP的值随时变化无法作为基准，调用函数时先将ESP保存到EBP并维持在函数内部，便于访问栈中的各个参数。</p>
-<p>tips 编译器的优化选项会使得简单的函数不会生成栈帧 在栈中保存函数的返回地址会导致缓冲区溢出技术使栈内存的返回地址更改为其他地址</p>
-<p>SUB ESP 8</p>
-<p>此条命令为函数的局部变量开辟空间 具体大小由变量类型来决定</p>
-<p>MOV DWORD PTR SS:[EBP-4]</p>
-<p>表示地址EBP-4处有4字节大小的内存空间 SS表示栈段 由于window使用段内存模型，故需要使用时指出内存中属于哪一个区段 </p>
-<p>在实际中不存在变量名 此句即为定义了一个局部变量</p>
-<p>tips 32位的Windows OS 中，SS、DS、ES的值皆为0，所以采用这种方式附上区段并没有什么意义。因EBP与ESP是指向栈的寄存器，所以添加上了SS寄存器。</p>
-<p>灵活使用栈帧 可以使得函数嵌套中栈可以得到较好的维护而不会崩溃。</p>
-<p>退出函数嵌套需要从栈中删除参数，将ESP的值增加，形式上从栈中清理掉 只是临时存储在栈中的变量会被下一次值覆盖，无需归零</p>
-<p>tips cdecl 函数调用者负责清理存储在栈中的参数&#x2F;stdcall 被调用者负责清理保存在栈中的参数</p>
-<p>EAX等寄存器的值在函数传递的过程中保持不变 是函数嵌套传递的桥梁</p>
-<p>return 0的汇编设置为：XOR EAX EAX 原理为两个相同的值异或结果为0 响应速度更快 常用于寄存器的初始化操作 这个特征也大量被用于编码和解码</p>
-<p> 最终主函数在返回前需要先从栈中删除其对应的栈帧，最后retn结束主函数</p>
-<h2 id="第八章-分析crack-2"><a href="#第八章-分析crack-2" class="headerlink" title="第八章 分析crack 2"></a>第八章 分析crack 2</h2><p>VB文件的特征</p>
-<p>使用msvbvm60dll的VB专用引擎，其调用的函数全部来自于此dll中，而此dll再调用user32中的函数来实现操作</p>
-<p>VB可以分别编译本地代码与伪代码，主要用于编写GUI程序，采用事件驱动方式进行工作，同时其使用的信息以结构体形式保存</p>
-<p>tips VB通过间接调用JMP等指令来调用dll中的函数，而4010A0为导入地址表区，存储函数实际地址。</p>
-<p>更改dump窗口为LAA模式 可以分辨出清晰的字符串</p>
-<p>lea指令 获取数据的偏移量或直接得到计算结果</p>
-<p>函数执行完毕后ESP要恢复到函数调用之前，确保可以引用的栈的大小不会缩减</p>
-<h2 id="第九章-process-Explorer-进程管理工具"><a href="#第九章-process-Explorer-进程管理工具" class="headerlink" title="第九章 process Explorer 进程管理工具"></a>第九章 process Explorer 进程管理工具</h2><p>可以提供优秀的进程管理。检索加载到进程中的dll或进程占有的句柄。</p>
-<h2 id="第十章-函数调用约定"><a href="#第十章-函数调用约定" class="headerlink" title="第十章 函数调用约定"></a>第十章 函数调用约定</h2><p>函数调用约定主要指对传递参数的约定，主要的函数调用约定如下</p>
-<ul>
-<li><p>cdecl</p>
-<p>主要在c中使用，调用者负责处理栈。</p>
-<p>eg：ADD ESP 8</p>
-<p>其优点在于可以向被调用函数传递长度可变的参数。</p>
-</li>
-<li><p>stdcall</p>
-<p>常见于win32API，被调用者负责清理栈。</p>
-<p>eg: RETN 8  返回后使ESP增加到指定大小。</p>
-<p>将清理栈一起打包，缩小了代码尺寸，同时还提升了兼容性。</p>
-</li>
-<li><p>fastcall</p>
-<p>使用寄存器而非栈来传递部分参数。</p>
-<p>优势为可以实现对函数的快速调用，但有时需要额外得到系统开销来管理ECX和EDX。</p>
-</li>
-</ul>
-<h2 id="第十一章-一个例子"><a href="#第十一章-一个例子" class="headerlink" title="第十一章 一个例子"></a>第十一章 一个例子</h2><p>Q：如何去掉消息框？</p>
-<p>A：操作调用消息框的函数部分即可。首先使用SfA列出程序使用的API，确定函数弹出消息框的运行点。</p>
-<p>Q：打补丁的方法都有哪些？</p>
-<p>A：（1）尝试取消call命令，按照原来传递参数的大小清理栈，并使用nop来填充命令保证代码不会混乱。</p>
-<p>eg：call的大小为5个字节，add命令使用3个而剩余2个。</p>
-<p>但由于没有处理原函数的返回值（EAX），后续返回值检测无法通过而出错。但同时更改函数返回值会导致指令长度变长导致函数混乱。</p>
-<p>​    （2）在函数入口处直接返回 将栈帧预设改为RETN直接返回。返回值由传递给函数的参数大小调整。</p>
-<p>查看函数的参数个数方法：</p>
-<p>确认函数的起始代码存储在栈中的返回地址，找到函数返回的栈地址，再由栈清理操作值即可得知函数参数的个数。</p>
-<h2 id="第十二章-如何学逆向"><a href="#第十二章-如何学逆向" class="headerlink" title="第十二章 如何学逆向"></a>第十二章 如何学逆向</h2><p>略</p>
-<h2 id="第十三章-PE文件格式"><a href="#第十三章-PE文件格式" class="headerlink" title="第十三章 PE文件格式"></a>第十三章 PE文件格式</h2><p>PE文件是Windows系统的可执行文件格式。PE为32位，PE+或PE32+为64位</p>
-<p>分类有：</p>
-<ul>
-<li>可执行：EXE SCR</li>
-<li>驱动程序：SYS VXD</li>
-<li>对象文件：OBJ</li>
-<li>库：DLL OCX CPL DRV</li>
-</ul>
-<p>接下来以记事本程序为例来研究PE文件。</p>
-<p>PE头：pe文件的头部分，存储大量文件信息，是pe学习的重点，包括DOS头和节区头，文件中使用偏移，内存中使用VA来表示位置。各个节区的尾部存在一个NULL填充区域以便于格式的整齐划分。</p>
-<p>VA指的是内存中的绝对地址，而RVA指从某个基准位置开始的相对地址，换算公式为：</p>
-<p>RVA+基准地址&#x3D;绝对地址</p>
-<p>在实际情况中，为避免内存混乱，PE文件中的信息大多以RVA进行存储。</p>
-<h3 id="PE头"><a href="#PE头" class="headerlink" title="PE头"></a>PE头</h3><h4 id="DOS头"><a href="#DOS头" class="headerlink" title="DOS头"></a>DOS头</h4><p>pe文件为兼容dos的举措，表现为PE头的最前面有一个IMAGE_DOS_HEADER结构体，用于扩展DOS EXE头。</p>
-<p>此结构体大小为40字节，两个重要成员：</p>
-<p>e_magic: DOS签名 （MZ&#x3D;&#x3D;4D5A）</p>
-<p>e_lfanew 指示NT头偏移</p>
-<p>dos存根位于dos头下方，由代码和数据混合而成，可选存在且大小不定。可用于dos兼容程序。</p>
-<h4 id="NT头"><a href="#NT头" class="headerlink" title="NT头"></a>NT头</h4><p>NT头全称为INAGE_NT_HEADERS,此结构体由3个成员组成，分别为签名，文件头，可选头。总大小为F8.</p>
-<p>1  签名 值为5045000h 即PE</p>
-<p>2  文件头 表现文件的大致属性，包括4个成员：</p>
-<ul>
-<li>machine cpu码 14c为兼容32位x86芯片</li>
-<li>Numberofsections 指出文件中的节区数量</li>
-<li>sizeofoptionalheader 指出NT结构体的最后一个结构体的长度</li>
-<li>characteristics 表示文件的属性 0002h即为可执行文件。</li>
-</ul>
-<p>3  可选头 是pe头中结构体最大的，有以下关注成员</p>
-<ul>
-<li>magic  可选头为32&#x2F;64位时，其为10b&#x2F;20b</li>
-<li>adressofentrypoint 持有EP的RVA值，指出程序最先执行的代码起始地址。</li>
-<li>imagebase 指出文件的优先装入地址。</li>
-</ul>
+  <h2 id="base64"><a href="#base64" class="headerlink" title="base64"></a>base64</h2><p>原理：将输入中的每 3 字节（共 24 比特）按每 6 比特分成一组，变成 4 个小于 64 的索引值，然后通过一个索引表得到 4 个可见字符。不足则用&#x3D;填充</p>
+<p>索引表为一个 64 字节的字符串“ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+&#x2F;”</p>
+<p>换表的base64解密脚本如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"></span><br><span class="line">str1 = <span class="string">&quot;需要解密的字符串&quot;</span></span><br><span class="line"></span><br><span class="line">string1 = <span class="string">&quot;换表&quot;</span></span><br><span class="line">string2 = <span class="string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (base64.b64decode(str1.translate(<span class="built_in">str</span>.maketrans(string1,string2))))</span><br></pre></td></tr></table></figure>
+
+<h2 id="TEA"><a href="#TEA" class="headerlink" title="TEA"></a>TEA</h2><p>原理：分组加密算法，密钥为 128 比特位，明文为 64 比特位，主要做了 32 轮变换，每轮变换中都涉及移位和变换。简略的来说即为左四右五32轮，实际情况中可能会有所变换。</p>
+<p>识别方法为：主要的参数 key，delta，以及左四右五的操作。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一个略有变化的tea加密的例子</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    &#123;</span><br><span class="line">      ++v5;</span><br><span class="line">      *(a1 + <span class="number">4</span>i64 * i) += v6 ^ (*(a1 + <span class="number">4</span>i64 * v3) + ((*(a1 + <span class="number">4</span>i64 * v3) &gt;&gt; <span class="number">5</span>) ^ (<span class="number">16</span> * *(a1 + <span class="number">4</span>i64 * v3)))) ^ (v6 + *(a2 + <span class="number">4</span>i64 * (v6 &amp; <span class="number">3</span>)));</span><br><span class="line">      *(a1 + <span class="number">4</span>i64 * v3) += (v6 + *(a2 + <span class="number">4</span>i64 * ((v6 &gt;&gt; <span class="number">11</span>) &amp; <span class="number">3</span>))) ^ (*(a1 + <span class="number">4</span>i64 * i)+ ((*(a1 + <span class="number">4</span>i64 * i) &gt;&gt; <span class="number">5</span>) ^ (<span class="number">16</span> * *(a1 + <span class="number">4</span>i64 * i))));</span><br><span class="line">      v6 += <span class="number">256256256</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="AES"><a href="#AES" class="headerlink" title="AES"></a>AES</h2><p>原理：采用128位纯文本和128位秘密键，它们共同形成一个128位块，该块在处理后提供16个字节（128位）的密文。如果AES键长度可以是128位，192位和256位，则由于轮数可以是10（128位），12（192位）或14（256位） ）。涉及的操作回合为字节替换，移位行，混合列和键加法.</p>
+<p>识别：如果发现程序中有 S 盒或者动态生成了 S 盒，那么就可以确定采用了 AES 加密</p>
+<p><img src="https://raw.githubusercontent.com/wanhars/pico/master/image-20230401110629184.png"></p>
+<h2 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h2><p>原理：通过函数对初始文本值进行计算得到密文，不可计算还原，只能撞库。</p>
+<p>识别：主要是对于识别码的区分 例如8004u为sha1加密，8003u为MD5加密。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一个hash的例子</span></span><br><span class="line"><span class="keyword">if</span> ( !CryptAcquireContextA(&amp;phProv, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1u</span>, <span class="number">0xF0000000</span>) )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> ( CryptCreateHash(phProv, <span class="number">0x8003</span>u, <span class="number">0</span>, <span class="number">0</span>, &amp;phHash) )     <span class="comment">// 0x8003u即为识别码</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> ( CryptHashData(phHash, pbData, dwDataLen, <span class="number">0</span>) )</span><br><span class="line">    &#123;</span><br><span class="line">      CryptGetHashParam(phHash, <span class="number">2u</span>, v6, &amp;pdwDataLen, <span class="number">0</span>);</span><br><span class="line">      *lpString1 = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; pdwDataLen; ++i )</span><br><span class="line">      &#123;</span><br><span class="line">        wsprintfA(String2, <span class="string">&quot;%02X&quot;</span>, v6[i]);</span><br><span class="line">        lstrcatA(lpString1, String2);</span><br><span class="line">      &#125;</span><br><span class="line">      CryptDestroyHash(phHash);</span><br><span class="line">      CryptReleaseContext(phProv, <span class="number">0</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      CryptDestroyHash(phHash);</span><br><span class="line">      CryptReleaseContext(phProv, <span class="number">0</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于有特殊限制条件的hash加密可以用爆破的方式来进行，python中建议使用python的hashlib包，下面是一个sha1的例子。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100000</span>,<span class="number">999999</span>):</span><br><span class="line">    h2 = hashlib.sha1(<span class="built_in">str</span>(i)+flag2)</span><br><span class="line">    flags = h2.hexdigest()</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&quot;6e32d0943418c2c33385bc35a1470250dd8923a9&quot;</span> == flags</span><br><span class="line">            <span class="built_in">print</span> flags</span><br></pre></td></tr></table></figure>
+
+<p>对于比较简单的加解密一般建议在线解密，方便快捷。在这里放个网站。<a target="_blank" rel="noopener" href="https://www.iculture.cc/demo/cyberchef/">CyberChef (iculture.cc)</a></p>
  
       <!-- reward -->
       
@@ -290,7 +192,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/03/29/nixianghex/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/04/19/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E8%AF%86%E5%88%AB/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -303,19 +205,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2023/04/19/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E8%AF%86%E5%88%AB/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            常见算法识别
-          
-        </div>
-      </a>
     
-    
-      <a href="/2023/03/14/dosystem/" class="article-nav-link">
+      <a href="/2023/03/29/nixianghex/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title"></div>
+        <div class="article-nav-title">逆向核心</div>
       </a>
     
   </nav>
