@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">2.3k</span>
+            <span class="post-count">2.5k</span>
         </span>
     </span>
 
@@ -211,7 +211,8 @@
 <p>e_magic: DOS签名 （MZ&#x3D;&#x3D;4D5A）</p>
 <p>e_lfanew 指示NT头偏移</p>
 <p>dos存根位于dos头下方，由代码和数据混合而成，可选存在且大小不定。可用于dos兼容程序。</p>
-<h4 id="NT头"><a href="#NT头" class="headerlink" title="NT头"></a>NT头</h4><p>NT头全称为INAGE_NT_HEADERS,此结构体由3个成员组成，分别为签名，文件头，可选头。总大小为F8.</p>
+<p><strong>NT头</strong></p>
+<p>NT头全称为INAGE_NT_HEADERS,此结构体由3个成员组成，分别为签名，文件头，可选头。总大小为F8.</p>
 <p>1  签名 值为5045000h 即PE</p>
 <p>2  文件头 表现文件的大致属性，包括4个成员：</p>
 <ul>
@@ -225,7 +226,16 @@
 <li>magic  可选头为32&#x2F;64位时，其为10b&#x2F;20b</li>
 <li>adressofentrypoint 持有EP的RVA值，指出程序最先执行的代码起始地址。</li>
 <li>imagebase 指出文件的优先装入地址。</li>
+<li>sectionalignment 制定了节区在内存中的最小单位</li>
+<li>sizeofimage 指定peimage在虚拟内存中所占空间的大小（文件大小与加载到内存中的大小是不同的）</li>
+<li>sizeofheader  指定PE头的大小</li>
+<li>Subsystem 区分系统文件和普通可执行文件</li>
+<li>DataDirectory 由数据结构体组成的数组</li>
 </ul>
+<h4 id="节区头"><a href="#节区头" class="headerlink" title="节区头"></a>节区头</h4><p>节区头中定义了各个节区的属性。由IMAGE_SECTION_HEADER结构体组成的数组，每个结构体对应一个节区。</p>
+<p><strong>关于节区</strong>：pe文件将各种资源按照属性存储在不同的节区以保证程序的安全性。</p>
+<h3 id="RVA-to-RAW"><a href="#RVA-to-RAW" class="headerlink" title="RVA to RAW"></a>RVA to RAW</h3><p>指的是内存地址与文件偏移之间的映射。步骤为查找RVA所在节区与计算文件偏移。</p>
+<h3 id="IAT（导入地址表）"><a href="#IAT（导入地址表）" class="headerlink" title="ＩＡＴ（导入地址表）"></a>ＩＡＴ（导入地址表）</h3><p>IAT中存储得的内容与核心进程，内存，DLL有关。</p>
  
       <!-- reward -->
       
