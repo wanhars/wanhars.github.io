@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">417</span>
+            <span class="post-count">602</span>
         </span>
     </span>
 
@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -108,14 +108,14 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="某伪数独安卓软件逆向"><a href="#某伪数独安卓软件逆向" class="headerlink" title="某伪数独安卓软件逆向"></a>某伪数独安卓软件逆向</h2><p><img src="C:\Users\Akrains\Desktop\girl_glance_cap_1002584_4800x2700.jpg"></p>
-<blockquote>
+  <h2 id="某伪数独安卓软件逆向"><a href="#某伪数独安卓软件逆向" class="headerlink" title="某伪数独安卓软件逆向"></a>某伪数独安卓软件逆向</h2><blockquote>
 <p>本文记录对一伪数独程序进行逆向的过程，实现目的为跳过伪装页面与开屏广告，达到自动强国的目的</p>
 </blockquote>
 <p>MT管理器的Act记录如下，找到其具体页面</p>
-<p><img src="https://raw.githubusercontent.com/wanhars/pico/d5021d1b368ea1335583955788bcbdc49748167e/image-20231010084427243.png" alt="image-20231010084427243.png (1440×1920) (raw.githubusercontent.com)"></p>
-<p>activity记录</p>
-<p>需要解开的为feiniud，qq.e.ads</p>
+<p>记录<img src="https://raw.githubusercontent.com/wanhars/pico/master/202310101134570.png" alt="e3eed1c90121752ee467882b15b25383"></p>
+<p><img src="https://raw.githubusercontent.com/wanhars/pico/master/202310101134398.png" alt="f28125c343270c46fe106b68af926208"></p>
+<p>操作步骤：进入软件（MainActivity）–广告A开启（feiniuad.SplashActivity）–软件主页面（MainActivity）–隐藏功能广告预加载界面（feiniu.RewardVideoActivity）–广告B界面(qq.e.ads.PortraitADActivity)–自动强国(studyhelper)</p>
+<p>目标操作：解除广告A，B，并直接到达studyhelper页面。</p>
 <p>相关文档</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/shulianghan/article/details/123131833">【Android 逆向】修改 Android 的 apk 安装包内的文件并重新打包 ( apktool_2.6.0.jar 下载和使用 | zipalign 文件对齐 | apksigner 签名 )_apksigner.jar下载_韩曙亮的博客-CSDN博客</a></p>
 <p>解决androidkiller无法反编译</p>
@@ -124,7 +124,11 @@
 <p>apktools的使用</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//解包</span></span><br><span class="line">    apktool d D:\app-debug.apk -o D:\apk_tools\b   <span class="comment">//-o模式是指定解包后文件所处位置</span></span><br><span class="line"><span class="comment">//重打包</span></span><br><span class="line">    apktool.bat b D:\apk_tools\b -o D:\apk_tools\nopassword.apk</span><br><span class="line"><span class="comment">//签名</span></span><br><span class="line">    签名首先需要生成keystore文件</span><br><span class="line">     keytool文件位于Java/bin下面找到，把此路径新增到环境变量即可使用</span><br><span class="line">     keytool -genkey -alias abc.keystore -keyalg RSA -validity <span class="number">20000</span> -keystore abc.keystore</span><br><span class="line">     进行签名</span><br><span class="line">     jarsigner -verbose -keystore abc.keystore -signedjar nopassword_signed.apk nopassword.apk abc.keystore</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
 
-<p>此时apk已经打包完成</p>
+<p>此时apk已经打包完成,然而打包完成的软件无法通过签名检验（），大抵这种简单粗暴的修改是不可以的，考虑更为精细的修改吧</p>
+<p><img src="https://raw.githubusercontent.com/wanhars/pico/master/202310101616209.png" alt="Screenshot_20231010_161404_com.android.packageins"></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/theseventhson/p/14670336.html">android逆向奇技淫巧一：去掉开屏广告&amp;跳过app的某些activity - 第七子007 - 博客园 (cnblogs.com)</a></p>
+<p>路径2：通过手机端进行直接修改</p>
+<p><a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1314172-1-1.html">逆向教程之-反编译apk完全精简删除菜单功能（二） - 『移动安全区』 - 吾爱破解 - LCG - LSG |安卓破解|病毒分析|www.52pojie.cn</a></p>
  
       <!-- reward -->
       
