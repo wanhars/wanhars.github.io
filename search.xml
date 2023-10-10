@@ -2176,8 +2176,9 @@
 <p>apktools的使用</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//解包</span></span><br><span class="line">    apktool d D:\app-debug.apk -o D:\apk_tools\b   <span class="comment">//-o模式是指定解包后文件所处位置</span></span><br><span class="line"><span class="comment">//重打包</span></span><br><span class="line">    apktool.bat b D:\apk_tools\b -o D:\apk_tools\nopassword.apk</span><br><span class="line"><span class="comment">//签名</span></span><br><span class="line">    签名首先需要生成keystore文件</span><br><span class="line">     keytool文件位于Java/bin下面找到，把此路径新增到环境变量即可使用</span><br><span class="line">     keytool -genkey -alias abc.keystore -keyalg RSA -validity <span class="number">20000</span> -keystore abc.keystore</span><br><span class="line">     进行签名</span><br><span class="line">     jarsigner -verbose -keystore abc.keystore -signedjar nopassword_signed.apk nopassword.apk abc.keystore</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
 
-<p>此时apk已经打包完成,然而打包完成的软件无法通过签名检验（），大抵这种简单粗暴的修改是不可以的，考虑更为精细的修改吧</p>
+<p>此时apk已经打包完成,然而打包完成的软件无法通过签名检验</p>
 <p><img src="https://raw.githubusercontent.com/wanhars/pico/master/202310101616209.png" alt="Screenshot_20231010_161404_com.android.packageins"></p>
+<p>使用MT管理器进行破解</p>
 <p><a href="https://www.cnblogs.com/theseventhson/p/14670336.html">android逆向奇技淫巧一：去掉开屏广告&amp;跳过app的某些activity - 第七子007 - 博客园 (cnblogs.com)</a></p>
 <p>路径2：通过手机端进行直接修改</p>
 <p><a href="https://www.52pojie.cn/thread-1314172-1-1.html">逆向教程之-反编译apk完全精简删除菜单功能（二） - 『移动安全区』 - 吾爱破解 - LCG - LSG |安卓破解|病毒分析|www.52pojie.cn</a></p>
@@ -2334,6 +2335,24 @@
       </categories>
       <tags>
         <tag>HEXO</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>实现乐跑</title>
+    <url>/2023/10/10/lepao/</url>
+    <content><![CDATA[<h1 id="实现校园乐跑"><a href="#实现校园乐跑" class="headerlink" title="实现校园乐跑"></a>实现校园乐跑</h1><blockquote>
+<p>新学期伊始，笔者开始了快乐的乐跑（走），然而事情不对劲——bug被修复了。bug的修复极大的改善了用户的体验，于是不得不寻找新方法了。</p>
+</blockquote>
+<p>实现途径：Facklocation</p>
+<p>步骤：准备一台root好的虚拟机，安装好跑步程序与Facklocation，开启会员后即可</p>
+<p>在FackLocation中设置模拟步频等，重新快乐跑步。</p>
+<p>首先尝试了诸多虚拟机运行程序，但总是会出现各种问题，诸如无法启动小程序，进入乐跑界面后无法开始乐跑，虚拟定位只能控制一个线程等，困扰许久，最终决定在实体机上进行，最终完美运行</p>
+]]></content>
+      <categories>
+        <category>else</category>
+      </categories>
+      <tags>
+        <tag>re</tag>
       </tags>
   </entry>
 </search>
