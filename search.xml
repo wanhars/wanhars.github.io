@@ -1555,10 +1555,16 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
+    <title>Test</title>
     <url>/2023/10/09/text/</url>
     <content><![CDATA[<p><img src="https://raw.githubusercontent.com/wanhars/pico/master/girl_hood_ears_1022770_3840x2400.jpg" alt="girl_hood_ears_1022770_3840x2400"></p>
 ]]></content>
+      <categories>
+        <category>test</category>
+      </categories>
+      <tags>
+        <tag>test</tag>
+      </tags>
   </entry>
   <entry>
     <title>刷题笔记</title>
