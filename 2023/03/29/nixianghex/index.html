@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>逆向核心 |  wanhar</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon2.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-nixianghex"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  逆向核心
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/03/29/nixianghex/" class="article-date">
+  <time datetime="2023-03-29T02:03:05.065Z" itemprop="datePublished">2023-03-29</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/basic/">basic</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">8 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="逆向工程核心原理"><a href="#逆向工程核心原理" class="headerlink" title="逆向工程核心原理"></a>逆向工程核心原理</h1><h2 id="第一章-逆向工程"><a href="#第一章-逆向工程" class="headerlink" title="第一章 逆向工程"></a>第一章 逆向工程</h2><h4 id="逆向分析法"><a href="#逆向分析法" class="headerlink" title="逆向分析法"></a>逆向分析法</h4><p>分为静态分析和动态分析，一般先采用静态收集代码信息，推测程序结构与机制，为动态调试提供参考与想象基础。</p>
+<h4 id="OllyDbg-使用教程"><a href="#OllyDbg-使用教程" class="headerlink" title="OllyDbg 使用教程"></a>OllyDbg 使用教程</h4><p>CTRL+F2 重新调试</p>
+<p>F7 进入函数内部的执行</p>
+<p>F8 不进入函数内部执行</p>
+<p>F9 跳出当前函数后停止</p>
+<p>CTRL+G 移动到指定地址</p>
+<p>F4 执行到光标位置</p>
+<p>F2 断点</p>
+<p>*显示当前EIP位置</p>
+<p>-显示上一光标位置</p>
+<p>alt+B  列出代码断点位置</p>
+<p>alt+M 内存映射窗口</p>
+<p>CTRL+E 编辑文件</p>
+<p>空格 打开</p>
+<h4 id="快速查找指定代码"><a href="#快速查找指定代码" class="headerlink" title="快速查找指定代码"></a>快速查找指定代码</h4><p>代码执行 步步逼近 执行相关代码</p>
+<p>字符串检索 all referenced text string</p>
+<p>api检索 all inter modular call 若文件经过保护后文件结构改变 直接向Dll代码库中添加断点</p>
+<h4 id="补丁修改"><a href="#补丁修改" class="headerlink" title="补丁修改"></a>补丁修改</h4><p>字符串修改 直接修改缓冲区buffer&#x2F;新建字符串并修改字符串读取路径</p>
+<p>修改缓存区可能导致越界修改 新建的字符串应该位于null空内存填充区域</p>
+<p>x86架构中采用小端序方法标记</p>
+<h2 id="第二章-寄存器基本讲解"><a href="#第二章-寄存器基本讲解" class="headerlink" title="第二章 寄存器基本讲解"></a>第二章 寄存器基本讲解</h2><p>分类 </p>
+<p>通用 段 状态 指令指针</p>
+<p>ECX在循环中用于循环计数 每次减一</p>
+<p>EAX在函数返回值中使用 api函数会先将返回保存在eax中</p>
+<p>ESP 栈顶地址指示器</p>
+<p>EBP 栈底地址指示器</p>
+<h2 id="第五章-栈"><a href="#第五章-栈" class="headerlink" title="第五章 栈"></a>第五章 栈</h2><p>栈内存在进程中的作用</p>
+<p>1 暂时保存函数内的局部变量</p>
+<p>2 调用函数时传递参数</p>
+<p>3 保存函数返回后的地址</p>
+<p>向栈中压入数据 栈顶指针减小 向低地址移动</p>
+<h2 id="第六章-分析crack"><a href="#第六章-分析crack" class="headerlink" title="第六章 分析crack"></a>第六章 分析crack</h2><p>EP 程序当前入口点</p>
+<p>OEP 如果程序加密之后会出现，即原始入口点</p>
+<p>将函数压入栈需要把函数所需要的参数逆序压入栈中后再call</p>
+<p>ps api被调用后某些特定寄存器的值将会改变</p>
+<h2 id="第七章-栈帧"><a href="#第七章-栈帧" class="headerlink" title="第七章 栈帧"></a>第七章 栈帧</h2><p>栈帧：利用EBP访问栈内局部变量 参数 函数返回地址的手段</p>
+<p>由于ESP的值随时变化无法作为基准，调用函数时先将ESP保存到EBP并维持在函数内部，便于访问栈中的各个参数。</p>
+<p>tips 编译器的优化选项会使得简单的函数不会生成栈帧 在栈中保存函数的返回地址会导致缓冲区溢出技术使栈内存的返回地址更改为其他地址</p>
+<p>SUB ESP 8</p>
+<p>此条命令为函数的局部变量开辟空间 具体大小由变量类型来决定</p>
+<p>MOV DWORD PTR SS:[EBP-4]</p>
+<p>表示地址EBP-4处有4字节大小的内存空间 SS表示栈段 由于window使用段内存模型，故需要使用时指出内存中属于哪一个区段 </p>
+<p>在实际中不存在变量名 此句即为定义了一个局部变量</p>
+<p>tips 32位的Windows OS 中，SS、DS、ES的值皆为0，所以采用这种方式附上区段并没有什么意义。因EBP与ESP是指向栈的寄存器，所以添加上了SS寄存器。</p>
+<p>灵活使用栈帧 可以使得函数嵌套中栈可以得到较好的维护而不会崩溃。</p>
+<p>退出函数嵌套需要从栈中删除参数，将ESP的值增加，形式上从栈中清理掉 只是临时存储在栈中的变量会被下一次值覆盖，无需归零</p>
+<p>tips cdecl 函数调用者负责清理存储在栈中的参数&#x2F;stdcall 被调用者负责清理保存在栈中的参数</p>
+<p>EAX等寄存器的值在函数传递的过程中保持不变 是函数嵌套传递的桥梁</p>
+<p>return 0的汇编设置为：XOR EAX EAX 原理为两个相同的值异或结果为0 响应速度更快 常用于寄存器的初始化操作 这个特征也大量被用于编码和解码</p>
+<p> 最终主函数在返回前需要先从栈中删除其对应的栈帧，最后retn结束主函数</p>
+<h2 id="第八章-分析crack-2"><a href="#第八章-分析crack-2" class="headerlink" title="第八章 分析crack 2"></a>第八章 分析crack 2</h2><p>VB文件的特征</p>
+<p>使用msvbvm60dll的VB专用引擎，其调用的函数全部来自于此dll中，而此dll再调用user32中的函数来实现操作</p>
+<p>VB可以分别编译本地代码与伪代码，主要用于编写GUI程序，采用事件驱动方式进行工作，同时其使用的信息以结构体形式保存</p>
+<p>tips VB通过间接调用JMP等指令来调用dll中的函数，而4010A0为导入地址表区，存储函数实际地址。</p>
+<p>更改dump窗口为LAA模式 可以分辨出清晰的字符串</p>
+<p>lea指令 获取数据的偏移量或直接得到计算结果</p>
+<p>函数执行完毕后ESP要恢复到函数调用之前，确保可以引用的栈的大小不会缩减</p>
+<h2 id="第九章-process-Explorer-进程管理工具"><a href="#第九章-process-Explorer-进程管理工具" class="headerlink" title="第九章 process Explorer 进程管理工具"></a>第九章 process Explorer 进程管理工具</h2><p>可以提供优秀的进程管理。检索加载到进程中的dll或进程占有的句柄。</p>
+<h2 id="第十章-函数调用约定"><a href="#第十章-函数调用约定" class="headerlink" title="第十章 函数调用约定"></a>第十章 函数调用约定</h2><p>函数调用约定主要指对传递参数的约定，主要的函数调用约定如下</p>
+<ul>
+<li><p>cdecl</p>
+<p>主要在c中使用，调用者负责处理栈。</p>
+<p>eg：ADD ESP 8</p>
+<p>其优点在于可以向被调用函数传递长度可变的参数。</p>
+</li>
+<li><p>stdcall</p>
+<p>常见于win32API，被调用者负责清理栈。</p>
+<p>eg: RETN 8  返回后使ESP增加到指定大小。</p>
+<p>将清理栈一起打包，缩小了代码尺寸，同时还提升了兼容性。</p>
+</li>
+<li><p>fastcall</p>
+<p>使用寄存器而非栈来传递部分参数。</p>
+<p>优势为可以实现对函数的快速调用，但有时需要额外得到系统开销来管理ECX和EDX。</p>
+</li>
+</ul>
+<h2 id="第十一章-一个例子"><a href="#第十一章-一个例子" class="headerlink" title="第十一章 一个例子"></a>第十一章 一个例子</h2><p>Q：如何去掉消息框？</p>
+<p>A：操作调用消息框的函数部分即可。首先使用SfA列出程序使用的API，确定函数弹出消息框的运行点。</p>
+<p>Q：打补丁的方法都有哪些？</p>
+<p>A：（1）尝试取消call命令，按照原来传递参数的大小清理栈，并使用nop来填充命令保证代码不会混乱。</p>
+<p>eg：call的大小为5个字节，add命令使用3个而剩余2个。</p>
+<p>但由于没有处理原函数的返回值（EAX），后续返回值检测无法通过而出错。但同时更改函数返回值会导致指令长度变长导致函数混乱。</p>
+<p>​    （2）在函数入口处直接返回 将栈帧预设改为RETN直接返回。返回值由传递给函数的参数大小调整。</p>
+<p>查看函数的参数个数方法：</p>
+<p>确认函数的起始代码存储在栈中的返回地址，找到函数返回的栈地址，再由栈清理操作值即可得知函数参数的个数。</p>
+<h2 id="第十二章-如何学逆向"><a href="#第十二章-如何学逆向" class="headerlink" title="第十二章 如何学逆向"></a>第十二章 如何学逆向</h2><p>略</p>
+<h2 id="第十三章-PE文件格式"><a href="#第十三章-PE文件格式" class="headerlink" title="第十三章 PE文件格式"></a>第十三章 PE文件格式</h2><p>PE文件是Windows系统的可执行文件格式。PE为32位，PE+或PE32+为64位</p>
+<p>分类有：</p>
+<ul>
+<li>可执行：EXE SCR</li>
+<li>驱动程序：SYS VXD</li>
+<li>对象文件：OBJ</li>
+<li>库：DLL OCX CPL DRV</li>
+</ul>
+<p>接下来以记事本程序为例来研究PE文件。</p>
+<p>PE头：pe文件的头部分，存储大量文件信息，是pe学习的重点，包括DOS头和节区头，文件中使用偏移，内存中使用VA来表示位置。各个节区的尾部存在一个NULL填充区域以便于格式的整齐划分。</p>
+<p>VA指的是内存中的绝对地址，而RVA指从某个基准位置开始的相对地址，换算公式为：</p>
+<p>RVA+基准地址&#x3D;绝对地址</p>
+<p>在实际情况中，为避免内存混乱，PE文件中的信息大多以RVA进行存储。</p>
+<h3 id="PE头"><a href="#PE头" class="headerlink" title="PE头"></a>PE头</h3><h4 id="DOS头"><a href="#DOS头" class="headerlink" title="DOS头"></a>DOS头</h4><p>pe文件为兼容dos的举措，表现为PE头的最前面有一个IMAGE_DOS_HEADER结构体，用于扩展DOS EXE头。</p>
+<p>此结构体大小为40字节，两个重要成员：</p>
+<p>e_magic: DOS签名 （MZ&#x3D;&#x3D;4D5A）</p>
+<p>e_lfanew 指示NT头偏移</p>
+<p>dos存根位于dos头下方，由代码和数据混合而成，可选存在且大小不定。可用于dos兼容程序。</p>
+<p><strong>NT头</strong></p>
+<p>NT头全称为INAGE_NT_HEADERS,此结构体由3个成员组成，分别为签名，文件头，可选头。总大小为F8.</p>
+<p>1  签名 值为5045000h 即PE</p>
+<p>2  文件头 表现文件的大致属性，包括4个成员：</p>
+<ul>
+<li>machine cpu码 14c为兼容32位x86芯片</li>
+<li>Numberofsections 指出文件中的节区数量</li>
+<li>sizeofoptionalheader 指出NT结构体的最后一个结构体的长度</li>
+<li>characteristics 表示文件的属性 0002h即为可执行文件。</li>
+</ul>
+<p>3  可选头 是pe头中结构体最大的，有以下关注成员</p>
+<ul>
+<li>magic  可选头为32&#x2F;64位时，其为10b&#x2F;20b</li>
+<li>adressofentrypoint 持有EP的RVA值，指出程序最先执行的代码起始地址。</li>
+<li>imagebase 指出文件的优先装入地址。</li>
+<li>sectionalignment 制定了节区在内存中的最小单位</li>
+<li>sizeofimage 指定peimage在虚拟内存中所占空间的大小（文件大小与加载到内存中的大小是不同的）</li>
+<li>sizeofheader  指定PE头的大小</li>
+<li>Subsystem 区分系统文件和普通可执行文件</li>
+<li>DataDirectory 由数据结构体组成的数组</li>
+</ul>
+<h4 id="节区头"><a href="#节区头" class="headerlink" title="节区头"></a>节区头</h4><p>节区头中定义了各个节区的属性。由IMAGE_SECTION_HEADER结构体组成的数组，每个结构体对应一个节区。</p>
+<p><strong>关于节区</strong>：pe文件将各种资源按照属性存储在不同的节区以保证程序的安全性。</p>
+<h3 id="RVA-to-RAW"><a href="#RVA-to-RAW" class="headerlink" title="RVA to RAW"></a>RVA to RAW</h3><p>指的是内存地址与文件偏移之间的映射。步骤为查找RVA所在节区与计算文件偏移。</p>
+<h3 id="IAT（导入地址表）"><a href="#IAT（导入地址表）" class="headerlink" title="ＩＡＴ（导入地址表）"></a>ＩＡＴ（导入地址表）</h3><p>IAT中存储得的内容与核心进程，内存，DLL有关。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/03/29/nixianghex/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%86%E5%90%91/" rel="tag">逆向</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/04/19/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E8%AF%86%E5%88%AB/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            常见算法识别
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/03/14/dosystem/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">操作系统</div>
+      </a>
+    
+  </nav>
+
+  
+   
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2023
+        <i class="ri-heart-fill heart_icon"></i> John Doe
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="wanhar"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://blog.csdn.net/m0_73148547?type=blog">CSDN</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://shimmer123456.github.io">友链</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1496089152&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+</body>
+
+</html>
