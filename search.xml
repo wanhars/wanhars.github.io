@@ -2178,7 +2178,7 @@
 
 <p>此时apk已经打包完成,然而打包完成的软件无法通过签名检验</p>
 <p><img src="https://raw.githubusercontent.com/wanhars/pico/master/202310101616209.png" alt="Screenshot_20231010_161404_com.android.packageins"></p>
-<p>使用MT管理器进行破解</p>
+<p>于是尝试使用MT管理器进行破解</p>
 <p><a href="https://www.cnblogs.com/theseventhson/p/14670336.html">android逆向奇技淫巧一：去掉开屏广告&amp;跳过app的某些activity - 第七子007 - 博客园 (cnblogs.com)</a></p>
 <p>路径2：通过手机端进行直接修改</p>
 <p><a href="https://www.52pojie.cn/thread-1314172-1-1.html">逆向教程之-反编译apk完全精简删除菜单功能（二） - 『移动安全区』 - 吾爱破解 - LCG - LSG |安卓破解|病毒分析|www.52pojie.cn</a></p>
