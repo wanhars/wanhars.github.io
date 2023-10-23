@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>MISC-3 |  wanhar</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon2.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-MISC-3"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  MISC-3
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/10/20/MISC-3/" class="article-date">
+  <time datetime="2023-10-19T16:00:00.000Z" itemprop="datePublished">2023-10-20</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/else/">else</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.8k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">11 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="流量分析"><a href="#流量分析" class="headerlink" title="流量分析"></a>流量分析</h2><p>流量分析是MISC中重要的一环，也是难度比较高的一部分。需要掌握各类网络知识并熟练运用。通常比赛中会提供一个包含流量数据的 PCAP 文件，有时候也会需要选手们先进行修复或重构传输文件后，再进行分析。复杂的地方在于数据包里充满着大量信息，因此如何分类和过滤数据是参赛者需要完成的工作。</p>
+<p>eg：Q1</p>
+<p>流量的类型：http数据，键盘按键，电话通信……任何会产生数据交互的地方</p>
+<p>流量分析题型分类如下：</p>
+<ul>
+<li>流量包修复</li>
+<li>协议分析</li>
+<li>数据提取</li>
+</ul>
+<h3 id="一、流量包修复"><a href="#一、流量包修复" class="headerlink" title="一、流量包修复"></a>一、流量包修复</h3><p>若流量包打开出现一些未知的错误，需要考虑对流量包进行修复。（确定为流量包而非伪装）</p>
+<p>一般直接使用工具进行修复</p>
+<p><a target="_blank" rel="noopener" href="https://sourceforge.net/projects/pcapfix/files/v1.1.7/pcapfix-1.1.7-win32.zip/download">Download pcapfix-1.1.7-win32.zip (pcapfix) (sourceforge.net)</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pcapfix png.pcap</span><br><span class="line"><span class="comment"># 同级目录下生成 fixed_png.pcap文件</span></span><br></pre></td></tr></table></figure>
+
+<p>在线网站修复</p>
+<p><a target="_blank" rel="noopener" href="https://f00l.de/hacking/pcapfix.php">pcapfix - online pcap &#x2F; pcapng repair service (f00l.de)</a></p>
+<h3 id="二、协议分析"><a href="#二、协议分析" class="headerlink" title="二、协议分析"></a>二、协议分析</h3><blockquote>
+<p><strong>网络协议</strong>为计算机网络中进行数据交换而建立的规则、标准或约定的集合。例如，网络中一个微机用户和一个大型主机的操作员进行通信，由于这两个数据终端所用字符集不同，因此操作员所输入的命令彼此不认识。为了能进行通信，规定每个终端都要将各自字符集中的字符先变换为标准字符集的字符后，才进入网络传送，到达目的终端之后，再变换为该终端字符集的字符。当然，对于不相容终端，除了需变换字符集字符外还需转换其他特性，如显示格式、行长、行数、屏幕滚动方式等也需作相应的变换。</p>
+</blockquote>
+<ul>
+<li><p>HTTP</p>
+<p><code>HTTP</code> ( <code>Hyper Text Transfer Protocol</code> ，也称为超文本传输协议， 是一种用于分布式、协作式和超媒体信息系统的应用层协议。 <code>HTTP</code> 是万维网的数据通信的基础。</p>
+</li>
+<li><p>HTTPS</p>
+<p><code>HTTPs = HTTP + SSL / TLS</code>. 服务端和客户端的信息传输都会通过 TLS 进行加密，所以传输的数据都是加密后的数据</p>
+</li>
+<li><p>FTP</p>
+<p><code>FTP</code> ( <code>File Transfer Protocol</code> ，即文件传输协议) 是 <code>TCP/IP</code> 协议组中的协议之一。 <code>FTP</code> 协议包括两个组成部分，其一为 <code>FTP</code> 服务器，其二为 <code>FTP</code> 客户端。其中 <code>FTP</code> 服务器用来存储文件，用户可以使用 <code>FTP</code> 客户端通过 <code>FTP</code> 协议访问位于 <code>FTP</code> 服务器上的资源。在开发网站的时候，通常利用 <code>FTP</code> 协议把网页或程序传到 <code>Web</code> 服务器上。此外，由于 <code>FTP</code> 传输效率非常高，在网络上传输大的文件时，一般也采用该协议。</p>
+<p>默认情况下 <code>FTP</code> 协议使用 <code>TCP</code> 端口中的 <code>20</code> 和 <code>21</code> 这两个端口，其中 <code>20</code> 用于传输数据， <code>21</code> 用于传输控制信息。但是，是否使用 <code>20</code> 作为传输数据的端口与 <code>FTP</code> 使用的传输模式有关，如果采用主动模式，那么数据传输端口就是 <code>20</code> ；如果采用被动模式，则具体最终使用哪个端口要服务器端和客户端协商决定。</p>
+</li>
+<li><p>DNS</p>
+<p><code>DNS</code> 通常为 <code>UDP</code> 协议, 报文格式,查询包只有头部和问题两个部分， <code>DNS</code> 收到查询包后，根据查询到的信息追加回答信息、授权机构、额外资源记录，并且修改了包头的相关标识再返回给客户端。</p>
+</li>
+</ul>
+<p>jieshou</p>
+<p>huifu</p>
+<p>si</p>
+<p>didian</p>
+<ul>
+<li>WIFI(802.11标准)</li>
+<li>USB</li>
+<li>其他特殊协议（工控协议，厂商自定义协议）</li>
+</ul>
+<p>例题：</p>
+<p>ping——icmp协议</p>
+<p>数据中的线索——TCP协议</p>
+<p>wireshark语法（见文末）</p>
+<h3 id="三、数据提取"><a href="#三、数据提取" class="headerlink" title="三、数据提取"></a>三、数据提取</h3><p>通过对协议进行分析后，可以了解到流量包的目的，场景，使用情况，如何提取数据是接下来的关键，主要通过工具来进行提取。</p>
+<h4 id="tshark"><a href="#tshark" class="headerlink" title="tshark"></a>tshark</h4><p><strong>tshark</strong>是wireshark的命令行版，可以快速提取信息，免除脚本编写等烦恼。<del>是居家必备的不二之选</del>，配合awk等其余工具，即可事半功倍</p>
+<p>其在kali中已预装</p>
+<p>eg：<strong>Google CTF 2016 Forensic-200</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">exp：</span><br><span class="line">what@kali:/tmp$ tshark -r capture.pcapng -T fields -e usb.capdata &gt; data2.txt</span><br><span class="line">what@kali:/tmp$  awk -F: <span class="string">&#x27;function comp(v)&#123;if(v&gt;127)v-=256;return v&#125;&#123;x+=comp(strtonum(&quot;0x&quot;$2));y+=comp(strtonum(&quot;0x&quot;$3))&#125;$1==&quot;01&quot;&#123;print x,y&#125;&#x27;</span> data.txt &gt; data3.txt</span><br><span class="line">what@kali:/tmp$ gnuplot</span><br><span class="line">&gt; plot <span class="string">&quot;data3.txt&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来让我们分别解释运行的命令</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> tshark -r capture.pcapng -T fields -e usb.capdata &gt; data2.txt</span><br><span class="line"> <span class="comment"># 使用 tshark 工具从 capture.pcapng 文件中提取 USB 数据报的 usb.capdata 字段，并将提取的数据保存到 data2.txt 文件中。</span></span><br><span class="line"> awk -F: <span class="string">&#x27;function comp(v) &#123;if(v&gt;127) v-=256; return v&#125; &#123;x+=comp(strtonum(&quot;0x&quot;$2)); y+=comp(strtonum(&quot;0x&quot;$3))&#125; $1==&quot;01&quot; &#123;print x, y&#125;&#x27;</span> data.txt &gt; data3.txt：</span><br><span class="line"> <span class="comment"># 使用 awk 工具对 data2.txt 文件中的数据进行处理。该命令将每行数据的第二个和第三个字段解析为十六进制数，并将其视为有符号的字节值。然后，将这些字节值进行累加，并在每行以 01 作为标识符的行上输出累加结果 x 和 y 到 data3.txt 文件中。（位置坐标转化）</span></span><br><span class="line">gnuplot</span><br><span class="line">&gt; plot <span class="string">&quot;data3.txt&quot;</span></span><br><span class="line"><span class="comment"># 使用data3中的数据进行绘制</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/ctfs/write-ups-2015/raw/master/boston-key-party-2015/school-bus/riverside/Missy.jpg" alt="一种奇怪但有效的标记方法"></p>
+<p>小技巧（来自黄师傅）</p>
+<p>用txt格式打开流量包</p>
+<p>原理：格式类无效信息无法被成功转化，而数据类消息可以txt方式进行阅读</p>
+<h4 id="wireshark"><a href="#wireshark" class="headerlink" title="wireshark"></a>wireshark</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#自动分析</span></span><br><span class="line">file -&gt; export objects -&gt; http</span><br><span class="line"><span class="comment">#手动数据提取</span></span><br><span class="line">file-&gt;export selected Packet Bytes</span><br><span class="line"><span class="comment">#显示过滤器（语法）</span></span><br><span class="line">（<span class="number">1</span>）IP过滤：如ip.addr == <span class="number">192.168</span><span class="number">.76</span><span class="number">.26</span> <span class="keyword">and</span> icmp ， ip.src ==<span class="number">192.168</span><span class="number">.104</span><span class="number">.10</span>， ip.dst==<span class="number">192.168</span><span class="number">.104</span><span class="number">.10</span>,</span><br><span class="line">（<span class="number">2</span>）协议过滤：如TCP， 注意http和icmp要小写</span><br><span class="line">（<span class="number">3</span>）端口过滤：如 tcp.port == <span class="number">80</span> || udp.port == <span class="number">80</span></span><br><span class="line">（<span class="number">4</span>）逻辑运算符：如 &amp;&amp;  ||  ！</span><br><span class="line">（<span class="number">5</span>）方法过滤：http.request.method==GET/POST</span><br><span class="line">（<span class="number">6</span>）数据包内容过滤：data contains <span class="string">&quot;abcd&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>tshark</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在指定的网络接口上捕获 MySQL 数据包，并过滤出其中的查询语句</span></span><br><span class="line">tshark -s <span class="number">512</span> -i eth0 -n -f <span class="string">&#x27;tcp dst port 3306&#x27;</span> -R <span class="string">&#x27;mysql.query&#x27;</span> -T fields -e mysql.query</span><br><span class="line"></span><br><span class="line">-s <span class="number">512</span>：设置 tshark 的抓包快照长度为 <span class="number">512</span> 字节。这意味着只会捕获每个数据包的前 <span class="number">512</span> 字节，以减少捕获的数据量。</span><br><span class="line"></span><br><span class="line">-i eth0：指定 tshark 要监听的网络接口为 eth0。这里可以根据实际情况将 eth0 替换为你想要监听的网络接口名称。</span><br><span class="line"></span><br><span class="line">-n：禁用 DNS 解析，使 tshark 不会尝试解析 IP 地址对应的主机名。</span><br><span class="line"></span><br><span class="line">-f <span class="string">&#x27;tcp dst port 3306&#x27;</span>：设置过滤器规则，只捕获目标端口为 <span class="number">3306</span> 的 TCP 流量。在 MySQL 中，<span class="number">3306</span> 端口是默认的 MySQL 服务器端口。</span><br><span class="line"></span><br><span class="line">-R <span class="string">&#x27;mysql.query&#x27;</span>：使用 mysql.query 作为进一步的过滤器规则，仅捕获包含 MySQL 查询语句的数据包。</span><br><span class="line"></span><br><span class="line">-T fields -e mysql.query：使用 -T fields 参数指定输出格式为字段模式，然后使用 -e mysql.query 参数指定要输出的字段为 mysql.query，即 MySQL 查询语句。</span><br><span class="line"><span class="comment">#抓取500个包提取访问的网址打印出来</span></span><br><span class="line">tshark -s <span class="number">0</span> -i eth0 -n -f <span class="string">&#x27;tcp dst port 80&#x27;</span> -R <span class="string">&#x27;http.host and http.request.uri&#x27;</span> -T fields -e http.host -e </span><br><span class="line">http.request.uri -l -c <span class="number">500</span></span><br><span class="line"></span><br><span class="line">-s <span class="number">0</span>：设置 tshark 的抓包快照长度为 <span class="number">0</span>，表示捕获完整的数据包。</span><br><span class="line"></span><br><span class="line">-i eth0：指定 tshark 要监听的网络接口为 eth0。这里可以根据实际情况将 eth0 替换为你想要监听的网络接口名称。</span><br><span class="line"></span><br><span class="line">-n：禁用 DNS 解析，使 tshark 不会尝试解析 IP 地址对应的主机名。</span><br><span class="line"></span><br><span class="line">-f <span class="string">&#x27;tcp dst port 80&#x27;</span>：设置过滤器规则，只捕获目标端口为 <span class="number">80</span> 的 TCP 流量。在 HTTP 中，<span class="number">80</span> 端口是默认的 HTTP 服务器端口。</span><br><span class="line"></span><br><span class="line">-R <span class="string">&#x27;http.host and http.request.uri&#x27;</span>：使用 http.host 和 http.request.uri 作为进一步的过滤器规则，仅捕获包含 HTTP 请求的数据包，并且这些请求必须包含有效的主机名和请求URI。</span><br><span class="line"></span><br><span class="line">-T fields -e http.host -e http.request.uri：使用 -T fields 参数指定输出格式为字段模式，然后使用 -e http.host 参数和 -e http.request.uri 参数指定要输出的字段为 HTTP 请求的主机名和请求URI。</span><br><span class="line"></span><br><span class="line">-l：启用行缓冲模式，使 tshark 实时输出捕获的数据。</span><br><span class="line"></span><br><span class="line">-c <span class="number">500</span>：设置 tshark 最多捕获 <span class="number">500</span> 个数据包。</span><br></pre></td></tr></table></figure>
+
+<p><strong>gnuplot</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">下载地址：https://sourceforge.net/projects/gnuplot/</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="无机结合"><a href="#无机结合" class="headerlink" title="无机结合"></a>无机结合</h2><p>香山杯–hello.apk</p>
+<p>一道逆向题目，是由python编写的apk文件，搜集资料得知，需要找到名为hello.py的文件，那么它在哪里呢？</p>
+<p>hacklu–多多理财<del>（谐音扣钱）</del>（切记不能说词）</p>
+<p>某游戏存档，需要逆向得到那句话（我觉得考的是信息搜集）</p>
+<h2 id="脑洞题"><a href="#脑洞题" class="headerlink" title="脑洞题"></a>脑洞题</h2><p>CISCN2023初赛——麻将</p>
+<p>脑洞题，给的题目原图有两排一模一样的麻将。（思考下为什么给两排）</p>
+<p>然后给了a.png和k.png两个一排的麻将的图片，猜测是将这两个一排的麻将合并成一张图片。</p>
+<p>合并后对于上下两排的麻将，猜测存在某种规律。</p>
+<p>我们将题目原图从1到42进行编号（一万出现了两次，第一次上面是空白，忽略不计）：</p>
+<p><img src="https://pic4.zhimg.com/80/v2-f830f936ec19bd60ed46d9279e910bf7_1440w.webp" alt="image-20230527181943673"></p>
+<p>image-20230527181943673</p>
+<p>然后将a.png和k.png进行拼接：</p>
+<p><img src="https://pic1.zhimg.com/80/v2-e6f28f0d03cfbb5ec7b9d9aa7dcd68a4_1440w.webp" alt="image-20230527182043348"></p>
+<p>image-20230527182043348</p>
+<p>根据题目原图的编号，得到一个二元组数组。二元组的第一个元素存在大量相同的数字，猜测可能是坐标。</p>
+<p>将a.png作为x坐标，k.png作为y坐标，对于1 &lt;&#x3D; x &lt;&#x3D; 10，拼接一下得到flag{字符：</p>
+<p><img src="https://pic3.zhimg.com/80/v2-48e0150cd27c4644a91f24647120b1de_1440w.webp" alt="image-20230527182223750"></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"># 末尾添加最大值(42, 42)，防止坐标太散看不清。</span><br><span class="line">x_coords = [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,</span><br><span class="line">            5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,</span><br><span class="line">            7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 10, 10, 42]</span><br><span class="line">y_coords = [4, 5, 10, 30, 3, 4, 5, 6, 10, 29, 30, 3, 4, 10, 16, 17, 22, 23, 24, 25, 29, 30, 2, 3, 4, 5, 10, 15, 16, 18,</span><br><span class="line">            21, 22, 24, 25, 29, 30, 3, 4, 10, 15, 17, 18, 19, 20, 22, 25, 28, 29, 3, 4, 10, 15, 16, 18, 19, 21, 22, 25,</span><br><span class="line">            29, 3, 4, 10, 11, 12, 13, 15, 18, 19, 22, 23, 24, 25, 29, 30, 3, 4, 11, 12, 15, 16, 17, 18, 19, 20, 25, 29,</span><br><span class="line">            30, 21, 22, 24, 25, 30, 31, 23, 24, 42]</span><br><span class="line"></span><br><span class="line">plt.scatter(x_coords, y_coords)</span><br><span class="line"></span><br><span class="line">plt.title(&quot;Scatter Plot&quot;)</span><br><span class="line">plt.xlabel(&quot;X-axis&quot;)</span><br><span class="line">plt.ylabel(&quot;Y-axis&quot;)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>因此，将所有a.png和k.png图片中的麻将转换成坐标，画图得到Flag：flag{202305012359}。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-226b679941a1409a85da89d772ffa741_1440w.webp" alt="flag1"></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/10/20/MISC-3/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MISC/" rel="tag">MISC</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/10/20/%E6%95%B0%E8%AF%BB/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            逆向实战
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/10/10/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%B4%E6%8A%A4%E6%89%8B%E5%86%8C/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">博客操作手册</div>
+      </a>
+    
+  </nav>
+
+   
+ 
+   
+  
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2023
+        <i class="ri-heart-fill heart_icon"></i> John Doe
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="wanhar"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://blog.csdn.net/m0_73148547?type=blog">CSDN</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://shimmer123456.github.io">友链</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1496089152&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+</body>
+
+</html>

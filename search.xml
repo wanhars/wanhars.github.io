@@ -2343,4 +2343,106 @@
         <tag>re</tag>
       </tags>
   </entry>
+  <entry>
+    <title>MISC-3</title>
+    <url>/2023/10/20/MISC-3/</url>
+    <content><![CDATA[<h2 id="流量分析"><a href="#流量分析" class="headerlink" title="流量分析"></a>流量分析</h2><p>流量分析是MISC中重要的一环，也是难度比较高的一部分。需要掌握各类网络知识并熟练运用。通常比赛中会提供一个包含流量数据的 PCAP 文件，有时候也会需要选手们先进行修复或重构传输文件后，再进行分析。复杂的地方在于数据包里充满着大量信息，因此如何分类和过滤数据是参赛者需要完成的工作。</p>
+<p>eg：Q1</p>
+<p>流量的类型：http数据，键盘按键，电话通信……任何会产生数据交互的地方</p>
+<p>流量分析题型分类如下：</p>
+<ul>
+<li>流量包修复</li>
+<li>协议分析</li>
+<li>数据提取</li>
+</ul>
+<h3 id="一、流量包修复"><a href="#一、流量包修复" class="headerlink" title="一、流量包修复"></a>一、流量包修复</h3><p>若流量包打开出现一些未知的错误，需要考虑对流量包进行修复。（确定为流量包而非伪装）</p>
+<p>一般直接使用工具进行修复</p>
+<p><a href="https://sourceforge.net/projects/pcapfix/files/v1.1.7/pcapfix-1.1.7-win32.zip/download">Download pcapfix-1.1.7-win32.zip (pcapfix) (sourceforge.net)</a></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pcapfix png.pcap</span><br><span class="line"><span class="comment"># 同级目录下生成 fixed_png.pcap文件</span></span><br></pre></td></tr></table></figure>
+
+<p>在线网站修复</p>
+<p><a href="https://f00l.de/hacking/pcapfix.php">pcapfix - online pcap &#x2F; pcapng repair service (f00l.de)</a></p>
+<h3 id="二、协议分析"><a href="#二、协议分析" class="headerlink" title="二、协议分析"></a>二、协议分析</h3><blockquote>
+<p><strong>网络协议</strong>为计算机网络中进行数据交换而建立的规则、标准或约定的集合。例如，网络中一个微机用户和一个大型主机的操作员进行通信，由于这两个数据终端所用字符集不同，因此操作员所输入的命令彼此不认识。为了能进行通信，规定每个终端都要将各自字符集中的字符先变换为标准字符集的字符后，才进入网络传送，到达目的终端之后，再变换为该终端字符集的字符。当然，对于不相容终端，除了需变换字符集字符外还需转换其他特性，如显示格式、行长、行数、屏幕滚动方式等也需作相应的变换。</p>
+</blockquote>
+<ul>
+<li><p>HTTP</p>
+<p><code>HTTP</code> ( <code>Hyper Text Transfer Protocol</code> ，也称为超文本传输协议， 是一种用于分布式、协作式和超媒体信息系统的应用层协议。 <code>HTTP</code> 是万维网的数据通信的基础。</p>
+</li>
+<li><p>HTTPS</p>
+<p><code>HTTPs = HTTP + SSL / TLS</code>. 服务端和客户端的信息传输都会通过 TLS 进行加密，所以传输的数据都是加密后的数据</p>
+</li>
+<li><p>FTP</p>
+<p><code>FTP</code> ( <code>File Transfer Protocol</code> ，即文件传输协议) 是 <code>TCP/IP</code> 协议组中的协议之一。 <code>FTP</code> 协议包括两个组成部分，其一为 <code>FTP</code> 服务器，其二为 <code>FTP</code> 客户端。其中 <code>FTP</code> 服务器用来存储文件，用户可以使用 <code>FTP</code> 客户端通过 <code>FTP</code> 协议访问位于 <code>FTP</code> 服务器上的资源。在开发网站的时候，通常利用 <code>FTP</code> 协议把网页或程序传到 <code>Web</code> 服务器上。此外，由于 <code>FTP</code> 传输效率非常高，在网络上传输大的文件时，一般也采用该协议。</p>
+<p>默认情况下 <code>FTP</code> 协议使用 <code>TCP</code> 端口中的 <code>20</code> 和 <code>21</code> 这两个端口，其中 <code>20</code> 用于传输数据， <code>21</code> 用于传输控制信息。但是，是否使用 <code>20</code> 作为传输数据的端口与 <code>FTP</code> 使用的传输模式有关，如果采用主动模式，那么数据传输端口就是 <code>20</code> ；如果采用被动模式，则具体最终使用哪个端口要服务器端和客户端协商决定。</p>
+</li>
+<li><p>DNS</p>
+<p><code>DNS</code> 通常为 <code>UDP</code> 协议, 报文格式,查询包只有头部和问题两个部分， <code>DNS</code> 收到查询包后，根据查询到的信息追加回答信息、授权机构、额外资源记录，并且修改了包头的相关标识再返回给客户端。</p>
+</li>
+</ul>
+<p>jieshou</p>
+<p>huifu</p>
+<p>si</p>
+<p>didian</p>
+<ul>
+<li>WIFI(802.11标准)</li>
+<li>USB</li>
+<li>其他特殊协议（工控协议，厂商自定义协议）</li>
+</ul>
+<p>例题：</p>
+<p>ping——icmp协议</p>
+<p>数据中的线索——TCP协议</p>
+<p>wireshark语法（见文末）</p>
+<h3 id="三、数据提取"><a href="#三、数据提取" class="headerlink" title="三、数据提取"></a>三、数据提取</h3><p>通过对协议进行分析后，可以了解到流量包的目的，场景，使用情况，如何提取数据是接下来的关键，主要通过工具来进行提取。</p>
+<h4 id="tshark"><a href="#tshark" class="headerlink" title="tshark"></a>tshark</h4><p><strong>tshark</strong>是wireshark的命令行版，可以快速提取信息，免除脚本编写等烦恼。<del>是居家必备的不二之选</del>，配合awk等其余工具，即可事半功倍</p>
+<p>其在kali中已预装</p>
+<p>eg：<strong>Google CTF 2016 Forensic-200</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">exp：</span><br><span class="line">what@kali:/tmp$ tshark -r capture.pcapng -T fields -e usb.capdata &gt; data2.txt</span><br><span class="line">what@kali:/tmp$  awk -F: <span class="string">&#x27;function comp(v)&#123;if(v&gt;127)v-=256;return v&#125;&#123;x+=comp(strtonum(&quot;0x&quot;$2));y+=comp(strtonum(&quot;0x&quot;$3))&#125;$1==&quot;01&quot;&#123;print x,y&#125;&#x27;</span> data.txt &gt; data3.txt</span><br><span class="line">what@kali:/tmp$ gnuplot</span><br><span class="line">&gt; plot <span class="string">&quot;data3.txt&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来让我们分别解释运行的命令</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"> tshark -r capture.pcapng -T fields -e usb.capdata &gt; data2.txt</span><br><span class="line"> <span class="comment"># 使用 tshark 工具从 capture.pcapng 文件中提取 USB 数据报的 usb.capdata 字段，并将提取的数据保存到 data2.txt 文件中。</span></span><br><span class="line"> awk -F: <span class="string">&#x27;function comp(v) &#123;if(v&gt;127) v-=256; return v&#125; &#123;x+=comp(strtonum(&quot;0x&quot;$2)); y+=comp(strtonum(&quot;0x&quot;$3))&#125; $1==&quot;01&quot; &#123;print x, y&#125;&#x27;</span> data.txt &gt; data3.txt：</span><br><span class="line"> <span class="comment"># 使用 awk 工具对 data2.txt 文件中的数据进行处理。该命令将每行数据的第二个和第三个字段解析为十六进制数，并将其视为有符号的字节值。然后，将这些字节值进行累加，并在每行以 01 作为标识符的行上输出累加结果 x 和 y 到 data3.txt 文件中。（位置坐标转化）</span></span><br><span class="line">gnuplot</span><br><span class="line">&gt; plot <span class="string">&quot;data3.txt&quot;</span></span><br><span class="line"><span class="comment"># 使用data3中的数据进行绘制</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/ctfs/write-ups-2015/raw/master/boston-key-party-2015/school-bus/riverside/Missy.jpg" alt="一种奇怪但有效的标记方法"></p>
+<p>小技巧（来自黄师傅）</p>
+<p>用txt格式打开流量包</p>
+<p>原理：格式类无效信息无法被成功转化，而数据类消息可以txt方式进行阅读</p>
+<h4 id="wireshark"><a href="#wireshark" class="headerlink" title="wireshark"></a>wireshark</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#自动分析</span></span><br><span class="line">file -&gt; export objects -&gt; http</span><br><span class="line"><span class="comment">#手动数据提取</span></span><br><span class="line">file-&gt;export selected Packet Bytes</span><br><span class="line"><span class="comment">#显示过滤器（语法）</span></span><br><span class="line">（<span class="number">1</span>）IP过滤：如ip.addr == <span class="number">192.168</span><span class="number">.76</span><span class="number">.26</span> <span class="keyword">and</span> icmp ， ip.src ==<span class="number">192.168</span><span class="number">.104</span><span class="number">.10</span>， ip.dst==<span class="number">192.168</span><span class="number">.104</span><span class="number">.10</span>,</span><br><span class="line">（<span class="number">2</span>）协议过滤：如TCP， 注意http和icmp要小写</span><br><span class="line">（<span class="number">3</span>）端口过滤：如 tcp.port == <span class="number">80</span> || udp.port == <span class="number">80</span></span><br><span class="line">（<span class="number">4</span>）逻辑运算符：如 &amp;&amp;  ||  ！</span><br><span class="line">（<span class="number">5</span>）方法过滤：http.request.method==GET/POST</span><br><span class="line">（<span class="number">6</span>）数据包内容过滤：data contains <span class="string">&quot;abcd&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>tshark</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#在指定的网络接口上捕获 MySQL 数据包，并过滤出其中的查询语句</span></span><br><span class="line">tshark -s <span class="number">512</span> -i eth0 -n -f <span class="string">&#x27;tcp dst port 3306&#x27;</span> -R <span class="string">&#x27;mysql.query&#x27;</span> -T fields -e mysql.query</span><br><span class="line"></span><br><span class="line">-s <span class="number">512</span>：设置 tshark 的抓包快照长度为 <span class="number">512</span> 字节。这意味着只会捕获每个数据包的前 <span class="number">512</span> 字节，以减少捕获的数据量。</span><br><span class="line"></span><br><span class="line">-i eth0：指定 tshark 要监听的网络接口为 eth0。这里可以根据实际情况将 eth0 替换为你想要监听的网络接口名称。</span><br><span class="line"></span><br><span class="line">-n：禁用 DNS 解析，使 tshark 不会尝试解析 IP 地址对应的主机名。</span><br><span class="line"></span><br><span class="line">-f <span class="string">&#x27;tcp dst port 3306&#x27;</span>：设置过滤器规则，只捕获目标端口为 <span class="number">3306</span> 的 TCP 流量。在 MySQL 中，<span class="number">3306</span> 端口是默认的 MySQL 服务器端口。</span><br><span class="line"></span><br><span class="line">-R <span class="string">&#x27;mysql.query&#x27;</span>：使用 mysql.query 作为进一步的过滤器规则，仅捕获包含 MySQL 查询语句的数据包。</span><br><span class="line"></span><br><span class="line">-T fields -e mysql.query：使用 -T fields 参数指定输出格式为字段模式，然后使用 -e mysql.query 参数指定要输出的字段为 mysql.query，即 MySQL 查询语句。</span><br><span class="line"><span class="comment">#抓取500个包提取访问的网址打印出来</span></span><br><span class="line">tshark -s <span class="number">0</span> -i eth0 -n -f <span class="string">&#x27;tcp dst port 80&#x27;</span> -R <span class="string">&#x27;http.host and http.request.uri&#x27;</span> -T fields -e http.host -e </span><br><span class="line">http.request.uri -l -c <span class="number">500</span></span><br><span class="line"></span><br><span class="line">-s <span class="number">0</span>：设置 tshark 的抓包快照长度为 <span class="number">0</span>，表示捕获完整的数据包。</span><br><span class="line"></span><br><span class="line">-i eth0：指定 tshark 要监听的网络接口为 eth0。这里可以根据实际情况将 eth0 替换为你想要监听的网络接口名称。</span><br><span class="line"></span><br><span class="line">-n：禁用 DNS 解析，使 tshark 不会尝试解析 IP 地址对应的主机名。</span><br><span class="line"></span><br><span class="line">-f <span class="string">&#x27;tcp dst port 80&#x27;</span>：设置过滤器规则，只捕获目标端口为 <span class="number">80</span> 的 TCP 流量。在 HTTP 中，<span class="number">80</span> 端口是默认的 HTTP 服务器端口。</span><br><span class="line"></span><br><span class="line">-R <span class="string">&#x27;http.host and http.request.uri&#x27;</span>：使用 http.host 和 http.request.uri 作为进一步的过滤器规则，仅捕获包含 HTTP 请求的数据包，并且这些请求必须包含有效的主机名和请求URI。</span><br><span class="line"></span><br><span class="line">-T fields -e http.host -e http.request.uri：使用 -T fields 参数指定输出格式为字段模式，然后使用 -e http.host 参数和 -e http.request.uri 参数指定要输出的字段为 HTTP 请求的主机名和请求URI。</span><br><span class="line"></span><br><span class="line">-l：启用行缓冲模式，使 tshark 实时输出捕获的数据。</span><br><span class="line"></span><br><span class="line">-c <span class="number">500</span>：设置 tshark 最多捕获 <span class="number">500</span> 个数据包。</span><br></pre></td></tr></table></figure>
+
+<p><strong>gnuplot</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">下载地址：https://sourceforge.net/projects/gnuplot/</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="无机结合"><a href="#无机结合" class="headerlink" title="无机结合"></a>无机结合</h2><p>香山杯–hello.apk</p>
+<p>一道逆向题目，是由python编写的apk文件，搜集资料得知，需要找到名为hello.py的文件，那么它在哪里呢？</p>
+<p>hacklu–多多理财<del>（谐音扣钱）</del>（切记不能说词）</p>
+<p>某游戏存档，需要逆向得到那句话（我觉得考的是信息搜集）</p>
+<h2 id="脑洞题"><a href="#脑洞题" class="headerlink" title="脑洞题"></a>脑洞题</h2><p>CISCN2023初赛——麻将</p>
+<p>脑洞题，给的题目原图有两排一模一样的麻将。（思考下为什么给两排）</p>
+<p>然后给了a.png和k.png两个一排的麻将的图片，猜测是将这两个一排的麻将合并成一张图片。</p>
+<p>合并后对于上下两排的麻将，猜测存在某种规律。</p>
+<p>我们将题目原图从1到42进行编号（一万出现了两次，第一次上面是空白，忽略不计）：</p>
+<p><img src="https://pic4.zhimg.com/80/v2-f830f936ec19bd60ed46d9279e910bf7_1440w.webp" alt="image-20230527181943673"></p>
+<p>image-20230527181943673</p>
+<p>然后将a.png和k.png进行拼接：</p>
+<p><img src="https://pic1.zhimg.com/80/v2-e6f28f0d03cfbb5ec7b9d9aa7dcd68a4_1440w.webp" alt="image-20230527182043348"></p>
+<p>image-20230527182043348</p>
+<p>根据题目原图的编号，得到一个二元组数组。二元组的第一个元素存在大量相同的数字，猜测可能是坐标。</p>
+<p>将a.png作为x坐标，k.png作为y坐标，对于1 &lt;&#x3D; x &lt;&#x3D; 10，拼接一下得到flag{字符：</p>
+<p><img src="https://pic3.zhimg.com/80/v2-48e0150cd27c4644a91f24647120b1de_1440w.webp" alt="image-20230527182223750"></p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"># 末尾添加最大值(42, 42)，防止坐标太散看不清。</span><br><span class="line">x_coords = [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,</span><br><span class="line">            5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,</span><br><span class="line">            7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 10, 10, 42]</span><br><span class="line">y_coords = [4, 5, 10, 30, 3, 4, 5, 6, 10, 29, 30, 3, 4, 10, 16, 17, 22, 23, 24, 25, 29, 30, 2, 3, 4, 5, 10, 15, 16, 18,</span><br><span class="line">            21, 22, 24, 25, 29, 30, 3, 4, 10, 15, 17, 18, 19, 20, 22, 25, 28, 29, 3, 4, 10, 15, 16, 18, 19, 21, 22, 25,</span><br><span class="line">            29, 3, 4, 10, 11, 12, 13, 15, 18, 19, 22, 23, 24, 25, 29, 30, 3, 4, 11, 12, 15, 16, 17, 18, 19, 20, 25, 29,</span><br><span class="line">            30, 21, 22, 24, 25, 30, 31, 23, 24, 42]</span><br><span class="line"></span><br><span class="line">plt.scatter(x_coords, y_coords)</span><br><span class="line"></span><br><span class="line">plt.title(&quot;Scatter Plot&quot;)</span><br><span class="line">plt.xlabel(&quot;X-axis&quot;)</span><br><span class="line">plt.ylabel(&quot;Y-axis&quot;)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>因此，将所有a.png和k.png图片中的麻将转换成坐标，画图得到Flag：flag{202305012359}。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-226b679941a1409a85da89d772ffa741_1440w.webp" alt="flag1"></p>
+]]></content>
+      <categories>
+        <category>else</category>
+      </categories>
+      <tags>
+        <tag>MISC</tag>
+      </tags>
+  </entry>
 </search>
